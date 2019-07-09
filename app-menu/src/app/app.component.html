@@ -1,0 +1,15 @@
+<h1>"Logo:
+  Fulano de sal"
+</h1>
+
+<nav>
+  <a (click)="toggleEditor('name')">Atualizar infor. pessoais</a>
+</nav>
+<nav>
+  <a (click)="toggleEditor('profile')">Solicitar marmitas</a>
+</nav>
+
+<app-name-editor *ngIf="showNameEditor"></app-name-editor>
+
+<app-profile-editor *ngIf="showProfileEditor"></app-profile-editor>
+
