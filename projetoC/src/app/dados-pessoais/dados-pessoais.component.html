@@ -1,0 +1,16 @@
+<h1>Dados Pessoais</h1>
+<h5></h5>
+<label>
+    Nome Completo:
+    <input type="text" [formControl]="dados">
+  </label>
+
+  <label>
+    Celular:
+    <input type="text" [formControl]="dados">
+  </label>
+  
+  
+  <p>
+    <button (click)="updateDados()">Confirmar</button>
+  </p>

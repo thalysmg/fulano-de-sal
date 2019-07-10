@@ -1,0 +1,12 @@
+<h1>Logo: Fulano de Sal</h1>
+
+<nav>
+  <a (click)="toggleEditor('dados-pessoais')" routerLink='h1'>Atualizar Infor. Pessoais.</a>
+</nav>
+<nav>
+  <a (click)="toggleEditor('menu')">Solicitar marmita</a>
+</nav>
+
+
+<app-dados-pessoais *ngIf="showDadosPessoais"></app-dados-pessoais>
+<app-menu *ngIf="showMenu"></app-menu>
