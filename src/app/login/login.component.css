@@ -1,0 +1,58 @@
+#logo_with_image {
+  background: #1B2A3B;
+  background-image: url("/../assets/images/login_img.jpeg"), linear-gradient(to bottom, #1B2A3B, gray);
+  /* background-image: url("/../assets/images/login_img.jpeg"); */
+  background-size: cover;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position-y: -30vh;
+  background-position-x: -15vh;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* #login_buttons {
+   margin: auto;
+  text-align: center;
+  background-color:  #1B2A3B;
+  background-image: linear-gradient(#1B2A3B, #1A2A1A);
+  height: 35.5%;
+} */
+
+#loginView {
+  margin-top: 163px;
+}
+#fb {
+  background-color: darkblue;
+  color: white;
+}
+
+#google {
+  background-color: #FFFFFF;
+}
+
+#adm {
+  background-color: #E1911A;
+  color: white;
+}
+
+#id {
+  justify-content: center;
+}
+
+.btn {
+  margin-top: 15px;
+  /* position: relative; */
+  width: 350px;
+  height: 40px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+h1 {
+  padding-top: 220px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 30px;
+}
