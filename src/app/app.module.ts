@@ -37,7 +37,7 @@ import { ItensMarmitaComponent } from './itens-marmita/itens-marmita.component';
         component: LoginAdminComponent
       },
       {
-        path: 'attDados',
+        path: 'dadosPessoais',
         component: DadosPessoaisComponent
       },
       {
