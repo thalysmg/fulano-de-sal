@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
@@ -27,6 +27,8 @@ import { ItensMarmitaComponent } from './itens-marmita/itens-marmita.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    // Adicionando o módulo de formulários reativos no módulo da nossa aplicação
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -50,7 +52,8 @@ import { ItensMarmitaComponent } from './itens-marmita/itens-marmita.component';
       }
     ])
   ],
-  providers: [],
+  providers: [ {provide: String, useValue: "stringValue"}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

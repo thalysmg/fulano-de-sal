@@ -1,14 +1,18 @@
 <h1>Atualizar informações</h1>
 <h5>Atualize suas informações para podermos prestar <br> o seu atendimento da melhor forma!</h5>
 
-<form>
-    <input type="text" placeholder="Nome de usuário">
-</form>
-<br>
-<form>
-    <input type="text" placeholder="Senha">
-</form>
+
+<form [formGroup]="formularioDeUsuario" (ngSubmit)="enviarDados()">
+    <div>
+        <input type="text" placeholder="Nome de usuário" formControlName="nomeDeUsuario">
+    </div>
+        
+    <br>
+    <div>
+        <input type="text" placeholder="Senha" formControlName="telefone">
+    </div>
     
-<p>
-    <button routerLink="/itens">Confirmar</button>
-</p>
+    <p>
+        <button routerLink="/menu" [disabled]="!formularioDeUsuario.valid">Confirmar</button>
+    </p>
+</form>

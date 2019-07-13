@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
  @Component({
   selector: 'app-dados-pessoais',
@@ -7,9 +6,21 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./dados-pessoais.component.css']
 })
 export class DadosPessoaisComponent {
-  dados = new FormControl('');
+  
+  constructor(nomeUsuario: string, telefone: string){
+      this.nomeUsuario = nomeUsuario;
+      this.telefone = telefone;
+  }
 
-   updateDados() {
-    this.dados.setValue('Nancy');
+  nomeUsuario: string;
+  telefone: string;
+
+
+  ngOnInit() {
+  }
+
+  loginUser(event){
+    event.preventDefault
+    console.log(event)
   }
 }
