@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 
-import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +16,10 @@ import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule }
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    LoginComponent,
+    AtualizaDadosComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
