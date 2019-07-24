@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 
@@ -20,7 +19,6 @@ import { MaterializeModule } from 'angular2-materialize';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     AtualizaDadosComponent,
     LoginAdminComponent
   ],
