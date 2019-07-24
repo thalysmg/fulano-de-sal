@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule } from '@angular/material';
 
+import 'materialize-css';
+import { MaterializeModule } from 'angular2-materialize';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,8 @@ import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule }
     MatButtonModule,
     MatGridListModule,
     MatCardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterializeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
