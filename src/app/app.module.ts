@@ -15,6 +15,11 @@ import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule }
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { config } from './config/firebase-config';
+
 @NgModule({
   declarations: [
     AppComponent,
