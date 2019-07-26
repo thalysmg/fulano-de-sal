@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
+import { AddItemsComponent } from './add-items/add-items.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'atualiza-dados',
     component: AtualizaDadosComponent
+  },
+  {
+    path: 'add-items',
+    component: AddItemsComponent
   }
 ];
 
