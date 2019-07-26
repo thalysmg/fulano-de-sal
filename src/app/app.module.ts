@@ -38,7 +38,10 @@ import { config } from './config/firebase-config';
     MatGridListModule,
     MatCardModule,
     BrowserAnimationsModule,
-    MaterializeModule
+    MaterializeModule,
+    AngularFireModule.initializeApp(config.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
