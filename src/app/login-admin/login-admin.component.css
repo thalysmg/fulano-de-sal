@@ -40,7 +40,8 @@
   }
   
   h1 {
-    padding-top: 220px;
+    /*padding-top: 220px;*/
+    padding-top: 80px;
     color: white;
     font-weight: bold;
     letter-spacing: 1px;
@@ -65,3 +66,15 @@
     margin: unset;
   }
   
+  h1 {
+    text-align: center;
+    color: black;
+  }
+  
+  h5 {
+    text-align: center;
+  }
+
+  button{
+    text-align: center;
+  }
