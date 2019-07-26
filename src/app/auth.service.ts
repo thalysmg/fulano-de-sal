@@ -23,6 +23,7 @@ export class AuthService {
     .then(result => {
       console.log('Logado');
       console.log(result);
+      localStorage.setItem('logged-in', JSON.stringify(result.additionalUserInfo.profile));
     })
     .catch(error => {
       console.log('Erro ao logar');
@@ -31,7 +32,7 @@ export class AuthService {
   }
 
   getUserDetails(){
-    //post these details to API server return user info if correct
+    return JSON.parse(localStorage.getItem('logged-in'))
   }
 
 
