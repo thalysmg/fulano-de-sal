@@ -1,19 +1,10 @@
-#logo_with_image {
-  background: #1B2A3B;
-  /* background-image: url("/../assets/images/login_img.jpeg"), linear-gradient(to bottom, #1B2A3B, gray); */
-  background-image: url("/../assets/images/login_img.jpeg");
-  background-size: cover;
+#btns {
+  /* border: 1px solid white; */
+  padding: 8px;
+  justify-items: center;
   text-align: center;
-  background-repeat: no-repeat;
-  background-position-y: -30vh;
-  background-position-x: -15vh;
-  height: 100%;
-  box-sizing: border-box;
 }
 
-#loginView {
-  margin-top: 163px;
-}
 #fb {
   background-color: darkblue;
   color: white;
@@ -29,20 +20,10 @@
   color: white;
 }
 
-#id {
-  justify-content: center;
-}
-
-#btns {
-  border: 1px solid white;
-  padding: 8px;
-  justify-items: center;
-  text-align: center;
-}
-
 .btn {
   margin: 10px;
   width: 270px;
+  border-radius: 20px;
 }
 
 h1 {
