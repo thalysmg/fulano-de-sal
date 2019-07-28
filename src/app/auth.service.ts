@@ -11,6 +11,9 @@ export class AuthService {
     public afAuth: AngularFireAuth
   ) { }
 
+  /*
+    Use GoogleAuthProvider to authenticates the user.
+  */
   googleAuth(){
     let googleAuthProvider = new auth.GoogleAuthProvider();
     googleAuthProvider.addScope('profile')
@@ -18,6 +21,10 @@ export class AuthService {
     return this.authLogin(googleAuthProvider)
   }
 
+  /*
+    Receives an authProvider (can be GoogleAuthProvider for example)
+    and use this provider to authenticates the user.
+  */
   authLogin(authProvider){
     return this.afAuth.auth.signInWithPopup(authProvider)
     .then(result => {
@@ -33,6 +40,20 @@ export class AuthService {
 
   getUserDetails(){
     return JSON.parse(localStorage.getItem('logged-in'))
+  }
+
+  /*
+    Receives an email and password from the user and authenticates the user.
+  */
+  emailAndPasswordAuth(email, password){
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    .then(res => {
+      console.log('Usuario logado usando email e senha com sucesso!');
+      console.log(res);
+    }).catch(err => {
+      console.log('Ocorreu um erro ao tentar logar usando email e senha.');
+      console.log(err);
+    })
   }
 
 
