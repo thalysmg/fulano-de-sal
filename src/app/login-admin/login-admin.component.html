@@ -1,14 +1,16 @@
-<div id="background" class="row">
-    <a id="fl" >
-        Fulano de sal
-    </a>    
-</div>
-
-<div id="b" class="row">
-    <form>
-        <input id="email" type="email" placeholder="E-mail">
-        <input id="password" type="password" placeholder="Senha">
-        <button type="submit" (click)="signIn()">Login</button>
-    </form>
-</div>
-
+<div class="container">
+    <h1>Login como administrador</h1>
+    <div class="row">
+      <form class="col s6 offset-s3">
+        <div class="row">
+          <input type="text" id="email" placeholder="Email">
+        </div>
+        <div class="row">
+          <input type="text" id="password" placeholder="Senha">
+        </div>
+        <p>
+          <button type="submit" (click)="signIn()">Login</button>
+        </p>
+      </form>
+    </div>
+  </div>
