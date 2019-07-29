@@ -33,7 +33,7 @@
 <div id="footer" class="row">
   <div id="btns">
     <div>
-      <a routerLink="/atualiza-dados" class="btn" id="fb" mat-raised-button>
+      <a class="btn" id="fb" (click)="authService.facebookAuth()" mat-raised-button>
         Login com o Facebook
       </a>
     </div>

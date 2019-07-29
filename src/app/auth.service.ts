@@ -25,6 +25,11 @@ export class AuthService {
     return this.authLogin(googleAuthProvider)
   }
 
+  facebookAuth(){
+    let facebookAuthProvider = new auth.FacebookAuthProvider();
+    return this.authLogin(facebookAuthProvider);
+  }
+
   /*
     Receives an authProvider (can be GoogleAuthProvider for example)
     and use this provider to authenticates the user.
