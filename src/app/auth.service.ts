@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthService {
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public db: AngularFirestore,
+    private route: Router
   ) { }
 
   /*
@@ -26,17 +30,41 @@ export class AuthService {
     and use this provider to authenticates the user.
   */
   authLogin(authProvider){
-    return this.afAuth.auth.signInWithPopup(authProvider)
+    this.afAuth.auth.signInWithPopup(authProvider)
     .then(result => {
       console.log('Logado');
       console.log(result);
-      localStorage.setItem('logged-in', JSON.stringify(result.additionalUserInfo.profile));
+      localStorage.setItem('uid', result.user.uid)
     })
     .catch(error => {
       console.log('Erro ao logar');
       console.log(error);
     })
+
+    /* Verifica se o usuario logado está logando pela 1a vez ou não, para atualizar
+    seu numero de telefone e nome caso for a 1a vez. */
+    let uid = localStorage.getItem('uid')
+    if(uid != null){
+      this.db.collection('users').doc(uid).get().toPromise()
+      .then(doc => {
+      console.log(doc.data())
+      if((typeof doc.get('username')) === 'undefined'  
+        && (typeof doc.get('phoneNumber')) === 'undefined'){
+          this.route.navigate(['atualiza-dados'])
+        }else{
+          /*TODO: Mudar para uma tela de menu ou algo similar */
+          console.log('TODO: Mudar para uma tela de menu ou algo similar');
+          /*TODO: Mudar para uma tela de menu ou algo similar */
+        }
+    })
+    .catch(err => {
+      console.log('Error while checking if user has name and phone')
+    })
+    }
   }
+
+
+ 
 
   getUserDetails(){
     return JSON.parse(localStorage.getItem('logged-in'))

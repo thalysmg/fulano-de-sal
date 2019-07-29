@@ -18,4 +18,5 @@ onResize(event) {
   this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
 }
 
+
 }
