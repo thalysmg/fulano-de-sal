@@ -1,7 +1,34 @@
 <div id="header" class="row">
-    <h1>Fulano de Sal</h1>
+	<h1>Fulano de Sal</h1>
 </div>
 <div id="main" class="row">
-    <h2>Crie o Cardápio do dia</h2>
-    <a id="create-menu-btn" class="btn" >Criar Cardápio do dia</a>
+	<h2>Selecione os itens do Cardápio</h2>
+	
+	<form id="items-form">
+		<!-- <div id="content" *ngFor="let categoria of categorias">
+			<div class="row" id="nomeCat"><a (click)="showCategory(categoria.nome)" id="catbtn">{{categoria.nome}}</a></div>
+			<div id="set" class="row">
+				<div class="col group">
+					<div id="opcoes" *ngFor="let item of categoria.opcoes">
+						<input *ngIf="categoria.selecionada" type="checkbox" class="filled-in" id="{{item}}"/>
+						<label *ngIf="categoria.selecionada" for="{{item}}">{{item}}</label>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<ul class="collapsible" data-collapsible="expandable">
+				<li *ngFor="let categoria of categorias">
+					<div class="collapsible-header">{{categoria.nome}}</div>
+					<div class="collapsible-body">
+						<div class="opGroup">
+							<div *ngFor="let opcao of categoria.opcoes">
+								<input type="checkbox" class="filled-in" id="{{opcao}}"/>
+								<label for="{{opcao}}">{{opcao}}</label>
+							</div>
+						</div>
+					</div>
+				</li>
+		</ul>
+		<button class="btn">Montar Cardápio</button>
+	</form>
 </div>

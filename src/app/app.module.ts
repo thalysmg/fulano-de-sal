@@ -17,12 +17,8 @@ import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule }
 
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
-<<<<<<< HEAD
 import { CreateMenuComponent } from './create-menu/create-menu.component';
-import { CategoriasMenuComponent } from './categorias-menu/categorias-menu.component';
-=======
 import { AddItemsComponent } from './add-items/add-items.component';
->>>>>>> ac9c412f38b2d4f270cd3755409dd8c2c4b21c5a
 
 @NgModule({
   declarations: [
@@ -30,12 +26,8 @@ import { AddItemsComponent } from './add-items/add-items.component';
     HomeComponent,
     AtualizaDadosComponent,
     LoginAdminComponent,
-<<<<<<< HEAD
     CreateMenuComponent,
-    CategoriasMenuComponent
-=======
     AddItemsComponent
->>>>>>> ac9c412f38b2d4f270cd3755409dd8c2c4b21c5a
   ],
   imports: [
     BrowserModule,
