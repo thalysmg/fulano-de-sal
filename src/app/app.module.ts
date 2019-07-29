@@ -14,13 +14,17 @@ import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule }
 
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
+import { CreateMenuComponent } from './create-menu/create-menu.component';
+import { CategoriasMenuComponent } from './categorias-menu/categorias-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AtualizaDadosComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    CreateMenuComponent,
+    CategoriasMenuComponent
   ],
   imports: [
     BrowserModule,

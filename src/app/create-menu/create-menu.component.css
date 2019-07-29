@@ -1,0 +1,22 @@
+#header {
+    background-color: #FF1655;
+    border: 0.1px solid #FF1655;
+    height: 30%;
+    text-align: center;
+    margin: unset;
+}
+
+#main {
+    text-align: center;
+    border: 1px solid black;
+    height: 70%;
+    margin: unset;
+}
+
+#create-menu-btn {
+    /* margin-top: 170px; */
+}
+
+h1 {
+    color: white;
+}

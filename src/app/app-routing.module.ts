@@ -3,6 +3,7 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
+import { CreateMenuComponent } from './create-menu/create-menu.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'atualiza-dados',
     component: AtualizaDadosComponent
+  },
+  {
+    path: 'create-menu',
+    component: CreateMenuComponent
   }
 ];
 
