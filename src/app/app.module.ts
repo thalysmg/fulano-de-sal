@@ -19,6 +19,11 @@ import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
 import { AddItemsComponent } from './add-items/add-items.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { config } from './config/firebase-config';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +47,12 @@ import { AddItemsComponent } from './add-items/add-items.component';
     MatCardModule,
     MatToolbarModule,
     BrowserAnimationsModule,
+    MaterializeModule,
+    AngularFireModule.initializeApp(config.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
-    MaterializeModule
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
