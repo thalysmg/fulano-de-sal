@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 
-import { MatToolbarModule, MatIconModule, MatInputModule, MatListModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatInputModule, MatListModule, MatSelectModule , MatOptionModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HomeComponent } from './home/home.component';
@@ -43,6 +43,8 @@ import { AddItemsComponent } from './add-items/add-items.component';
     MatListModule,
     MatCardModule,
     MatToolbarModule,
+    MatSelectModule , 
+    MatOptionModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
