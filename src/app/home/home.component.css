@@ -1,0 +1,61 @@
+#btns {
+  /* border: 1px solid white; */
+  padding: 8px;
+  justify-items: center;
+  text-align: center;
+}
+
+#fb {
+  background-color: darkblue;
+  color: white;
+}
+
+#google {
+  background-color: #FFFFFF;
+  color: black;
+}
+
+#adm {
+  background-color: #E1911A;
+  color: white;
+}
+
+.btn {
+  margin: 10px;
+  width: 270px;
+  border-radius: 20px;
+}
+
+h1 {
+  padding-top: 220px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 30px;
+}
+
+#pulaLogin {
+  margin-top: 25px;
+}
+
+#pulaLoginTxt {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+#image {
+  height: 64%;
+  background-image: url("/../assets/images/login_img.jpeg");
+  margin: unset;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#footer  {
+  height: 36%;
+  background-color: #1B2A3B;
+  background: linear-gradient(to top, #1B2A3B, #1B2A2A);
+  margin: unset;
+}
