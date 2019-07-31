@@ -15,8 +15,12 @@
     "@angular/cdk": "^8.0.2",
     "@angular/common": "~8.0.3",
     "@angular/compiler": "~8.0.3",
+<<<<<<< HEAD
     "@angular/core": "~8.0.3",
     "@angular/fire": "^5.2.1",
+=======
+    "@angular/core": "^8.0.3",
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
     "@angular/flex-layout": "^8.0.0-beta.26",
     "@angular/forms": "~8.0.3",
     "@angular/material": "^8.0.2",
@@ -24,7 +28,10 @@
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
     "angular2-materialize": "^15.1.10",
+<<<<<<< HEAD
     "firebase": "^6.3.2",
+=======
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
     "material-design-icons": "^3.0.1",

@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+=======
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+<<<<<<< HEAD
   constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFirestore,
@@ -91,4 +95,12 @@ export class AuthService {
 
 
 
+=======
+  constructor() { }
+
+  getUserDetails(){
+    //post these details to API server return user info if correct
+  }
+
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 }
