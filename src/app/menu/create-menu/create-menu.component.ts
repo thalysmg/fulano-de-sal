@@ -12,14 +12,18 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-menu.component.css']
 })
 export class CreateMenuComponent implements OnInit {
-  // feijao = "";
-  // arroz = "";
-  // macarrao = "";
-  // carne = "";
-  // acomp = "";
-  // salada = "";
-
-  opcEscolhidas = [];
+  feijao = ["Carioca", "Preto", "Verde", "Macassa"];
+  arroz = ["Branco", "Refogado", "Integral"];
+  macarrao = ["Alho e Óleo", "Molho de tomate", "Manteiga e cebola", "Molho branco"];
+  carne = ["Bisteca/porco", "Carne de sol", "Peito de frango", "Coxa de frango"];
+  acomp = ["Purê", "Farofa", "Vinagrete", "Batata frita"];
+  salada = ["Alface", "Tomate", "Rúcula", "Repolho"];
+  feijoesEscolhidos = [];
+  arrozEscolhidos = [];
+  macarroesEscolhidos = [];
+  carnesEscolhidos = [];
+  acompEscolhidos = [];
+  saladasEscolhidos = [];
 
   categorias = [
     {
@@ -63,8 +67,16 @@ export class CreateMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  onCreateMenu(form: NgForm) {
-    this.menuService.createMenu(form);
+  onCreateMenu(/*form: NgForm*/) {
+    const selectedOptions = [
+      this.feijoesEscolhidos,
+      this.arrozEscolhidos,
+      this.macarroesEscolhidos,
+      this.carnesEscolhidos,
+      this.acompEscolhidos,
+      this.saladasEscolhidos
+    ];
+    this.menuService.createMenu(selectedOptions);
   }
 
   // showCategory(category: string) {

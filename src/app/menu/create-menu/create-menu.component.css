@@ -62,3 +62,29 @@ label {
     font-size: 20px;
     color: white;
 }
+
+.mat-expansion-panel {
+    margin-top: 20px;
+    margin-bottom: 20px;    
+}
+
+.mat-expansion-panel-header {
+    background-color: #FF1655;
+}
+
+.mat-expansion-panel-header-title {
+    display: grid;
+    color: white;
+    font-size: 18px;
+}
+
+.mat-expansion-panel {
+    background-color: #FF1655;
+}
+
+.ng-tns-c5-3 {
+    color: white;
+}
+.mat-option-text {
+    color: black;
+}

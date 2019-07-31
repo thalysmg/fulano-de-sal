@@ -8,9 +8,9 @@ export class MenuService {
   constructor() {
   }
 
-  public createMenu(form: NgForm) {
+  public createMenu(itens: Array<[]>) {
     console.log("Você chegou até aqui (MenuService)!!");
-    console.log(form.value);
+    console.log(itens);
   }
 
 }
