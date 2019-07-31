@@ -4,19 +4,7 @@
 <div id="main" class="row">
 	<h2>Selecione os itens do Cardápio</h2>
 	
-	<form id="items-form">
-		<!-- Essa solução comentada logo abaixo não usa collapsible e precisa de código (uma função para alterar o valor da variável 'selecionada') -->
-		<!-- <div id="content" *ngFor="let categoria of categorias">
-			<div class="row" id="nomeCat"><a (click)="showCategory(categoria.nome)" id="catbtn">{{categoria.nome}}</a></div>
-			<div id="set" class="row">
-				<div class="col group">
-					<div id="opcoes" *ngFor="let item of categoria.opcoes">
-						<input *ngIf="categoria.selecionada" type="checkbox" class="filled-in" id="{{item}}"/>
-						<label *ngIf="categoria.selecionada" for="{{item}}">{{item}}</label>
-					</div>
-				</div>
-			</div>
-		</div> -->
+	<form (submit)="onCreateMenu(form)" #form="ngForm" id="items-form">
 		<ul class="collapsible" data-collapsible="accordion"> <!--expandable para poder abrir mais de um ao mesmo tempo-->
 				<li *ngFor="let categoria of categorias">
 					<div class="collapsible-header">{{categoria.nome}}</div>
@@ -28,7 +16,7 @@
 							</div> -->
 							<mat-form-field>
 								<mat-label>{{categoria.nome}}</mat-label>
-								<mat-select [formControl]="opcoes" multiple>
+								<mat-select ([value])="opcEscolhidas" multiple>
 									<mat-option *ngFor="let opcao of categoria.opcoes" [value]="opcao">{{opcao}}</mat-option>
 								</mat-select>
 							</mat-form-field>					
@@ -37,6 +25,6 @@
 					</div>
 				</li>
 		</ul>
-		<button class="btn">Montar Cardápio</button>
+		<button type="submit" class="btn">Montar Cardápio</button>
 	</form>
 </div>

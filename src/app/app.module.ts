@@ -13,12 +13,19 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule } from '@angular/material';
+import {
+  MatFormFieldModule,
+  MatButtonModule,
+  MatCardModule,
+  MatExpansionModule
+} from '@angular/material';
 
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
-import { CreateMenuComponent } from './create-menu/create-menu.component';
+import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { AddItemsComponent } from './add-items/add-items.component';
+
+import { MenuService } from './menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -37,20 +44,20 @@ import { AddItemsComponent } from './add-items/add-items.component';
     FormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
     MatCardModule,
     MatToolbarModule,
-    MatSelectModule , 
+    MatSelectModule,
     MatOptionModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MaterializeModule
   ],
-  providers: [],
+  providers: [MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

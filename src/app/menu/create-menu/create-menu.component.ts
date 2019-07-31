@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import { FormControl } from '@angular/forms';
+import { MenuService } from '../menu.service';
+import { NgForm } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-create-menu',
@@ -8,16 +12,14 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./create-menu.component.css']
 })
 export class CreateMenuComponent implements OnInit {
-  feijao = "";
-  arroz = "";
-  macarrao = "";
-  carne = "";
-  acomp = "";
-  salada = "";
+  // feijao = "";
+  // arroz = "";
+  // macarrao = "";
+  // carne = "";
+  // acomp = "";
+  // salada = "";
 
-  opcoes = new FormControl();
-  toppings = new FormControl();
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  opcEscolhidas = [];
 
   categorias = [
     {
@@ -52,10 +54,17 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  public menuService;
+
+  constructor(menuService: MenuService) { 
+    this.menuService = menuService;
+  }
 
   ngOnInit() {
-          
+  }
+
+  onCreateMenu(form: NgForm) {
+    this.menuService.createMenu(form);
   }
 
   // showCategory(category: string) {
