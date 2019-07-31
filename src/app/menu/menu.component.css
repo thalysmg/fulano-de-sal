@@ -1,0 +1,26 @@
+h1 {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#header {
+  background-color: #FF1655;
+  border: 0.1px solid #FF1655; /*sem essas bordas, o componente fica com margem*/
+  height: 30%;
+  margin: unset;
+}
+
+#form {
+  height: 70%;
+  margin: unset;
+  border: 0.1px solid white;
+}
+
+#dataForm {
+  /* border: 1px solid black; */
+  margin-top: 100px;
+}

@@ -10,7 +10,11 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
+<<<<<<< HEAD
     expect(page.getTitleText()).toEqual('Welcome to FulanoSalLocal!');
+=======
+    expect(page.getTitleText()).toEqual('Welcome to projetoA!');
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
   });
 
   afterEach(async () => {

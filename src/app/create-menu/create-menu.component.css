@@ -1,0 +1,72 @@
+#header {
+    background-color: #FF1655;
+    border: 0.1px solid #FF1655;
+    height: 30%;
+    text-align: center;
+    margin: unset;
+}
+
+#main {
+    text-align: center;
+    margin: unset;
+}
+
+h1 {
+    color: white;
+}
+
+#items-form {
+    /* border: 1px solid black; */
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+#nomeCat {
+    color: white;
+    font-size: 20px;
+    background-color: #FF1655;
+    margin-bottom: 20px;
+}
+
+#content {
+    /* border: 1px solid black; */
+    margin-top: 10px;
+}
+
+.btn {
+    margin: 20px;
+}
+
+#items {
+    /* border: 1px solid black; */
+}
+
+.group {
+    /* border: 1px solid black; */
+    text-align: justify;
+    margin-left: 45%; 
+}
+
+label {
+    color: black;
+}
+
+#catbtn {
+    color: white;
+}
+
+#catbtn {
+    cursor: pointer;
+}
+
+.collapsible-header {
+    background-color: #FF1655;
+    display: grid;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+/* .opGroup {
+    border: 1px solid black;
+} */

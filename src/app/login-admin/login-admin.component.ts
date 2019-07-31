@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import {AuthService} from '../auth.service';
+=======
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 
 @Component({
   selector: 'app-login-admin',
@@ -8,11 +11,16 @@ import {AuthService} from '../auth.service';
 })
 export class LoginAdminComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(public authService: AuthService) { }
+=======
+  constructor() { }
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 
   ngOnInit() {
   }
 
+<<<<<<< HEAD
   
 
   signIn(){
@@ -28,4 +36,11 @@ export class LoginAdminComponent implements OnInit {
 
   
 
+=======
+  loginUser(event){
+    event.preventDefault
+    console.log(event)
+  }
+
+>>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 }
