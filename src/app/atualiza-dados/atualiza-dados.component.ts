@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { AngularFirestore } from '@angular/fire/firestore';
-=======
->>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 
 @Component({
   selector: 'app-atualiza-dados',
@@ -11,16 +8,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AtualizaDadosComponent implements OnInit {
 
-<<<<<<< HEAD
   constructor(public db: AngularFirestore) { }
-=======
-  constructor() { }
->>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 
   ngOnInit() {
   }
 
-<<<<<<< HEAD
   updateUser(){
     var username = (<HTMLInputElement>document.getElementById('username')).value;
     var phonenumber = (<HTMLInputElement>document.getElementById('phone-number')).value;
@@ -39,6 +31,4 @@ export class AtualizaDadosComponent implements OnInit {
     })
   }
 
-=======
->>>>>>> 1ee39278d9961793e9d8e326b2a4d168469e223e
 }
