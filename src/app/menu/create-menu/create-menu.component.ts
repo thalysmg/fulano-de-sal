@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MenuService } from '../menu.service';
 import { NgForm } from '@angular/forms';
-
-
+import * as cloneDeep from 'lodash.clonedeep';
 
 @Component({
   selector: 'app-create-menu',
@@ -12,19 +11,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-menu.component.css']
 })
 export class CreateMenuComponent implements OnInit {
-  feijao = ["Carioca", "Preto", "Verde", "Macassa"];
-  arroz = ["Branco", "Refogado", "Integral"];
-  macarrao = ["Alho e Óleo", "Molho de tomate", "Manteiga e cebola", "Molho branco"];
-  carne = ["Bisteca/porco", "Carne de sol", "Peito de frango", "Coxa de frango"];
-  acomp = ["Purê", "Farofa", "Vinagrete", "Batata frita"];
-  salada = ["Alface", "Tomate", "Rúcula", "Repolho"];
-  feijoesEscolhidos = [];
-  arrozEscolhidos = [];
-  macarroesEscolhidos = [];
-  carnesEscolhidos = [];
-  acompEscolhidos = [];
-  saladasEscolhidos = [];
-
   categorias = [
     {
       "id":1,
@@ -58,25 +44,32 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  public menuService;
+  itensSelecionados = cloneDeep(this.categorias); //essa lib faz um clone de arrays de objetos
+  // itensSelecionados2 = [];
 
-  constructor(menuService: MenuService) { 
-    this.menuService = menuService;
+  constructor(public menuService: MenuService) {
   }
 
   ngOnInit() {
+    //tornando as opcoes do array clonado em vazias
+    this.itensSelecionados.forEach(categoria => {
+      categoria.opcoes = [];
+    });
+
+    //clonando o array de objetos sem lib externa
+    /* this.categorias.map(item => {
+      this.itensSelecionados2.push(Object.assign({}, item));
+      console.log(item);
+    });
+
+    //tornando as opcoes do array2 clonado em vazias
+    this.itensSelecionados2.map(categoria => {
+      categoria.opcoes = [];
+    }); */
   }
 
-  onCreateMenu(/*form: NgForm*/) {
-    const selectedOptions = [
-      this.feijoesEscolhidos,
-      this.arrozEscolhidos,
-      this.macarroesEscolhidos,
-      this.carnesEscolhidos,
-      this.acompEscolhidos,
-      this.saladasEscolhidos
-    ];
-    this.menuService.createMenu(selectedOptions);
+  onCreateMenu() {
+    this.menuService.createMenu(this.itensSelecionados);
   }
 
   // showCategory(category: string) {

@@ -5,82 +5,17 @@
 <div id="main" class="row">
 	<h2>Selecione os itens do Cardápio</h2>
 	<mat-accordion>
-		<mat-expansion-panel>
+		<mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
 			<mat-expansion-panel-header>
-				<mat-panel-title>Feijão</mat-panel-title>
+				<mat-panel-title>{{categoria.nome}}</mat-panel-title>
 			</mat-expansion-panel-header>
 			<mat-form-field>
-				<mat-label>Selecione o(s) feijão(ões)</mat-label>
-				<mat-select [(ngModel)]="feijoesEscolhidos" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of feijao">{{opcao}}</mat-option>
+				<mat-label>Selecione o(s) item(s)</mat-label>
+				<mat-select [(ngModel)]="itensSelecionados[i].opcoes" multiple>
+					<mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao}}</mat-option>
 				</mat-select>
 			</mat-form-field>
-			<p>{{feijoesEscolhidos}}</p>
-		</mat-expansion-panel>
-
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title>Arroz</mat-panel-title>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione o(s) tipo(s) de arroz</mat-label>
-				<mat-select [(ngModel)]="arrozEscolhidos" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of arroz">{{opcao}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-			<p>{{arrozEscolhidos}}</p>
-		</mat-expansion-panel>
-
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title>Macarrão</mat-panel-title>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione o(s) macarrão(ões)</mat-label>
-				<mat-select [(ngModel)]="macarroesEscolhidos" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of macarrao">{{opcao}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-			<p>{{macarroesEscolhidos}}</p>
-		</mat-expansion-panel>
-
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title>Carne</mat-panel-title>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione a(s) carne(s)</mat-label>
-				<mat-select [(ngModel)]="carnesEscolhidos" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of carne">{{opcao}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-			<p>{{carnesEscolhidos}}</p>
-		</mat-expansion-panel>
-
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title>Acompanhamento</mat-panel-title>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione o(s) Acompanhamento(s)</mat-label>
-				<mat-select [(ngModel)]="acompEscolhidos" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of acomp">{{opcao}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-			<p>{{acompEscolhidos}}</p>
-		</mat-expansion-panel>
-
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title>Salada</mat-panel-title>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione a(s) salada(s)</mat-label>
-				<mat-select [(ngModel)]="saladasEscolhidos" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of salada">{{opcao}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-			<p>{{saladasEscolhidos}}</p>
+			<!-- <p>{{itensSelecionados[i].opcoes}}</p> -->
 		</mat-expansion-panel>
 	</mat-accordion>
 	<button (click)="onCreateMenu()" class="btn">Montar Cardápio</button>

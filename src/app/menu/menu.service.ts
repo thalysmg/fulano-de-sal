@@ -8,7 +8,7 @@ export class MenuService {
   constructor() {
   }
 
-  public createMenu(itens: Array<[]>) {
+  public createMenu(itens: Array<{id: number, nome: string, opcoes: []}>) {
     console.log("Você chegou até aqui (MenuService)!!");
     console.log(itens);
   }
