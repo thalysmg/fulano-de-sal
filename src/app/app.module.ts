@@ -25,7 +25,12 @@ import { MaterializeModule } from 'angular2-materialize';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 
+
 import { MenuService } from './menu/menu.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { config } from './config/firebase-config';
 
 @NgModule({
   declarations: [
@@ -53,9 +58,12 @@ import { MenuService } from './menu/menu.service';
     MatOptionModule,
     MatExpansionModule,
     BrowserAnimationsModule,
+    MaterializeModule,
+    AngularFireModule.initializeApp(config.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
-    MaterializeModule
+    FlexLayoutModule
   ],
   providers: [MenuService],
   bootstrap: [AppComponent]
