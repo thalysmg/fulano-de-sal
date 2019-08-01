@@ -3,7 +3,8 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
-import { AddItemsComponent } from './add-items/add-items.component';
+import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
+import { AddItemsComponent } from './add-items/add-items.component'
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'atualiza-dados',
     component: AtualizaDadosComponent
+  },
+  {
+    path: 'create-menu',
+    component: CreateMenuComponent
   },
   {
     path: 'add-items',

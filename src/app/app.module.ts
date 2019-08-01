@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 
-import { MatToolbarModule, MatIconModule, MatInputModule, MatListModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatInputModule, MatListModule, MatSelectModule , MatOptionModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HomeComponent } from './home/home.component';
@@ -13,12 +13,20 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatGridListModule, MatButtonModule, MatCardModule } from '@angular/material';
+import {
+  MatFormFieldModule,
+  MatButtonModule,
+  MatCardModule,
+  MatExpansionModule
+} from '@angular/material';
 
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
+import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 
+
+import { MenuService } from './menu/menu.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -30,6 +38,7 @@ import { config } from './config/firebase-config';
     HomeComponent,
     AtualizaDadosComponent,
     LoginAdminComponent,
+    CreateMenuComponent,
     AddItemsComponent
   ],
   imports: [
@@ -40,12 +49,14 @@ import { config } from './config/firebase-config';
     FormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
     MatCardModule,
     MatToolbarModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     MaterializeModule,
     AngularFireModule.initializeApp(config.firebaseConfig),
@@ -54,7 +65,7 @@ import { config } from './config/firebase-config';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

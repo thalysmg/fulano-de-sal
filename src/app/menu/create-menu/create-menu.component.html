@@ -1,0 +1,23 @@
+<div id="header" class="row">
+	<h1>Fulano de Sal</h1>
+</div>
+
+<div id="main" class="row">
+	<h2>Selecione os itens do Cardápio</h2>
+	<mat-accordion>
+		<mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
+			<mat-expansion-panel-header>
+				<mat-panel-title>{{categoria.nome}}</mat-panel-title>
+			</mat-expansion-panel-header>
+			<mat-form-field>
+				<mat-label>Selecione o(s) item(s)</mat-label>
+				<mat-select [(ngModel)]="itensSelecionados[i].opcoes" multiple>
+					<mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<!-- <p>{{itensSelecionados[i].opcoes}}</p> -->
+		</mat-expansion-panel>
+	</mat-accordion>
+	<button (click)="onCreateMenu()" class="btn">Montar Cardápio</button>
+</div>
+
