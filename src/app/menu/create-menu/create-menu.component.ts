@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { MenuService } from '../menu.service';
 import { NgForm } from '@angular/forms';
 import * as cloneDeep from 'lodash.clonedeep';
+import {CreateMenuService} from '../../firebase-services/create-menu.service';
 
 @Component({
   selector: 'app-create-menu',
@@ -11,51 +12,58 @@ import * as cloneDeep from 'lodash.clonedeep';
   styleUrls: ['./create-menu.component.css']
 })
 export class CreateMenuComponent implements OnInit {
-  categorias = [
-    {
-      "id":1,
-      "nome":"Feijão",
-      "opcoes": ["Carioca", "Preto", "Verde", "Macassa"]
-    },
-    {
-      "id":2,
-      "nome":"Arroz",
-      "opcoes": ["Branco", "Refogado", "Integral"]
-    },
-    {
-      "id":3,
-      "nome":"Macarrão",
-      "opcoes": ["Alho e Óleo", "Molho de tomate", "Manteiga e cebola", "Molho branco"]
-    },
-    {
-      "id":4,
-      "nome":"Carne",
-      "opcoes": ["Bisteca/porco", "Carne de sol", "Peito de frango", "Coxa de frango"]
-    },
-    {
-      "id":5,
-      "nome":"Acompanhamentos",
-      "opcoes": ["Purê", "Farofa", "Vinagrete", "Batata frita"]
-    },
-    {
-      "id":6,
-      "nome":"Salada",
-      "opcoes": ["Alface", "Tomate", "Rúcula", "Repolho"]
-    }
-  ];
-
-  itensSelecionados = cloneDeep(this.categorias); //essa lib faz um clone de arrays de objetos
+  categorias = []
+  itensSelecionados = []//essa lib faz um clone de arrays de objetos
   // itensSelecionados2 = [];
 
-  constructor(public menuService: MenuService) {
+  //mock do objeto enviado ao criar o menu:
+  menuMock = {
+    "basePrice": 10.50,
+    "sections": [
+      {  
+        "id":3,
+        "nome":"Carne",
+        "maxChoices":5,
+        "options":[  
+           "opcao1",
+           "opcao2"
+        ]
+     }
+    ],
+    "additionalSections":[  
+      {  
+         "id":8,
+         "nome":"Bebidas",
+         "maxChoices":8,
+         "options":[  
+            {  
+               "name":"Coca-Cola 2L",
+               "price":5.50
+            },
+            {  
+               "name":"Sprite",
+               "price":5.00
+            }
+         ]
+      }
+    ]
   }
 
+  
+  constructor(public menuService: MenuService, public createMenuService: CreateMenuService) {
+  }
+  
   ngOnInit() {
-    //tornando as opcoes do array clonado em vazias
+    this.categorias = this.createMenuService.getSections();
+    this.itensSelecionados = this.createMenuService.getSections();
     this.itensSelecionados.forEach(categoria => {
       categoria.opcoes = [];
     });
-
+    console.log();
+    
+    console.log(this.itensSelecionados);
+    
+    
     //clonando o array de objetos sem lib externa
     /* this.categorias.map(item => {
       this.itensSelecionados2.push(Object.assign({}, item));
@@ -70,6 +78,7 @@ export class CreateMenuComponent implements OnInit {
 
   onCreateMenu() {
     this.menuService.createMenu(this.itensSelecionados);
+    this.createMenuService.createMenu(this.menuMock)
   }
 
   // showCategory(category: string) {
