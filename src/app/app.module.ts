@@ -31,6 +31,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { config } from './config/firebase-config';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { config } from './config/firebase-config';
     AtualizaDadosComponent,
     LoginAdminComponent,
     CreateMenuComponent,
-    AddItemsComponent
+    AddItemsComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,8 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
-import { AddItemsComponent } from './add-items/add-items.component'
+import { AddItemsComponent } from './add-items/add-items.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'add-items',
     component: AddItemsComponent
+  },
+  {
+    path: "home-admin",
+    component: HomeAdminComponent
   }
 ];
 

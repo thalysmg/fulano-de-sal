@@ -1,0 +1,25 @@
+#main {
+    background-color: #FF1655;
+    height: 100%;
+    text-align: center;
+    /* display: grid; */
+    border: 0.1px solid #FF1655;
+}
+
+#header {
+    height: 50%;
+}
+
+#btns {
+    height: 50%;
+}
+
+.btn {
+    width: 60%;
+    margin: 20px;
+    vertical-align: center;
+}
+
+.txt {
+    color: white;
+}
