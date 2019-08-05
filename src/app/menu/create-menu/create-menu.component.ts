@@ -59,10 +59,6 @@ export class CreateMenuComponent implements OnInit {
     this.itensSelecionados.forEach(categoria => {
       categoria.opcoes = [];
     });
-    console.log();
-    
-    console.log(this.itensSelecionados);
-    
     
     //clonando o array de objetos sem lib externa
     /* this.categorias.map(item => {
