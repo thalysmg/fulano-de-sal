@@ -9,7 +9,7 @@ const firestore = admin.firestore();
 //  response.send("Hello from Firebase!");
 // });
 
-exports.test = functions.auth.user().onCreate((user, context) => {
+exports.registerUser = functions.auth.user().onCreate((user, context) => {
     userData = {
         email: user.email,
         photoUrl: user.photoURL,
@@ -26,3 +26,21 @@ exports.test = functions.auth.user().onCreate((user, context) => {
         console.log(err)
     })
 })
+
+exports.createMenu = functions.firestore.document('menu/{menuId}').onCreate((snap, context) => {
+    const menuValue = snap.data();
+    menuValue.timestamp = Date.now();
+    menuValue.available = false;
+    firestore.collection('menu').doc(context.params.menuId).set(menuValue)
+    .then(res => {
+        console.log('Menu criado com sucesso!');
+        console.log(res);
+        return res;
+    })
+    .catch(err => {
+        console.log('Erro ao atualizar timestamp e disponibilidade do menu');
+        console.log(err);
+    })
+})
+
+
