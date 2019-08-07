@@ -1,0 +1,175 @@
+<mat-toolbar color="primary">
+    <h1>Cardápio</h1>
+  </mat-toolbar>
+  
+  
+  
+  <div class="content" fxLayout="column">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Feijão</h3>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-form-field>
+            <input matInput placeholder="Adicionar feijão" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>
+  
+  <div class="content1" fxLayout="column1">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Arroz</h3>
+        <div fxLayout="row1" fxLayoutAlign="start center1">
+          <mat-form-field>
+            <input matInput placeholder="Adicionar arroz" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>
+  
+  
+  <div class="content" fxLayout="column">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Macarrão</h3>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-form-field>
+            <input matInput placeholder="Adicionar macarrão" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>
+  
+  <div class="content" fxLayout="column">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Carne</h3>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-form-field>
+            <input matInput placeholder="Adicionar carne" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>
+  
+  <div class="content" fxLayout="column">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Acompanhamentos</h3>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-form-field>
+            <input matInput placeholder="Adicionar acompanhamento" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>
+  
+  <div class="content" fxLayout="column">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Saladas</h3>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-form-field>
+            <input matInput placeholder="Adicionar salada" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>
+  
+  <div class="content" fxLayout="column">
+    <div fxFlex>
+      <mat-list>
+        <h3 mat-subheader>Local de entrega</h3>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <!--<section class="example-section">
+                <label class="example-margin">Align:</label>
+                <mat-radio-group [(ngModel)]="labelPosition">
+                  </mat-radio-button class="example-margin" value="uepb">UEPB</mat-radio-group>
+                  <mat-radio-button class="example-margin" value="after">UFCG</mat-radio-button>
+                  <mat-radio-button class="example-margin" value="before">CCBS</mat-radio-button>
+                </mat-radio-group>
+              </section>-->
+          <mat-form-field>
+            <input matInput placeholder="Adicionar local de entrega" value="Sushi" [(ngModel)]="todo.desc">
+          </mat-form-field>
+          <span fxFlex></span>
+          <button mat-button (click)="save(todo)">Adicionar</button>
+        </div>
+        <mat-list-item *ngFor="let todo of todos">
+          <h4 mat-line>{{todo.desc}}</h4>
+          <button mat-icon-button (click)="delete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  
+  <mat-divider></mat-divider>

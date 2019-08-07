@@ -32,6 +32,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { config } from './config/firebase-config';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     LoginAdminComponent,
     CreateMenuComponent,
     AddItemsComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    EstoqueDeItensComponent
   ],
   imports: [
     BrowserModule,

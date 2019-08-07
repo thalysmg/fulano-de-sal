@@ -6,6 +6,7 @@ import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.componen
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'add-items',
     component: AddItemsComponent
+  },
+  {
+    path: 'estoque',
+    component: EstoqueDeItensComponent
   },
   {
     path: "home-admin",
