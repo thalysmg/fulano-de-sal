@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddItemsService } from '../firebase-services/add-items.service'; 
+import { ItemService } from '../firebase-services/items.service'; 
 
 
 export class App{
@@ -17,7 +17,7 @@ export class EstoqueDeItensComponent implements OnInit {
   todo: App = new App();
   todos: App[] = [];
   
-  constructor(private addItemsService: AddItemsService) { }
+  constructor(private itemService: ItemService) { }
   ngOnInit() {
   }
   

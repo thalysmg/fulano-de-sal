@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     providedIn: 'root'
   })
 
-  export class AddItemsService{
+  export class ItemService{
       constructor(private db: AngularFirestore){
     }
 
@@ -24,7 +24,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
     }
 
     /*
-        Adiciona um item ('item') em uma seção com determinado nome ('sectionName')
+        Adiciona um item de determinado nome ('item: {name: String, price?: Number}')
+        em uma seção com determinado nome ('sectionName: String').
+        Se a seção for de bebidas/sobremesas, o item deve ter um preço associado,
+        caso não tenha, o preço associado será R$ 0.00.
+
         *Prefira usar o objeto sectionNames para os nomes das seções
     */
     addItem(sectionName, item){
@@ -49,10 +53,32 @@ import { AngularFirestore } from '@angular/fire/firestore';
         .catch(err => {
             console.log('Erro ao recuperar os itens atuais da seção ' + sectionName);
             console.log(err);
-            
         })
-
     }
 
 
+    removeItem(sectionName, itemName){
+        this.db.collection('sections').doc(sectionName)
+        .get()
+        .toPromise()
+        .then(doc => {
+            var currentItems = doc.data().opcoes;
+            currentItems = currentItems.filter((opcao) => {
+                return opcao.name != itemName
+            });
+            this.db.collection('sections').doc(sectionName).update({
+                opcoes: currentItems
+            })
+            .then(() => {
+                console.log('Itens atualizados com sucesso');
+            })
+            .catch(err => {
+                console.log('Não foi possível remover o item.');
+                console.log(err);  
+            })
+        }).catch(err => {
+            console.log('Ocorreu um erro ao recuperar os itens do db');
+            console.log(err);
+        })
+    }
 }
