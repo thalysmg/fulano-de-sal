@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'create-menu',
     component: CreateMenuComponent
   },
-  {
+  { 
     path: 'add-items',
     component: AddItemsComponent
   },

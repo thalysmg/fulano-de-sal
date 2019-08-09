@@ -1,9 +1,8 @@
 <mat-toolbar color="primary">
     <h1>Cardápio</h1>
   </mat-toolbar>
-  
-  
-  
+     
+   
   <div class="content" fxLayout="column">
     <div fxFlex>
       <mat-list>
@@ -27,20 +26,20 @@
   
   <mat-divider></mat-divider>
   
-  <div class="content1" fxLayout="column1">
+  <div class="content" fxLayout="column">
     <div fxFlex>
       <mat-list>
         <h3 mat-subheader>Arroz</h3>
-        <div fxLayout="row1" fxLayoutAlign="start center1">
+        <div fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field>
-            <input matInput placeholder="Adicionar arroz" value="Sushi" [(ngModel)]="todo.desc">
+            <input matInput placeholder="Adicionar arroz" value="Sushi" [(ngModel)]="todo1.desc">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="save(todo)">Adicionar</button>
+          <button mat-button (click)="save1(todo1)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
         </div>
-        <mat-list-item *ngFor="let todo of todos">
+        <mat-list-item *ngFor="let todo of todos1">
           <h4 mat-line>{{todo.desc}}</h4>
-          <button mat-icon-button (click)="delete(todo)">
+          <button mat-icon-button (click)="delete1(todo1)">  <!--aqui coloca o todo1-->
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -57,14 +56,14 @@
         <h3 mat-subheader>Macarrão</h3>
         <div fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field>
-            <input matInput placeholder="Adicionar macarrão" value="Sushi" [(ngModel)]="todo.desc">
+            <input matInput placeholder="Adicionar macarrão" value="Sushi" [(ngModel)]="todo2.desc">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="save(todo)">Adicionar</button>
+          <button mat-button (click)="save2(todo2)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
         </div>
-        <mat-list-item *ngFor="let todo of todos">
+        <mat-list-item *ngFor="let todo of todos2">
           <h4 mat-line>{{todo.desc}}</h4>
-          <button mat-icon-button (click)="delete(todo)">
+          <button mat-icon-button (click)="delete2(todo2)">  <!--aqui coloca o todo1-->
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -80,14 +79,14 @@
         <h3 mat-subheader>Carne</h3>
         <div fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field>
-            <input matInput placeholder="Adicionar carne" value="Sushi" [(ngModel)]="todo.desc">
+            <input matInput placeholder="Adicionar carne" value="Sushi" [(ngModel)]="todo3.desc">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="save(todo)">Adicionar</button>
+          <button mat-button (click)="save3(todo3)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
         </div>
-        <mat-list-item *ngFor="let todo of todos">
+        <mat-list-item *ngFor="let todo of todos3">
           <h4 mat-line>{{todo.desc}}</h4>
-          <button mat-icon-button (click)="delete(todo)">
+          <button mat-icon-button (click)="delete3(todo3)">  <!--aqui coloca o todo1-->
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -103,14 +102,14 @@
         <h3 mat-subheader>Acompanhamentos</h3>
         <div fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field>
-            <input matInput placeholder="Adicionar acompanhamento" value="Sushi" [(ngModel)]="todo.desc">
+            <input matInput placeholder="Adicionar acompanhamento" value="Sushi" [(ngModel)]="todo4.desc">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="save(todo)">Adicionar</button>
+          <button mat-button (click)="save4(todo4)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
         </div>
-        <mat-list-item *ngFor="let todo of todos">
+        <mat-list-item *ngFor="let todo of todos4">
           <h4 mat-line>{{todo.desc}}</h4>
-          <button mat-icon-button (click)="delete(todo)">
+          <button mat-icon-button (click)="delete4(todo4)">  <!--aqui coloca o todo1-->
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -126,14 +125,14 @@
         <h3 mat-subheader>Saladas</h3>
         <div fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field>
-            <input matInput placeholder="Adicionar salada" value="Sushi" [(ngModel)]="todo.desc">
+            <input matInput placeholder="Adicionar salada" value="Sushi" [(ngModel)]="todo5.desc">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="save(todo)">Adicionar</button>
+          <button mat-button (click)="save5(todo5)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
         </div>
-        <mat-list-item *ngFor="let todo of todos">
+        <mat-list-item *ngFor="let todo of todos5">
           <h4 mat-line>{{todo.desc}}</h4>
-          <button mat-icon-button (click)="delete(todo)">
+          <button mat-icon-button (click)="delete5(todo5)">  <!--aqui coloca o todo1-->
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -157,14 +156,14 @@
                 </mat-radio-group>
               </section>-->
           <mat-form-field>
-            <input matInput placeholder="Adicionar local de entrega" value="Sushi" [(ngModel)]="todo.desc">
+            <input matInput placeholder="Adicionar local de entrega" value="Sushi" [(ngModel)]="todo6.desc">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="save(todo)">Adicionar</button>
+          <button mat-button (click)="save6(todo6)">Adicionar</button>
         </div>
-        <mat-list-item *ngFor="let todo of todos">
+        <mat-list-item *ngFor="let todo of todos6">
           <h4 mat-line>{{todo.desc}}</h4>
-          <button mat-icon-button (click)="delete(todo)">
+          <button mat-icon-button (click)="delete6(todo6)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
