@@ -33,6 +33,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { config } from './config/firebase-config';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
+//import { CriarPedidoClienteComponent } from './criar-pedido-cliente/criar-pedido-cliente.component';
+import { TelaUsuarioComponent } from './tela-usuario/tela-usuario.component';
+import { TelaAdminComponent } from './tela-admin/tela-admin.component';
+import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.com
     CreateMenuComponent,
     AddItemsComponent,
     HomeAdminComponent,
-    EstoqueDeItensComponent
+    EstoqueDeItensComponent,
+    //CriarPedidoClienteComponent,
+    TelaUsuarioComponent,
+    TelaAdminComponent,
+    PedirMarmitaComponent
   ],
   imports: [
     BrowserModule,
