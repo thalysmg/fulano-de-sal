@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemService } from '../firebase-services/items.service'; 
 
 
 export class App{
@@ -16,9 +17,14 @@ export class EstoqueDeItensComponent implements OnInit {
   todo: App = new App();
   todos: App[] = [];
   
-  constructor() { }
+  constructor(private itemService: ItemService) { }
   ngOnInit() {
+<<<<<<< HEAD
   } 
+=======
+  }
+  
+>>>>>>> d9504bdd0192f6b7f2acd203978b4aa17d8b6109
 
   save(todo: App){
     this.todos.push(todo);
@@ -109,5 +115,8 @@ export class EstoqueDeItensComponent implements OnInit {
   }
   
   title = 'cardapio';
+
+
+
 
 }

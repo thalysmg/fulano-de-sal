@@ -11,8 +11,8 @@ export class CreateMenuService {
     }
 
     /*
-        Cria o cardápio do Fulano de Sal (Ver no documento do modelo de dados)
-        Obs.: As propriedade "available" e "timestamp" podem ser omitidas,
+        Cria o cardápio do dia do Fulano de Sal (Ver no documento do modelo de dados)
+        Obs.: As propriedades "available" e "timestamp" podem ser omitidas na criacao do menu,
         elas sempre sao criadas por padrão no servidor. No caso de available, com valor false.
     */
     createMenu(menu){
