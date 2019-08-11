@@ -11,5 +11,5 @@ export class PedirMarmitaComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

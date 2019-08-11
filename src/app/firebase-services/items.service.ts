@@ -76,7 +76,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
                 console.log('Não foi possível remover o item.');
                 console.log(err);  
             })
-        }).catch(err => {
+        }).catch(err => { 
             console.log('Ocorreu um erro ao recuperar os itens do db');
             console.log(err);
         })

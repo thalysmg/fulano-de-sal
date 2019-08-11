@@ -23,7 +23,6 @@ import {
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
-import { AddItemsComponent } from './add-items/add-items.component';
 
 
 import { MenuService } from './menu/menu.service';
@@ -45,7 +44,6 @@ import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
     AtualizaDadosComponent,
     LoginAdminComponent,
     CreateMenuComponent,
-    AddItemsComponent,
     HomeAdminComponent,
     EstoqueDeItensComponent,
     //CriarPedidoClienteComponent,

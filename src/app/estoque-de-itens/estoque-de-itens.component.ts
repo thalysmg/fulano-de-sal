@@ -14,106 +14,147 @@ export class App{
 
 export class EstoqueDeItensComponent implements OnInit {
 
-  todo: App = new App();
-  todos: App[] = [];
-  
+ 
   constructor(private itemService: ItemService) { }
   ngOnInit() {
-<<<<<<< HEAD
+
   } 
-=======
+
+  feijao: App = new App();
+  tiposFeijao: App[] = [];
+
+  saveFeijao(feijao: App){
+    this.tiposFeijao.push(feijao);
+    this.feijao = new App();
+    this.tiposFeijao = Object.assign([], this.tiposFeijao)
+    this.itemService.addItem("Feijão",feijao.desc);
+  }
+
+  deleteFeijao(feijao: App){
+    this.tiposFeijao.splice(this.tiposFeijao.indexOf(feijao),1)
+    this.itemService.removeItem("Feijão", feijao.desc)
+  }
+
+  arroz: App = new App();
+  tiposArroz: App[] = [];
+
+  saveArroz(arroz: App){
+      this.tiposArroz.push(arroz);
+      this.arroz = new App();
+      this.tiposArroz = Object.assign([], this.tiposArroz)
+      this.itemService.addItem("Arroz",arroz.desc);
   }
   
->>>>>>> d9504bdd0192f6b7f2acd203978b4aa17d8b6109
-
-  save(todo: App){
-    this.todos.push(todo);
-    this.todo = new App();
-    this.todos = Object.assign([], this.todos);
+  deleteArroz(arroz: App){
+      this.tiposArroz.splice(this.tiposArroz.indexOf(arroz),1)
+      this.itemService.removeItem("Arroz",arroz.desc)
   }
 
-  delete(todo: App){
-    this.todos.splice(this.todos.indexOf(todo),1)
-  }
+  macarrao: App = new App();
+  tiposMacarrao: App[] = [];
 
-  todo1: App = new App();
-  todos1: App[] = [];
-
-  save1(todo1: App){
-      this.todos1.push(todo1);
-      this.todo1 = new App();
-      this.todos1 = Object.assign([], this.todos1);
+  saveMacarrao(macarrao: App){
+      this.tiposMacarrao.push(macarrao);
+      this.macarrao = new App();
+      this.tiposMacarrao = Object.assign([], this.tiposMacarrao)
+      this.itemService.addItem("Macarrão", macarrao.desc);
   }
   
-  delete1(todo1: App){
-      this.todos1.splice(this.todos1.indexOf(todo1),1)
+  deleteMacarrao(macarrao: App){
+      this.tiposMacarrao.splice(this.tiposMacarrao.indexOf(macarrao),1)
+      this.itemService.removeItem("Macarrão", macarrao.desc)
   }
 
-  todo2: App = new App();
-  todos2: App[] = [];
+  carne: App = new App();
+  tiposCarne: App[] = [];
 
-  save2(todo2: App){
-      this.todos2.push(todo2);
-      this.todo2 = new App();
-      this.todos2 = Object.assign([], this.todos2);
+  saveCarne(carne: App){
+      this.tiposCarne.push(carne);
+      this.carne = new App();
+      this.tiposCarne = Object.assign([], this.tiposCarne)
+      this.itemService.addItem("Carne", carne.desc);
   }
   
-  delete2(todo2: App){
-      this.todos2.splice(this.todos2.indexOf(todo2),1)
+  deleteCarne(carne: App){
+      this.tiposCarne.splice(this.tiposCarne.indexOf(carne),1)
+      this.itemService.removeItem("Carne", carne.desc)
   }
 
-  todo3: App = new App();
-  todos3: App[] = [];
+  acompanhamento: App = new App();
+  tiposAcompanhamento: App[] = [];
 
-  save3(todo3: App){
-      this.todos3.push(todo3);
-      this.todo3 = new App();
-      this.todos3 = Object.assign([], this.todos3);
+  saveAcompanhamento(acompanhamento: App){
+      this.tiposAcompanhamento.push(acompanhamento);
+      this.acompanhamento = new App();
+      this.tiposAcompanhamento = Object.assign([], this.tiposAcompanhamento)
+      this.itemService.addItem("Acompanhamentos", acompanhamento.desc);
   }
   
-  delete3(todo3: App){
-      this.todos3.splice(this.todos1.indexOf(todo3),1)
+  deleteAcompanhamento(acompanhamento: App){
+      this.tiposAcompanhamento.splice(this.tiposAcompanhamento.indexOf(acompanhamento),1)
+      this.itemService.removeItem("Acompanhamentos",acompanhamento.desc)
   }
 
-  todo4: App = new App();
-  todos4: App[] = [];
+  salada: App = new App();
+  tiposSalada: App[] = [];
 
-  save4(todo4: App){
-      this.todos4.push(todo4);
-      this.todo4 = new App();
-      this.todos4 = Object.assign([], this.todos4);
+  saveSalada(salada: App){
+      this.tiposSalada.push(salada);
+      this.salada = new App();
+      this.tiposSalada = Object.assign([], this.tiposSalada)
+      this.itemService.addItem("Saladas", salada.desc);
   }
   
-  delete4(todo4: App){
-      this.todos4.splice(this.todos4.indexOf(todo4),1)
+  deleteSalada(salada: App){
+      this.tiposSalada.splice(this.tiposSalada.indexOf(salada),1)
+      this.itemService.removeItem("Saladas",this.salada.desc)
   }
 
-  todo5: App = new App();
-  todos5: App[] = [];
+  entrega: App = new App();
+  locaisEntrega: App[] = [];
 
-  save5(todo5: App){
-      this.todos5.push(todo5);
-      this.todo5 = new App();
-      this.todos5 = Object.assign([], this.todos5);
+  saveEntrega(entrega: App){
+      this.locaisEntrega.push(entrega);
+      this.entrega = new App();
+      this.locaisEntrega = Object.assign([], this.locaisEntrega)
+      this.itemService.addItem("Local de Entrega", entrega.desc);
   }
   
-  delete5(todo5: App){
-      this.todos5.splice(this.todos5.indexOf(todo5),1)
+  deleteEntrega(entrega: App){
+      this.locaisEntrega.splice(this.locaisEntrega.indexOf(entrega),1)
+      this.itemService.removeItem("Local de Entrega", this.entrega.desc);
   }
 
-  todo6: App = new App();
-  todos6: App[] = [];
+  bebida: App = new App();
+  tiposBebida: App[] = [];
 
-  save6(todo6: App){
-      this.todos6.push(todo6);
-      this.todo6 = new App();
-      this.todos6 = Object.assign([], this.todos6);
+  saveBebida(bebida: App){
+      this.tiposBebida.push(bebida);
+      this.bebida = new App();
+      this.tiposBebida = Object.assign([], this.tiposBebida)
+      this.itemService.addItem("Bebidas", bebida.desc);
   }
   
-  delete6(todo6: App){
-      this.todos6.splice(this.todos6.indexOf(todo6),1)
+  deleteBebida(bebida: App){
+      this.tiposBebida.splice(this.locaisEntrega.indexOf(bebida),1)
+      this.itemService.removeItem("Bebidas", this.bebida.desc);
   }
   
+  sobremesa: App = new App();
+  tiposSobremesa: App[] = [];
+
+  saveSobremesa(sobremesa: App){
+      this.tiposSobremesa.push(sobremesa);
+      this.sobremesa = new App();
+      this.tiposSobremesa = Object.assign([], this.tiposSobremesa)
+      this.itemService.addItem("Sobremesas", sobremesa.desc);
+  }
+  
+  deleteSobremesa(sobremesa: App){
+      this.tiposSobremesa.splice(this.locaisEntrega.indexOf(sobremesa),1)
+      this.itemService.removeItem("Sobremesas", this.sobremesa.desc);
+  }
+
   title = 'cardapio';
 
 
