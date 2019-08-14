@@ -17,6 +17,7 @@ export class CreateMenuComponent implements OnInit {
   // itensSelecionados2 = [];
 
   //mock do objeto enviado ao criar o menu:
+  
   menuMock = {
     "basePrice": 10.50,
     "sections": [
@@ -36,26 +37,26 @@ export class CreateMenuComponent implements OnInit {
          "nome":"Bebidas",
          "maxChoices":8,
          "options":[  
-            {  
-               "name":"Coca-Cola 2L",
-               "price":5.50
+            {
+              "name":"Coca-Cola 2L",
+              "price":5.50
             },
-            {  
-               "name":"Sprite",
-               "price":5.00
+            {
+              "name":"Sprite",
+              "price":5.00
             }
          ]
       }
     ]
   }
 
-  
   constructor(public menuService: MenuService, public createMenuService: CreateMenuService) {
   }
   
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
     this.itensSelecionados = this.createMenuService.getSections();
+    console.log(this.itensSelecionados);
     this.itensSelecionados.forEach(categoria => {
       categoria.opcoes = [];
     });
@@ -74,7 +75,8 @@ export class CreateMenuComponent implements OnInit {
 
   onCreateMenu() {
     this.menuService.createMenu(this.itensSelecionados);
-    this.createMenuService.createMenu(this.menuMock)
+    this.createMenuService.createMenu(this.itensSelecionados);
+    console.log(this.itensSelecionados);
   }
 
   // showCategory(category: string) {

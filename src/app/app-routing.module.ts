@@ -6,7 +6,6 @@ import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.componen
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
-import { TelaAdminComponent } from './tela-admin/tela-admin.component';
 import { TelaUsuarioComponent } from './tela-usuario/tela-usuario.component';
 import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 

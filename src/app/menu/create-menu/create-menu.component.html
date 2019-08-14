@@ -7,15 +7,16 @@
 	<mat-accordion>
 		<mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
 			<mat-expansion-panel-header>
-				<mat-panel-title>{{categoria.nome}}</mat-panel-title>
+				<mat-panel-title >{{categoria.nome}}</mat-panel-title>
 			</mat-expansion-panel-header>
 			<mat-form-field>
 				<mat-label>Selecione o(s) item(s)</mat-label>
 				<mat-select [(ngModel)]="itensSelecionados[i].opcoes" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao}}</mat-option>
+					<mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao.name}}</mat-option>
 				</mat-select>
 			</mat-form-field>
-			<!-- <p>{{itensSelecionados[i].opcoes}}</p> -->
+			<input [(ngModel)]="itensSelecionados[i].maxChoices" type="number">
+			<!-- <p *ngIf="itensSelecionados[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
 		</mat-expansion-panel>
 	</mat-accordion>
 	<button (click)="onCreateMenu()" class="btn">Montar Cardápio</button>

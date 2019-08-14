@@ -5,8 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
     providedIn: 'root'
   })
 export class CreateMenuService {
-     
-    constructor(private db: AngularFirestore){
+
+    constructor(private db: AngularFirestore) {
 
     }
 
@@ -15,35 +15,34 @@ export class CreateMenuService {
         Obs.: As propriedades "available" e "timestamp" podem ser omitidas na criacao do menu,
         elas sempre sao criadas por padrão no servidor. No caso de available, com valor false.
     */
-    createMenu(menu){
+    createMenu(menu) {
         this.db.collection('menu').add(menu)
         .then(res => {
             console.log('Cardapio atualizado com sucesso!');
         })
         .catch(err => {
             console.log('Erro ao atualizar cardapio!');
-        })
+        });
     }
 
 
     /*
         Recupera uma lista de Seções do servidor
     */
-    getSections(){
-        let sections = []
+    getSections() {
+        let sections = [];
         this.db.collection('sections').get().toPromise()
         .then(result => {
-            result.docs.map(section => {   
-                sections.push(section.data())
-            })
+            result.docs.map(section => {
+                sections.push(section.data());
+            });
         })
         .catch(err => {
-            sections = []
+            sections = [];
             console.log(err);
-        })
+        });
         console.log(sections);
-        
+
         return sections;
     }
-    
 }
