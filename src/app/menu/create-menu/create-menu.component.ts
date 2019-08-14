@@ -17,44 +17,14 @@ export class CreateMenuComponent implements OnInit {
   // itensSelecionados2 = [];
 
   //mock do objeto enviado ao criar o menu:
-  menuMock = {
-    "basePrice": 10.50,
-    "sections": [
-      {  
-        "id":3,
-        "nome":"Carne",
-        "maxChoices":5,
-        "options":[  
-           "opcao1",
-           "opcao2"
-        ]
-     }
-    ],
-    "additionalSections": [
-      {
-        "id": 8,
-        "nome": "Bebidas",
-        "maxChoices": 8,
-        "options": [
-          {
-            "name":"Coca-Cola 2L",
-            "price":5.50
-          },
-          {
-            "name":"Sprite",
-            "price":5.00
-          }
-        ]
-      }
-    ]
-  };
-
+  
   constructor(public menuService: MenuService, public createMenuService: CreateMenuService) {
   }
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
     this.itensSelecionados = this.createMenuService.getSections();
+    console.log(this.itensSelecionados);
     this.itensSelecionados.forEach(categoria => {
       categoria.opcoes = [];
     });
@@ -62,6 +32,7 @@ export class CreateMenuComponent implements OnInit {
     console.log();
     console.log(this.itensSelecionados);
 
+    
     //clonando o array de objetos sem lib externa
     /* this.categorias.map(item => {
       this.itensSelecionados2.push(Object.assign({}, item));
@@ -76,7 +47,8 @@ export class CreateMenuComponent implements OnInit {
 
   onCreateMenu() {
     this.menuService.createMenu(this.itensSelecionados);
-    this.createMenuService.createMenu(this.menuMock)
+    this.createMenuService.createMenu(this.itensSelecionados);
+    console.log(this.itensSelecionados);
   }
 
   // showCategory(category: string) {

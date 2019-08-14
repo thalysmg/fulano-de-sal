@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateMenuComponent } from './create-menu.component';
+import { PedirMarmitaComponent } from './pedir-marmita.component';
 
-describe('MenuComponent', () => {
-  let component: CreateMenuComponent;
-  let fixture: ComponentFixture<CreateMenuComponent>;
+describe('PedirMarmitaComponent', () => {
+  let component: PedirMarmitaComponent;
+  let fixture: ComponentFixture<PedirMarmitaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateMenuComponent ]
+      declarations: [ PedirMarmitaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateMenuComponent);
+    fixture = TestBed.createComponent(PedirMarmitaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
- 
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

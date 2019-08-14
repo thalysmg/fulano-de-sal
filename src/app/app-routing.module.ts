@@ -4,8 +4,10 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
-import { AddItemsComponent } from './add-items/add-items.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
+import { TelaUsuarioComponent } from './tela-usuario/tela-usuario.component';
+import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 
 const routes: Routes = [
   {
@@ -25,12 +27,20 @@ const routes: Routes = [
     component: CreateMenuComponent
   },
   {
-    path: 'add-items',
-    component: AddItemsComponent
+    path: 'estoque',
+    component: EstoqueDeItensComponent
   },
   {
     path: "home-admin",
     component: HomeAdminComponent
+  },
+  {
+    path: "tela-usuario",
+    component: TelaUsuarioComponent
+  },
+  {
+    path: "pedir-marmita",
+    component: PedirMarmitaComponent
   }
 ];
 

@@ -1,7 +1,7 @@
 #header {
 	background-color: #FF1655;
 	border: 0.1px solid #FF1655;
-	height: 30%;
+	height: 25%;
 	text-align: center;
 	margin: unset;
 }
@@ -10,7 +10,7 @@
 	text-align: center;
 	margin: unset;
 }
-
+ 
 h1 {
 	color: white;
 }
@@ -39,48 +39,6 @@ h1 {
 	font-weight: bold;
 }
 
-/* #items-form {
-	margin-bottom: 20px;
-	text-align: center; 
-} */
-
-/* #nomeCat {
-	color: white;
-	font-size: 20px;
-	background-color: #FF1655;
-	margin-bottom: 20px;
-}
-
-#content {
-	margin-top: 10px;
-}
-
 .btn {
-	margin: 20px;
+	margin: 10px;
 }
-
-.group {
-	text-align: justify;
-	margin-left: 45%; 
-}
-
-label {
-	color: black;
-}
-
-#catbtn {
-	color: white;
-}
-
-#catbtn {
-	cursor: pointer;
-}
-
-.collapsible-header {
-	background-color: #FF1655;
-	display: grid;
-	margin-bottom: 10px;
-	font-size: 20px;
-	color: white;
-} */
-

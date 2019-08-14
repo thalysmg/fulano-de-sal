@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatFormFieldModule,
-  MatButtonModule,
+  MatButtonModule, 
   MatCardModule,
   MatExpansionModule
 } from '@angular/material';
@@ -23,7 +23,6 @@ import {
 import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
-import { AddItemsComponent } from './add-items/add-items.component';
 
 
 import { MenuService } from './menu/menu.service';
@@ -32,6 +31,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { config } from './config/firebase-config';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
+import { TelaUsuarioComponent } from './tela-usuario/tela-usuario.component';
+import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +42,10 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     AtualizaDadosComponent,
     LoginAdminComponent,
     CreateMenuComponent,
-    AddItemsComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    EstoqueDeItensComponent,
+    TelaUsuarioComponent,
+    PedirMarmitaComponent
   ],
   imports: [
     BrowserModule,
