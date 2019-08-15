@@ -5,6 +5,7 @@ import { MenuService } from '../menu.service';
 import { NgForm } from '@angular/forms';
 import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
+import { log } from 'util';
 
 @Component({
   selector: 'app-create-menu',
@@ -13,26 +14,68 @@ import {CreateMenuService} from '../../firebase-services/create-menu.service';
 })
 export class CreateMenuComponent implements OnInit {
   categorias = [];
-  itensSelecionados = [];
-  // itensSelecionados2 = [];
+  menu = [
+    {
+      id: 0,
+      maxChoices: 0,
+      nome: 'Arroz',
+      opcoes: []
+    },
+    {
+      id: 1,
+      maxChoices: 0,
+      nome: 'Feijão',
+      opcoes: []
+    },
+    {
+      id: 2,
+      maxChoices: 0,
+      nome: 'Macarrão',
+      opcoes: []
+    },
+    {
+      id: 3,
+      maxChoices: 0,
+      nome: 'Carne',
+      opcoes: []
+    },
+    {
+      id: 4,
+      maxChoices: 0,
+      nome: 'Salada',
+      opcoes: []
+    },
+    {
+      id: 5,
+      maxChoices: 0,
+      nome: 'Acompanhamentos',
+      opcoes: []
+    },
+    {
+      id: 6,
+      maxChoices: 0,
+      nome: 'Bebidas',
+      opcoes: []
+    },
+    {
+      id: 7,
+      maxChoices: 0,
+      nome: 'Sobremesa',
+      opcoes: []
+    }
+  ];
 
-  //mock do objeto enviado ao criar o menu:
-  
   constructor(public menuService: MenuService, public createMenuService: CreateMenuService) {
   }
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
-    this.itensSelecionados = this.createMenuService.getSections();
-    console.log(this.itensSelecionados);
-    this.itensSelecionados.forEach(categoria => {
-      categoria.opcoes = [];
-    });
-    console.log(this.itensSelecionados);
-    console.log();
-    console.log(this.itensSelecionados);
+    // this.categorias.forEach(categoria => {
+    //   console.log(categoria.nome);
+    // });
 
-    
+    console.log(this.categorias);
+
     //clonando o array de objetos sem lib externa
     /* this.categorias.map(item => {
       this.itensSelecionados2.push(Object.assign({}, item));
@@ -46,17 +89,11 @@ export class CreateMenuComponent implements OnInit {
   }
 
   onCreateMenu() {
-    this.menuService.createMenu(this.itensSelecionados);
-    this.createMenuService.createMenu(this.itensSelecionados);
-    console.log(this.itensSelecionados);
+    // this.menuService.createMenu(this.itensSelecionados);
+    console.log(this.menu);
+    this.createMenuService.createMenu({
+      menu: this.menu,
+      additionalSections: [this.menu[6], this.menu[7]]
+    });
   }
-
-  // showCategory(category: string) {
-  //   this.categorias.forEach(categoria => {
-  //     if (categoria.nome === category) {
-  //       categoria.selecionada = !categoria.selecionada;
-  //     }
-  //   });
-  // }
-
 }

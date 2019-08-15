@@ -41,7 +41,7 @@ export class CreateMenuService {
             sections = [];
             console.log(err);
         });
-        console.log(sections);
+        // console.log(sections);
 
         return sections;
     }
