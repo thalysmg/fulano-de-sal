@@ -31,7 +31,7 @@ export class CreateMenuService {
     */
     getSections() {
         let sections = [];
-        this.db.collection('sections').get().toPromise()
+        this.db.collection('sections').ref.orderBy('id').get()
         .then(result => {
             result.docs.map(section => {
                 sections.push(section.data());
