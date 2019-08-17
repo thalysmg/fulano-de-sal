@@ -31,4 +31,20 @@ export class OrderService {
     return menu;
   }
   
+
+  /*
+    Função que recebe um pedido e salva o mesmo no banco de dados
+  */
+
+  
+
+  createOrder(order){
+    this.db.collection('orders').add(order)
+    .then(res => {
+      console.log('Pedido salvo com sucesso');
+    })
+    .catch(err => {
+      console.log('Erro ao salvar pedido');
+    })
+  }
 }
