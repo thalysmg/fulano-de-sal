@@ -2,13 +2,11 @@
 	background-color: #FF1655;
 	border: 0.1px solid #FF1655;
 	height: 25%;
-	text-align: center;
-	margin: unset;
+	text-align: center !important;
 }
 
 #main {
-	text-align: center;
-	margin: unset;
+	text-align: center !important;
 }
  
 h1 {

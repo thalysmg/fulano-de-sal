@@ -3,8 +3,8 @@
 </div>
 
 <div id="main" class="row">
-	<h2>Selecione os itens do Cardápio</h2>
 	<mat-accordion>
+		<h2>Selecione os itens do Cardápio</h2>
 		<mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
 			<mat-expansion-panel-header>
 				<mat-panel-title >{{categoria.nome}}</mat-panel-title>
@@ -18,7 +18,14 @@
 			<input [(ngModel)]="itensSelecionados[i].maxChoices" type="number">
 			<!-- <p *ngIf="itensSelecionados[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
 		</mat-expansion-panel>
+		<button type="button" (click)="openModal(createModal)" class="btn btn-primary">Montar Cardápio</button>
 	</mat-accordion>
-	<button (click)="onCreateMenu()" class="btn">Montar Cardápio</button>
 </div>
- 
+
+<ng-template #createModal>
+  <div class="modal-body text-center">
+    <p>Você deseja confirmar o pedido ?</p>
+    <button type="button" class="btn btn-default" (click)="onCreateMenu()">Confirmar</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineCreate()" >Cancelar</button>
+  </div>
+</ng-template>
