@@ -113,6 +113,7 @@ exports.getReport = functions.https.onRequest(async (req, res) => {
     for (let i = 0; i < items.length; i++) {
         counts[items[i].name] = counts[items[i].name] ? counts[items[i].name] + 1 : 1; 
     }
+    res.set('Access-Control-Allow-Origin', '*')
     res.send(counts)
 })
 
