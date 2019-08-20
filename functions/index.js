@@ -77,4 +77,48 @@ exports.createItem = functions.firestore.document('sections/{sectionId}').onUpda
     }
 })
 
+exports.createOrder = functions.firestore.document('orders/{orderId}').onCreate((snap, context) => {
+    const orderValue = snap.data();
+    orderValue.timestamp = Date.now();
+    firestore.collection('orders').doc(context.params.orderId).set(orderValue)
+    .then(res => {
+        console.log('Pedido atualizado com sucesso');
+        console.log(res);
+        return res;
+    })
+    .catch(err => {
+        console.log('Erro ao atualizar o pedido');
+        console.log(err); 
+    })
+})
+
+
+exports.getReport = functions.https.onRequest(async (req, res) => {
+    var items = []
+    var currentDateString = new Date().toLocaleString('en-US', {timeZone: 'America/Sao_Paulo'})
+    var currentDate = new Date(currentDateString);
+
+    const snapshot = await firestore.collection('orders').get();
+    snapshot.forEach(doc => {
+        let orderDateString = new Date(doc.data().timestamp).toLocaleString('en-US', {timeZone: 'America/Sao_Paulo'});
+        let orderDate = new Date(orderDateString);
+
+        if(orderDate.getDate() === currentDate.getDate()
+        && orderDate.getMonth() === currentDate.getMonth()
+        && orderDate.getFullYear() === currentDate.getFullYear()){
+            items = items.concat(doc.data().orderItens)
+        }
+    })
+    var counts = {}
+    for (let i = 0; i < items.length; i++) {
+        counts[items[i].name] = counts[items[i].name] ? counts[items[i].name] + 1 : 1; 
+    }
+    res.send(counts)
+})
+
+
+
+
+
+
 
