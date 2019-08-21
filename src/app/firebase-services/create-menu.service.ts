@@ -23,7 +23,20 @@ export class CreateMenuService {
         .catch(err => {
             console.log('Erro ao atualizar cardapio!');
         });
+        console.log(menu);
     }
+
+    // getMenu() {
+    //     this.db.collection('menu').ref.get()
+    //     .then(result => {
+    //         console.log(result.docs.map(section => {
+    //             console.log(section);
+    //         }));
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     });
+    // }
 
 
     /*

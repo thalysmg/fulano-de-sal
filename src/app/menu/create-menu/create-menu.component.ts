@@ -70,10 +70,7 @@ export class CreateMenuComponent implements OnInit {
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
-    // this.categorias.forEach(categoria => {
-    //   console.log(categoria.nome);
-    // });
-
+    
     console.log(this.categorias);
 
     //clonando o array de objetos sem lib externa
@@ -89,10 +86,9 @@ export class CreateMenuComponent implements OnInit {
   }
 
   onCreateMenu() {
-    // this.menuService.createMenu(this.itensSelecionados);
-    console.log(this.menu);
+    // console.log(this.menu);
     this.createMenuService.createMenu({
-      menu: this.menu,
+      menu: this.menu.slice(0, 6),
       additionalSections: [this.menu[6], this.menu[7]]
     });
   }

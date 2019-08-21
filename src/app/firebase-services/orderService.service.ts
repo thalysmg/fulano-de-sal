@@ -18,7 +18,7 @@ export class OrderService {
     */
   getMenu(n){
     var menu = []
-    this.db.collection('menu').ref.orderBy('timestamp', 'asc').limit(n).get()
+    this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(n).get()
     .then(result => {
       menu = result.docs.map(doc => {
         menu.push(doc.data())
