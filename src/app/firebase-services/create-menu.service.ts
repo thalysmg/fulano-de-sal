@@ -23,7 +23,20 @@ export class CreateMenuService {
         .catch(err => {
             console.log('Erro ao atualizar cardapio!');
         });
+        console.log(menu);
     }
+
+    // getMenu() {
+    //     this.db.collection('menu').ref.get()
+    //     .then(result => {
+    //         console.log(result.docs.map(section => {
+    //             console.log(section);
+    //         }));
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     });
+    // }
 
 
     /*
@@ -31,7 +44,7 @@ export class CreateMenuService {
     */
     getSections() {
         let sections = [];
-        this.db.collection('sections').get().toPromise()
+        this.db.collection('sections').ref.orderBy('id').get()
         .then(result => {
             result.docs.map(section => {
                 sections.push(section.data());
@@ -41,7 +54,7 @@ export class CreateMenuService {
             sections = [];
             console.log(err);
         });
-        console.log(sections);
+        // console.log(sections);
 
         return sections;
     }
