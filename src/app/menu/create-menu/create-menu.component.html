@@ -18,14 +18,14 @@
 			<input [(ngModel)]="menu[i].maxChoices" type="number">
 			<!-- <p *ngIf="menu[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
 		</mat-expansion-panel>
-		<button type="button" (click)="openModal(createModal)" class="btn btn-primary">Montar Cardápio</button>
+		<button type="button" (click)="onCreateMenu()" class="btn btn-primary">Montar Cardápio</button>
 	</mat-accordion>
 </div>
 
-<ng-template #createModal>
+<!-- <ng-template #createModal>
   <div class="modal-body text-center">
     <p>Você deseja confirmar o pedido ?</p>
     <button type="button" class="btn btn-default" (click)="onCreateMenu()">Confirmar</button>
     <button type="button" class="btn btn-primary" (click)="onDeclineCreate()" >Cancelar</button>
   </div>
-</ng-template>
+</ng-template> -->

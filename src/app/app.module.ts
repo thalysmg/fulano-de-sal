@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatFormFieldModule,
-  MatButtonModule, 
+  MatButtonModule,
   MatCardModule,
   MatExpansionModule
 } from '@angular/material';
@@ -37,7 +37,6 @@ import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -77,8 +76,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AngularFirestoreModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
-    ModalModule.forRoot()
+    FlexLayoutModule
   ],
   providers: [MenuService],
   bootstrap: [AppComponent]

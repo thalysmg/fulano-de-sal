@@ -1,9 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import * as $ from 'jquery';
 import { MenuService } from '../menu.service';
 
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
 import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 import { log } from 'util';
@@ -15,7 +14,6 @@ import { log } from 'util';
 })
 export class CreateMenuComponent implements OnInit {
   categorias = [];
-  createModalRef: BsModalRef;
   message: string;
   menu = [
     {
@@ -68,8 +66,7 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  constructor(public createMenuService: CreateMenuService, private modalService: BsModalService) {
-  }
+  constructor(public createMenuService: CreateMenuService) {}
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
@@ -89,9 +86,6 @@ export class CreateMenuComponent implements OnInit {
   }
 
   onCreateMenu() {
-    this.message = 'Pedido criado com sucesso!';
-    this.createModalRef.hide();
-
     this.createMenuService.createMenu({
       menu: this.menu,
       additionalSections: [this.menu[6], this.menu[7]]
@@ -99,12 +93,5 @@ export class CreateMenuComponent implements OnInit {
 
   }
 
-  openModal(createModal: TemplateRef<any>) {
-    this.createModalRef = this.modalService.show(createModal,{class: 'modal-sm'});
-  }
-
-  onDeclineCreate() {
-    this.createModalRef.hide();
-  }
 }
 
