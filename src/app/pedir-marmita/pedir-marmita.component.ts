@@ -47,7 +47,12 @@ export class PedirMarmitaComponent implements OnInit {
   onMakeOrder() {
     console.log(this.order.orderItens);
     console.log(this.pedidoValido);
-    this.addCostToOrder();
+    if (this.order.orderItens[6] !== undefined && this.order.orderItens[6].length) {
+      this.addDrinkCostToOrder();
+    }
+    if (this.order.orderItens[7] !== undefined && this.order.orderItens[7].length > 0) {
+      this.addDesertCostToOrder();
+    }
   }
 
   /**
@@ -69,16 +74,19 @@ export class PedirMarmitaComponent implements OnInit {
       // console.log(this.order.orderItens[i])
     }
   }
-  addCostToOrder() {
+  addDrinkCostToOrder() {
     let valorBebidas = 0;
     this.order.orderItens[6].forEach(bebida => {
       valorBebidas += bebida.unitPrice;
     });
+    this.order.basePrice += valorBebidas;
+  }
 
+  addDesertCostToOrder() {
     let valorSobremesas = 0;
     this.order.orderItens[7].forEach(sobremesa => {
       valorSobremesas += sobremesa.unitPrice;
     });
-    this.order.basePrice += valorBebidas + valorSobremesas;
+    this.order.basePrice += valorSobremesas;
   }
 }
