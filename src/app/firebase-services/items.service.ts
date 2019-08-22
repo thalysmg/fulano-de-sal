@@ -56,7 +56,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
         })
     }
 
-
     removeItem(sectionName, itemName){
         this.db.collection('sections').doc(sectionName)
         .get()
