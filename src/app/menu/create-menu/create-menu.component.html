@@ -11,12 +11,12 @@
 			</mat-expansion-panel-header>
 			<mat-form-field>
 				<mat-label>Selecione o(s) item(s)</mat-label>
-				<mat-select [(ngModel)]="itensSelecionados[i].opcoes" multiple>
+				<mat-select [(ngModel)]="menu[i].opcoes" multiple>
 					<mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao.name}}</mat-option>
 				</mat-select>
 			</mat-form-field>
-			<input [(ngModel)]="itensSelecionados[i].maxChoices" type="number">
-			<!-- <p *ngIf="itensSelecionados[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
+			<input [(ngModel)]="menu[i].maxChoices" type="number">
+			<!-- <p *ngIf="menu[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
 		</mat-expansion-panel>
 		<button type="button" (click)="openModal(createModal)" class="btn btn-primary">Montar Cardápio</button>
 	</mat-accordion>

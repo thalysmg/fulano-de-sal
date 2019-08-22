@@ -4,6 +4,10 @@ import { MenuService } from '../menu.service';
 
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NgForm } from '@angular/forms';
+import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
+import {CreateMenuService} from '../../firebase-services/create-menu.service';
+import { log } from 'util';
 
 @Component({
   selector: 'app-create-menu',
@@ -11,58 +15,68 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./create-menu.component.css']
 })
 export class CreateMenuComponent implements OnInit {
-  categorias = []
-  itensSelecionados = []//essa lib faz um clone de arrays de objetos
-  // itensSelecionados2 = [];
-  
+  categorias = [];
   createModalRef: BsModalRef;
   message: string;
-
-  //mock do objeto enviado ao criar o menu:
-  
-  menuMock = {
-    "basePrice": 10.50,
-    "sections": [
-      {  
-        "id":3,
-        "nome":"Carne",
-        "maxChoices":5,
-        "options":[  
-           "opcao1",
-           "opcao2"
-        ]
-     }
-    ],
-    "additionalSections":[  
-      {  
-         "id":8,
-         "nome":"Bebidas",
-         "maxChoices":8,
-         "options":[  
-            {
-              "name":"Coca-Cola 2L",
-              "price":5.50
-            },
-            {
-              "name":"Sprite",
-              "price":5.00
-            }
-         ]
-      }
-    ]
-  }
+  menu = [
+    {
+      id: 0,
+      maxChoices: 0,
+      nome: 'Arroz',
+      opcoes: []
+    },
+    {
+      id: 1,
+      maxChoices: 0,
+      nome: 'Feijão',
+      opcoes: []
+    },
+    {
+      id: 2,
+      maxChoices: 0,
+      nome: 'Macarrão',
+      opcoes: []
+    },
+    {
+      id: 3,
+      maxChoices: 0,
+      nome: 'Carne',
+      opcoes: []
+    },
+    {
+      id: 4,
+      maxChoices: 0,
+      nome: 'Salada',
+      opcoes: []
+    },
+    {
+      id: 5,
+      maxChoices: 0,
+      nome: 'Acompanhamentos',
+      opcoes: []
+    },
+    {
+      id: 6,
+      maxChoices: 0,
+      nome: 'Bebidas',
+      opcoes: []
+    },
+    {
+      id: 7,
+      maxChoices: 0,
+      nome: 'Sobremesa',
+      opcoes: []
+    }
+  ];
 
   constructor(public menuService: MenuService, public createMenuService: CreateMenuService, private modalService: BsModalService) {
   }
-  
+
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
-    this.itensSelecionados = this.createMenuService.getSections();
-    console.log(this.itensSelecionados);
-    this.itensSelecionados.forEach(categoria => {
-      categoria.opcoes = [];
-    });
     
+    console.log(this.categorias);
+
     //clonando o array de objetos sem lib externa
     /* this.categorias.map(item => {
       this.itensSelecionados2.push(Object.assign({}, item));
@@ -101,5 +115,12 @@ export class CreateMenuComponent implements OnInit {
   //   });
   // }
 
+
+    // console.log(this.menu);
+    this.createMenuService.createMenu({
+      menu: this.menu.slice(0, 6),
+      additionalSections: [this.menu[6], this.menu[7]]
+    });
+  }
 
 }

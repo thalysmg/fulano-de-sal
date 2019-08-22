@@ -1,10 +1,24 @@
-<mat-toolbar color="primary">
-    <h1>Pedir marmita</h1>
-</mat-toolbar>
+<div id="header">
+    <h1>Monte seu prato</h1>
+</div>
 
-
-
-    <h1>Testando</h1>
-  
-<mat-divider></mat-divider>
+<div id="main" class="row">
+	<h2>Selecione os itens do Cardápio</h2>
+	<h5>Total: R$ {{order.basePrice}}</h5>
+	<mat-accordion *ngIf="menu.length">
+		<mat-expansion-panel *ngFor="let secao of menu[0].menu; let i = index">
+			<mat-expansion-panel-header>
+				<mat-panel-title >{{secao.nome}}</mat-panel-title>
+				<span id="max">Qtd. Máx: {{secao.maxChoices}}</span>
+			</mat-expansion-panel-header>
+			<mat-form-field>
+				<mat-label>Selecione o(s) item(s)</mat-label>
+				<mat-select [(ngModel)]="order.orderItens[i]" multiple>
+					<mat-option [value]="opcao" *ngFor="let opcao of secao.opcoes">{{opcao.name}} - R$ {{opcao.unitPrice}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</mat-expansion-panel>
+	</mat-accordion>
+	<button (click)="onMakeOrder()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
+</div>
 
