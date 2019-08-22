@@ -88,7 +88,7 @@ export class CreateMenuComponent implements OnInit {
   onCreateMenu() {
     // console.log(this.menu);
     this.createMenuService.createMenu({
-      menu: this.menu.slice(0, 6),
+      menu: this.menu,
       additionalSections: [this.menu[6], this.menu[7]]
     });
   }
