@@ -1,33 +1,10 @@
+#main {
+  background-color: #304f25;
+  text-align: center;
+  border: 0.1px solid #304f25;
+  height: 100%;
+}
+
 h1 {
-  /*padding-top: 220px;*/
-  padding-top: 80px;
   color: white;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 30px;
-}
-
-#background {
-  height: 30%;
-  background: #FF1655;
-  /*background-image: url("/../assets/images/login_img.jpeg");*/
-  margin: unset;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#footer  {
-  height: 36%;
-  background-color: #1B2A3B;
-  background: linear-gradient(to top, #1B2A3B, #1B2A2A);
-  margin: unset;
-}
-
-h1 {
-  text-align: center;
-  color: black;
-}
-
-h5 {
-  text-align: center;
 }

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <!--<h1>Cardápio</h1>-->
   <h1>Estoque</h1>
 </mat-toolbar>
@@ -12,11 +12,11 @@
           <input matInput placeholder="Adicionar feijão" value="Sushi" [(ngModel)]="feijao.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveFeijao(feijao)">Adicionar</button>
+        <button color="primary" mat-raised-button (click)="saveFeijao(feijao)">Adicionar</button>
       </div>
       <mat-list-item *ngFor="let feijao of tiposFeijao">
         <h4 mat-line>{{feijao.desc}}</h4>
-        <button mat-icon-button (click)="deleteFeijao(feijao)">
+        <button color="primary" mat-icon-button (click)="deleteFeijao(feijao)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -35,11 +35,11 @@
           <input matInput placeholder="Adicionar arroz" value="Sushi" [(ngModel)]="arroz.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveArroz(arroz)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+        <button color="primary" mat-raised-button (click)="saveArroz(arroz)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
       </div>
       <mat-list-item *ngFor="let arroz of tiposArroz">
         <h4 mat-line>{{arroz.desc}}</h4>
-        <button mat-icon-button (click)="deleteArroz(arroz)">  <!--aqui coloca o todo1-->
+        <button color="primary" mat-icon-button (click)="deleteArroz(arroz)">  <!--aqui coloca o todo1-->
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -58,11 +58,11 @@
           <input matInput placeholder="Adicionar macarrão" value="Sushi" [(ngModel)]="macarrao.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveMacarrao(macarrao)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+        <button color="primary" mat-raised-button (click)="saveMacarrao(macarrao)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
       </div>
       <mat-list-item *ngFor="let macarrao of tiposMacarrao">
         <h4 mat-line>{{macarrao.desc}}</h4>
-        <button mat-icon-button (click)="deleteMacarrao(macarrao)">  <!--aqui coloca o todo1-->
+        <button color="primary" mat-icon-button (click)="deleteMacarrao(macarrao)">  <!--aqui coloca o todo1-->
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -81,11 +81,11 @@
           <input matInput placeholder="Adicionar carne" value="Sushi" [(ngModel)]="carne.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveCarne(carne)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+        <button color="primary" mat-raised-button (click)="saveCarne(carne)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
       </div>
       <mat-list-item *ngFor="let carne of tiposCarne">
         <h4 mat-line>{{carne.desc}}</h4>
-        <button mat-icon-button (click)="deleteCarne(carne)">  <!--aqui coloca o todo1-->
+        <button color="primary" mat-icon-button (click)="deleteCarne(carne)">  <!--aqui coloca o todo1-->
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -104,11 +104,11 @@
           <input matInput placeholder="Adicionar acompanhamento" value="Sushi" [(ngModel)]="acompanhamento.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveAcompanhamento(acompanhamento)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+        <button color="primary" mat-raised-button (click)="saveAcompanhamento(acompanhamento)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
       </div>
       <mat-list-item *ngFor="let acompanhamento of tiposAcompanhamento">
         <h4 mat-line>{{acompanhamento.desc}}</h4>
-        <button mat-icon-button (click)="deleteAcompanhamento(acompanhamento)">  <!--aqui coloca o todo1-->
+        <button color="primary" mat-icon-button (click)="deleteAcompanhamento(acompanhamento)">  <!--aqui coloca o todo1-->
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -127,11 +127,11 @@
           <input matInput placeholder="Adicionar salada" value="Sushi" [(ngModel)]="salada.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveSalada(salada)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+        <button color="primary" mat-raised-button (click)="saveSalada(salada)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
       </div>
       <mat-list-item *ngFor="let salada of tiposSalada">
         <h4 mat-line>{{salada.desc}}</h4>
-        <button mat-icon-button (click)="deleteSalada(salada)">  <!--aqui coloca o todo1-->
+        <button color="primary" mat-icon-button (click)="deleteSalada(salada)">  <!--aqui coloca o todo1-->
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -158,11 +158,11 @@
           <input matInput placeholder="Adicionar local de entrega" value="Sushi" [(ngModel)]="entrega.desc">
         </mat-form-field>
         <span fxFlex></span>
-        <button mat-button (click)="saveEntrega(entrega)">Adicionar</button>
+        <button color="primary" mat-raised-button (click)="saveEntrega(entrega)">Adicionar</button>
       </div>
       <mat-list-item *ngFor="let entrega of locaisEntrega">
         <h4 mat-line>{{entrega.desc}}</h4>
-        <button mat-icon-button (click)="deleteEntrega(entrega)">
+        <button color="primary" mat-icon-button (click)="deleteEntrega(entrega)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-list-item>
@@ -184,12 +184,12 @@
             <input matInput placeholder="Preço" value="priceBebida" [(ngModel)]="bebida.price">
           </mat-form-field>
           <span fxFlex></span>
-          <button mat-button (click)="saveBebida(bebida,name,price)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+          <button color="primary" mat-raised-button (click)="saveBebida(bebida,name,price)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
         </div>
         <mat-list-item *ngFor="let bebida of tiposBebida">
           <h4 mat-line>{{bebida.name}}</h4>
           <h4 mat-line>{{bebida.price}}</h4>
-          <button mat-icon-button (click)="deleteBebida(bebida)">  <!--aqui coloca o todo1-->
+          <button color="primary" mat-icon-button (click)="deleteBebida(bebida)">  <!--aqui coloca o todo1-->
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -211,12 +211,12 @@
               <input matInput placeholder="Preço" value="priceSobremesa" [(ngModel)]="sobremesa.price">
             </mat-form-field>
             <span fxFlex></span>
-            <button mat-button (click)="saveSobremesa(sobremesa,name,price)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
+            <button color="primary" mat-raised-button (click)="saveSobremesa(sobremesa,name,price)">Adicionar</button> <!--para conseguir escrever so save1(todo1)-->
           </div>
           <mat-list-item *ngFor="let sobremesa of tiposSobremesa">
             <h4 mat-line>{{sobremesa.name}}</h4>
             <h4 mat-line>{{sobremesa.price}}</h4>
-            <button mat-icon-button (click)="deleteSobremesa(sobremesa)">  <!--aqui coloca o todo1-->
+            <button color="primary" mat-icon-button (click)="deleteSobremesa(sobremesa)">  <!--aqui coloca o todo1-->
               <mat-icon>delete</mat-icon>
             </button>
           </mat-list-item>

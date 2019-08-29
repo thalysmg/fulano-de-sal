@@ -1,6 +1,6 @@
 #header {
-	background-color: #FF1655;
-	border: 0.1px solid #FF1655;
+	background-color: #304f25;
+	border: 0.1px solid #304f25;
 	height: 25%;
 	text-align: center;
 	margin: unset;
@@ -21,7 +21,7 @@ h1 {
 }
 
 .mat-expansion-panel-header {
-	background-color: #FF1655;
+	background-color: #304f25;
 }
 
 .mat-expansion-panel-header-title {
@@ -32,7 +32,7 @@ h1 {
 }
 
 .mat-expansion-panel {
-	background-color: #FF1655;
+	background-color: #304f25;
 }
 
 .ng-star-inserted {
