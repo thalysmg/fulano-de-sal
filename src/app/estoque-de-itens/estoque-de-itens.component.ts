@@ -50,12 +50,12 @@ export class EstoqueDeItensComponent implements OnInit {
   ngOnInit() {
 
   }
-  
-  itemFeijao(){
-    this.feijao.name = (<HTMLInputElement>document.getElementById('feijao')).value;
-    this.saveFeijao(this.feijao, this.feijao.name);
+
+  itemFeijao() {
+    this.feijao.name = ( document.getElementById('feijao') as HTMLInputElement).value;
+    this.saveFeijao(this.feijao);
   }
-  
+
   saveFeijao(feijao: App) {
     this.tiposFeijao.push(feijao);
     this.feijao = new App();
@@ -73,12 +73,12 @@ export class EstoqueDeItensComponent implements OnInit {
       this.arroz = new App();
       this.tiposArroz = Object.assign([], this.tiposArroz);
       this.itemService.addItem('Arroz', { name: arroz.name });
-    
+
   }
-  
+
   itemArroz() {
-    this.arroz.name = (<HTMLInputElement>document.getElementById('arroz')).value;
-    this.saveArroz(this.arroz, this.arroz.name);
+    this.arroz.name = ( document.getElementById('arroz') as HTMLInputElement).value;
+    this.saveArroz(this.arroz);
 
   }
 
@@ -86,41 +86,41 @@ export class EstoqueDeItensComponent implements OnInit {
       this.tiposArroz.splice(this.tiposArroz.indexOf(arroz), 1);
       this.itemService.removeItem('Arroz', arroz.desc);
   }
-  
+
   saveMacarrao(macarrao: App) {
       this.tiposMacarrao.push(macarrao);
       this.macarrao = new App();
       this.tiposMacarrao = Object.assign([], this.tiposMacarrao);
-      this.itemService.addItem('Macarrão', { name: macarrao.name }); 
+      this.itemService.addItem('Macarrão', { name: macarrao.name });
   }
 
-  itemMacarrao(){
-    this.macarrao.name = (<HTMLInputElement>document.getElementById('macarrao')).value;
-    this.saveMacarrao(this.macarrao, this.macarrao.name);
-  
+  itemMacarrao() {
+    this.macarrao.name = ( document.getElementById('macarrao') as HTMLInputElement).value;
+    this.saveMacarrao(this.macarrao);
+
   }
 
-  deleteMacarrao(macarrao: App){
+  deleteMacarrao(macarrao: App) {
       this.tiposMacarrao.splice(this.tiposMacarrao.indexOf(macarrao), 1);
       this.itemService.removeItem('Macarrão', macarrao.name);
   }
 
-  saveCarne(carne: App){
+  saveCarne(carne: App) {
       this.tiposCarne.push(carne);
       this.carne = new App();
       this.tiposCarne = Object.assign([], this.tiposCarne);
       this.itemService.addItem('Carne', { name: carne.name });
   }
 
-  itemCarne(){
-    this.carne.name = (<HTMLInputElement>document.getElementById('carne')).value;
-    this.saveCarne(this.carne, this.carne.name);
-   
+  itemCarne() {
+    this.carne.name = ( document.getElementById('carne') as HTMLInputElement).value;
+    this.saveCarne(this.carne);
+
   }
 
   deleteCarne(carne: App) {
       this.tiposCarne.splice(this.tiposCarne.indexOf(carne), 1);
-      this.itemService.removeItem("Carne", carne.name);
+      this.itemService.removeItem('Carne', carne.name);
   }
 
 
@@ -130,12 +130,12 @@ export class EstoqueDeItensComponent implements OnInit {
       this.tiposAcompanhamento = Object.assign([], this.tiposAcompanhamento);
       this.itemService.addItem('Acompanhamentos', { name: acompanhamento.name });
   }
-  
-  itemAcompanhamento(){
-    this.acompanhamento.name = (<HTMLInputElement>document.getElementById('acompanhamento')).value;
+
+  itemAcompanhamento() {
+    this.acompanhamento.name = ( document.getElementById('acompanhamento') as HTMLInputElement).value;
     this.saveAcompanhamento(this.acompanhamento);
   }
-  
+
   deleteAcompanhamento(acompanhamento: App) {
       this.tiposAcompanhamento.splice(this.tiposAcompanhamento.indexOf(acompanhamento), 1);
       this.itemService.removeItem('Acompanhamentos', acompanhamento.name);
@@ -147,10 +147,10 @@ export class EstoqueDeItensComponent implements OnInit {
       this.tiposSalada = Object.assign([], this.tiposSalada);
       this.itemService.addItem('Saladas', { name: salada.name });
   }
-  
-  itemSalada(){
-    this.salada.name = (<HTMLInputElement>document.getElementById('salada')).value;
-    this.saveSalada(this.salada, this.salada.name);
+
+  itemSalada() {
+    this.salada.name = ( document.getElementById('salada') as HTMLInputElement).value;
+    this.saveSalada(this.salada);
   }
 
   deleteSalada(salada: App) {
@@ -162,17 +162,17 @@ export class EstoqueDeItensComponent implements OnInit {
       this.locaisEntrega.push(entrega);
       this.entrega = new App();
       this.locaisEntrega = Object.assign([], this.locaisEntrega);
-      this.itemService.addItem("Local de Entrega", { name: entrega.name });
+      this.itemService.addItem('Local de Entrega', { name: entrega.name });
   }
 
   deleteEntrega(entrega: App) {
       this.locaisEntrega.splice(this.locaisEntrega.indexOf(entrega), 1);
-      this.itemService.removeItem("Local de Entrega", entrega.name);
+      this.itemService.removeItem('Local de Entrega', entrega.name);
   }
-  
+
   itemEntrega() {
-    this.entrega.name = (<HTMLInputElement>document.getElementById('entrega')).value;
-    this.saveEntrega(this.entrega, this.entrega.name);
+    this.entrega.name = ( document.getElementById('entrega') as HTMLInputElement).value;
+    this.saveEntrega(this.entrega);
   }
 
   itemBebida() {
@@ -180,16 +180,16 @@ export class EstoqueDeItensComponent implements OnInit {
     this.bebida.price = (document.getElementById('priceBebida') as HTMLInputElement).value;
     this.saveBebida(this.bebida, this.bebida.name, this.bebida.price);
   }
-  
+
   saveBebida(bebida: App, name, price) {
       this.tiposBebida.push(bebida);
       this.bebida = new App();
       this.tiposBebida = Object.assign([], this.tiposBebida);
-      this.itemService.addItem('Bebidas', {name, price});
+      this.itemService.addItem('Bebidas', { name, unitPrice: price });
   }
 
-  deleteBebida(bebida: App){
-      this.tiposBebida.splice(this.locaisEntrega.indexOf(bebida),1);
+  deleteBebida(bebida: App) {
+      this.tiposBebida.splice(this.locaisEntrega.indexOf(bebida), 1);
       this.itemService.removeItem('Bebidas', bebida.name);
   }
 
