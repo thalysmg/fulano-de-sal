@@ -1,16 +1,16 @@
-<div class="container">
-    <h1>Login como administrador</h1>
-    <div class="row">
-      <form class="col s6 offset-s3">
-        <div class="row">
-          <input type="text" id="email" placeholder="Email">
-        </div>
-        <div class="row">
-          <input type="text" id="password" placeholder="Senha">
-        </div>
-        <p>
-          <button a routerLink="/home-admin" type="submit" (click)="signIn()">Login</button>
-        </p>
-      </form>
-    </div>
+<div id="main" class="row">
+  <h1>Login como administrador</h1>
+  <div class="container row">
+    <form class="col s6 offset-s3">
+      <div class="row">
+        <input type="text" id="email" placeholder="Email">
+      </div>
+      <div class="row">
+        <input type="password" id="password" placeholder="Senha">
+      </div>
+      <p>
+        <button class="btn" type="submit" (click)="signIn()">Login</button>
+      </p>
+    </form>
   </div>
+</div>

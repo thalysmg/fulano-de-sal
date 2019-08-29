@@ -12,20 +12,20 @@
 }
 
 #header {
-	background-color: #FF1655;
+	background-color: #304f25;
 	text-align: center;
 	color: white;
-	border: 0.1px solid #FF1655;
+	border: 0.1px solid #304f25;
 }
   
 .mat-expansion-panel {
 	margin-top: 20px;
 	margin-bottom: 20px;
-    background-color: #FF1655;
+    background-color: #304f25;
 }
 
 .mat-expansion-panel-header {
-	background-color: #FF1655;
+	background-color: #304f25;
     text-align: center;
 }
 
@@ -39,10 +39,12 @@
 #max {
 	margin-right: 10px;
 	margin-top: 7px;
+	color: white;
 }
 
 .ng-star-inserted {
 	font-weight: bold;
+	color: goldenrod;
 }
 
 .btn {
