@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 // import * as $ from 'jquery';
-import { FormControl } from '@angular/forms';
 import { MenuService } from '../menu.service';
+
+import {CreateMenuService} from '../../firebase-services/create-menu.service';
 import { NgForm } from '@angular/forms';
 import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
-import {CreateMenuService} from '../../firebase-services/create-menu.service';
 import { log } from 'util';
 
 @Component({
@@ -14,6 +14,7 @@ import { log } from 'util';
 })
 export class CreateMenuComponent implements OnInit {
   categorias = [];
+  message: string;
   menu = [
     {
       id: 0,
@@ -65,12 +66,11 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  constructor(public menuService: MenuService, public createMenuService: CreateMenuService) {
-  }
+  constructor(public createMenuService: CreateMenuService) {}
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
-    
+
     console.log(this.categorias);
 
     //clonando o array de objetos sem lib externa
@@ -86,10 +86,12 @@ export class CreateMenuComponent implements OnInit {
   }
 
   onCreateMenu() {
-    // console.log(this.menu);
     this.createMenuService.createMenu({
       menu: this.menu,
       additionalSections: [this.menu[6], this.menu[7]]
     });
+
   }
+
 }
+
