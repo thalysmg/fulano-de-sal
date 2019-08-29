@@ -58,7 +58,7 @@ export class AuthService {
           this.route.navigate(['atualiza-dados']);
         } else {
           /*TODO: Mudar para uma tela de menu ou algo similar */
-          console.log('TODO: Mudar para uma tela de menu ou algo similar');
+          this.route.navigate(['pedir-marmita']);
           /*TODO: Mudar para uma tela de menu ou algo similar */
         }
     })

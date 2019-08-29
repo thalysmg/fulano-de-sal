@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService} from '../firebase-services/items.service';
+import { ReportService } from '../firebase-services/report.service';
 
 @Component({
   selector: 'app-relatorio-diario',
@@ -8,10 +8,10 @@ import { ItemService} from '../firebase-services/items.service';
 })
 export class RelatorioDiarioComponent implements OnInit {
 
-  constructor(private itemService: ItemService) { }
+  constructor(private reportService: ReportService) { }
 
   ngOnInit() {
-  }
 
+  }
 }
 

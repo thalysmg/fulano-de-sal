@@ -1,9 +1,9 @@
 #main {
-    background-color: #FF1655;
+    background-color: #304f25;
     height: 100%;
     text-align: center;
     /* display: grid; */
-    border: 1.0px solid #FF1655;
+    border: 1.0px solid #304f25;
 }
 
 #header {
@@ -12,13 +12,13 @@
 
 #list {
     height: 77%;
-    background-color: #FF1655;
+    background-color: #304f25;
     text-align: center;
     top: 50px;
 }
 
 #table {
-    background-color: #FF1655;
+    background-color: #304f25;
     margin-left: 300px;
     margin-right: 300px;
     text-align: center;
