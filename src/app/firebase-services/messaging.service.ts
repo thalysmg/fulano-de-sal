@@ -19,9 +19,9 @@ export class MessagingService{
     updateToken(userId, token){
         this.afAuth.authState.pipe(take(1)).subscribe(
             () => {
-                const data = {}
-                data[userId] = token
-                this.db.collection('fcmTokens').doc(token).set(data)
+                const data = {userId, token}
+            
+                this.db.collection('fcmTokens').doc(userId).set(data)
                 .then((res) => {
                     console.log('Token adicionado com sucesso');
                 })
@@ -51,4 +51,6 @@ export class MessagingService{
             this.currentMessage.next(payload);
         })
     }
+
+    
 }
