@@ -118,8 +118,27 @@ exports.getReport = functions.https.onRequest(async (req, res) => {
 })
 
 
-
-
+exports.sendMessage = functions.https.onRequest(async (req, res) => {
+    var messagePayload = {
+        notification: {
+            title: req.body.title,
+            body: req.body.message
+        }
+    }
+    var tokensRef = firestore.collection('fcmTokens');
+    var allTokens = await tokensRef.get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                admin.messaging().sendToDevice(doc.data().token, messagePayload);
+            })
+            return;
+        })
+        .catch(err => {
+            console.log('Error getting fcmTokens documents', err);  
+        })
+        res.set('Access-Control-Allow-Origin', '*')
+        res.send('Mensagens enviadas com sucesso')
+})
 
 
 
