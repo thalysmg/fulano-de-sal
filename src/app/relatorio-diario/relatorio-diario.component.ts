@@ -14,11 +14,11 @@ export class RelatorioDiarioComponent implements OnInit {
 
   ngOnInit() {
     this.reportService.getReportFromDb().then(res => {
-      const relatorioObj = Object.entries(res);
+      const relatorioObj = Object.entries(res); //convertendo objeto num array no formato: [[key0, value0], [key1, value1]]
       console.log(relatorioObj);
-      for (let i = 0; i < relatorioObj.length; i++) {
-        let element = relatorioObj[i];
-        this.relatorio.push({ nome: element[0], quantidade: element[1] });
+
+      for (const item of relatorioObj ) {
+        this.relatorio.push({ nome: item[0], quantidade: item[1] });
       }
       console.log(this.relatorio);
     });
