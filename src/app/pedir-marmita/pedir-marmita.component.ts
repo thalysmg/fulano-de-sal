@@ -53,6 +53,7 @@ export class PedirMarmitaComponent implements OnInit {
     if (this.order.orderItens[7] !== undefined && this.order.orderItens[7].length > 0) {
       this.addDesertCostToOrder();
     }
+    this.orderService.createOrder(this.order);
   }
 
   /**
