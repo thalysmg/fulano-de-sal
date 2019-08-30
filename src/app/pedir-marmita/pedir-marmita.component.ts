@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
 import { log } from 'util';
+import { MessagingService } from '../firebase-services/messaging.service';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -22,11 +23,15 @@ export class PedirMarmitaComponent implements OnInit {
   menuAppeared = false;
   pedidoValido = true;
 
-  constructor(public orderService: OrderService) { }
+  constructor(public orderService: OrderService, private messagingService: MessagingService) { }
 
   ngOnInit() {
     this.menu = this.orderService.getMenu(1);
     // console.log(this.menu[0].menu);
+
+
+    //Notificacoes
+    this.messagingService.requestPermission(localStorage.getItem('uid'))
   }
 
   ngDoCheck() {
