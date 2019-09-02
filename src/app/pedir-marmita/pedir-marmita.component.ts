@@ -14,7 +14,7 @@ export class PedirMarmitaComponent implements OnInit {
     authorEmail: 'thalys@mail',
     authorName: 'Thalys',
     authorPhoneNumber: '83987523433',
-    basePrice: 10.5,
+    basePrice: 5.0,
     deliveryPlace: 'Rua José de Alencar, 263, Prata, Ap 401',
     orderItens: []
   };

@@ -37,34 +37,36 @@ export class AuthService {
   authLogin(authProvider) {
     this.afAuth.auth.signInWithPopup(authProvider)
     .then(result => {
-      console.log('Logado');
+      alert('Login realizado com sucesso');
       console.log(result);
       localStorage.setItem('uid', result.user.uid);
     })
     .catch(error => {
-      console.log('Erro ao logar');
+      alert('Não foi possível realizar o login');
       console.log(error);
     });
 
     /* Verifica se o usuario logado está logando pela 1a vez ou não, para atualizar
     seu numero de telefone e nome caso for a 1a vez. */
+
     const uid = localStorage.getItem('uid');
+    console.log(uid);
+
     if (uid != null) {
       this.db.collection('users').doc(uid).get().toPromise()
       .then(doc => {
-      console.log(doc.data());
-      if ((typeof doc.get('username')) === 'undefined'
-        && (typeof doc.get('phoneNumber')) === 'undefined') {
-          this.route.navigate(['atualiza-dados']);
+        console.log(doc.data());
+        if ((typeof doc.get('username')) === 'undefined' && (typeof doc.get('phoneNumber')) === 'undefined') {
+            this.route.navigate(['atualiza-dados']);
         } else {
-          /*TODO: Mudar para uma tela de menu ou algo similar */
+        /*TODO: Mudar para uma tela de menu ou algo similar */
           this.route.navigate(['pedir-marmita']);
           /*TODO: Mudar para uma tela de menu ou algo similar */
         }
-    })
-    .catch(err => {
-      console.log('Error while checking if user has name and phone');
-    });
+      })
+      .catch(err => {
+        console.log('Error while checking if user has name and phone');
+      });
     }
   }
 

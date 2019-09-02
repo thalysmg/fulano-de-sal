@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'home-component',
@@ -16,6 +16,10 @@ export class HomeComponent implements OnInit {
 
 onResize(event) {
   this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+}
+
+onGoogleLogin() {
+  // this.authService.googleAuth();
 }
 
 
