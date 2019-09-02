@@ -84,7 +84,7 @@ export class EstoqueDeItensComponent implements OnInit {
 
   deleteArroz(arroz: App) {
       this.tiposArroz.splice(this.tiposArroz.indexOf(arroz), 1);
-      this.itemService.removeItem('Arroz', arroz.desc);
+      this.itemService.removeItem('Arroz', arroz.name);
   }
 
   saveMacarrao(macarrao: App) {

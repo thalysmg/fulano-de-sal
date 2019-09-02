@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -12,7 +12,8 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFirestore,
-    private route: Router
+    private route: Router,
+    private ngZone: NgZone
   ) { }
 
   /*
@@ -40,6 +41,29 @@ export class AuthService {
       alert('Login realizado com sucesso');
       console.log(result);
       localStorage.setItem('uid', result.user.uid);
+      const uid = localStorage.getItem('uid');
+      console.log(uid);
+
+      if (uid != null) {
+        this.db.collection('users').doc(uid).get().toPromise()
+        .then(doc => {
+          console.log(doc.data());
+          if ((typeof doc.get('username')) === 'undefined' && (typeof doc.get('phoneNumber')) === 'undefined') {
+            this.ngZone.run(() => {
+              this.route.navigate(['atualiza-dados']);
+            });
+          } else {
+          /*TODO: Mudar para uma tela de menu ou algo similar */
+          this.ngZone.run(() => {
+            this.route.navigate(['pedir-marmita']);
+          });
+            /*TODO: Mudar para uma tela de menu ou algo similar */
+          }
+        })
+        .catch(err => {
+          console.log('Error while checking if user has name and phone');
+        });
+      }
     })
     .catch(error => {
       alert('Não foi possível realizar o login');
@@ -49,25 +73,6 @@ export class AuthService {
     /* Verifica se o usuario logado está logando pela 1a vez ou não, para atualizar
     seu numero de telefone e nome caso for a 1a vez. */
 
-    const uid = localStorage.getItem('uid');
-    console.log(uid);
-
-    if (uid != null) {
-      this.db.collection('users').doc(uid).get().toPromise()
-      .then(doc => {
-        console.log(doc.data());
-        if ((typeof doc.get('username')) === 'undefined' && (typeof doc.get('phoneNumber')) === 'undefined') {
-            this.route.navigate(['atualiza-dados']);
-        } else {
-        /*TODO: Mudar para uma tela de menu ou algo similar */
-          this.route.navigate(['pedir-marmita']);
-          /*TODO: Mudar para uma tela de menu ou algo similar */
-        }
-      })
-      .catch(err => {
-        console.log('Error while checking if user has name and phone');
-      });
-    }
   }
 
   getUserDetails() {
