@@ -108,10 +108,14 @@ exports.getReport = functions.https.onRequest(async (req, res) => {
         && orderDate.getFullYear() === currentDate.getFullYear()){
             items = items.concat(doc.data().orderItens)
         }
+        console.log(items[0].itens);
+        
     })
     var counts = {}
     for (let i = 0; i < items.length; i++) {
-        counts[items[i].name] = counts[items[i].name] ? counts[items[i].name] + 1 : 1; 
+        for (let j = 0; j < items[i].itens.length; j++) {
+            counts[items[i].itens[j].name] = counts[items[i].itens[j].name] ? counts[items[i].itens[j].name] + 1 : 1;
+        }
     }
     res.set('Access-Control-Allow-Origin', '*')
     res.send(counts)
