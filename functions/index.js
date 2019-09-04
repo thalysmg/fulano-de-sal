@@ -108,7 +108,6 @@ exports.getReport = functions.https.onRequest(async (req, res) => {
         && orderDate.getFullYear() === currentDate.getFullYear()){
             items = items.concat(doc.data().orderItens)
         }
-        console.log(items[0].itens);
         
     })
     var counts = {}
