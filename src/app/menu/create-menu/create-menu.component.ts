@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import * as $ from 'jquery';
-import { MenuService } from '../menu.service';
-
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
-import { NgForm } from '@angular/forms';
-import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
-import { log } from 'util';
+//import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
+//import { log } from 'util';
 
 @Component({
   selector: 'app-create-menu',
@@ -70,21 +66,13 @@ export class CreateMenuComponent implements OnInit {
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
-
     console.log(this.categorias);
-
-    //clonando o array de objetos sem lib externa
-    /* this.categorias.map(item => {
-      this.itensSelecionados2.push(Object.assign({}, item));
-      console.log(item);
-    });
-
-    //tornando as opcoes do array2 clonado em vazias
-    this.itensSelecionados2.map(categoria => {
-      categoria.opcoes = [];
-    }); */
   }
 
+
+  /**
+   * Função que cria o menu do dia
+   */
   onCreateMenu() {
     this.createMenuService.createMenu({
       menu: this.menu,

@@ -12,15 +12,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-}
+  }
 
-onResize(event) {
-  this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
-}
-
-onGoogleLogin() {
-  // this.authService.googleAuth();
-}
-
-
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+  }
 }

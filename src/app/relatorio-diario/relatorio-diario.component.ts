@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../firebase-services/report.service';
+import { log } from 'util';
 
 @Component({
   selector: 'app-relatorio-diario',
@@ -14,6 +15,7 @@ export class RelatorioDiarioComponent implements OnInit {
 
   ngOnInit() {
     this.reportService.getReportFromDb().then(res => {
+
       const relatorioObj = Object.entries(res); //convertendo objeto num array no formato: [[key0, value0], [key1, value1]]
       console.log(relatorioObj);
 

@@ -32,5 +32,4 @@ export class AtualizaDadosComponent implements OnInit {
       console.log(err);
     });
   }
-
 }

@@ -6,12 +6,12 @@
 }
 
 #header {
-  height: 20%;
+  height: auto;
   border: 0.1px solid #304f25;
 }
 
 #list {
-  height: 80%;
+  height: auto;
   background-color: #304f25;
   text-align: center;
   top: 50px;
