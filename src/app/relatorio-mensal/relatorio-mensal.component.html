@@ -3,49 +3,20 @@
 		<h1 class="txt">Fulano de Sal</h1>
 	</div>
 	<div id="list">
-        <h5 class="txt">Relatório Mensal</h5>
-    
+    <h5 class="txt">Relatório Mensal</h5>
     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" class="txt">Porções</th>
-            <th scope="col" class="txt">Quantidade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="txt">Feijão</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Arroz</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Macarrão</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Carne</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Acompanhamento</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Salada</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Bebida</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="txt">Sobremesa</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
- </div>
+      <thead>
+        <tr>
+          <th scope="col" class="txt">Itens</th>
+          <th scope="col" class="txt">Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of relatorio">
+          <td class="txt">{{item.nome}}</td>
+          <td class="txt">{{item.quantidade}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
