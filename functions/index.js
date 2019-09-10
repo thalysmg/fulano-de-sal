@@ -92,7 +92,7 @@ exports.createOrder = functions.firestore.document('orders/{orderId}').onCreate(
     })
 })
 
-
+/* Pega o relatório mensal ou diário. Usando o query parameter 'type', que pode assumir 'monthly' ou 'daily' */
 exports.getReport = functions.https.onRequest(async (req, res) => {
     var items = []
     var currentDateString = new Date().toLocaleString('en-US', {timeZone: 'America/Sao_Paulo'})
@@ -102,13 +102,18 @@ exports.getReport = functions.https.onRequest(async (req, res) => {
     snapshot.forEach(doc => {
         let orderDateString = new Date(doc.data().timestamp).toLocaleString('en-US', {timeZone: 'America/Sao_Paulo'});
         let orderDate = new Date(orderDateString);
-
-        if(orderDate.getDate() === currentDate.getDate()
-        && orderDate.getMonth() === currentDate.getMonth()
-        && orderDate.getFullYear() === currentDate.getFullYear()){
-            items = items.concat(doc.data().orderItens)
+        if(req.query.type === 'monthly'){
+            if(orderDate.getMonth() === currentDate.getMonth()
+            && orderDate.getFullYear() === currentDate.getFullYear()){
+                items = items.concat(doc.data().orderItens)
+            }        
+        }else if(req.query.type === 'daily'){ 
+            if(orderDate.getDate() === currentDate.getDate()
+            && orderDate.getMonth() === currentDate.getMonth()
+            && orderDate.getFullYear() === currentDate.getFullYear()){
+                items = items.concat(doc.data().orderItens)
+            }
         }
-        
     })
     var counts = {}
     for (let i = 0; i < items.length; i++) {
