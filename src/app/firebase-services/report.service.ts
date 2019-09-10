@@ -28,7 +28,17 @@ import axios from 'axios';
     */
     async getReportFromDb() {
         let response;
-        const BASE_URL = 'https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/getReport';
+        const BASE_URL = 'https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/getReport?type=daily';
+        return await axios.get(BASE_URL).then((res) => {
+            response = res.data;
+            return res.data;
+        });
+    }
+
+    /*Retorna relatório mensal */
+    async getMonthlyReportFromDb(){
+        let response;
+        const BASE_URL = 'https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/getReport?type=monthly';
         return await axios.get(BASE_URL).then((res) => {
             response = res.data;
             return res.data;
