@@ -1,42 +1,79 @@
-#header {
-	background-color: #304f25;
-	border: 0.1px solid #304f25;
-	height: 25%;
-	text-align: center !important;
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+h2, h5 {
+  color: white;
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+.content {
+  padding: 5px;
 }
 
 #main {
-	text-align: center !important;
+  background-color: #304f25;
+  text-align: center;
+  height: 100%;
+  margin: unset;
 }
- 
-h1 {
+
+#menu {
+  height: auto;
+  text-align: center;
+  background-color: #304f25;
+  margin: unset;
+}
+
+#header {
+  border: 0.1px solid #304f25;
+  height: auto;
+	background-color: #304f25;
+	text-align: center;
 	color: white;
 }
 
 .mat-expansion-panel {
-	margin-top: 20px;
-	margin-bottom: 20px;    
+	margin-top: 1px;
+	margin-bottom: 1px;
+  background-color: lightgray;
 }
 
 .mat-expansion-panel-header {
-	background-color: #304f25;
+	background-color: lightgray;
+  text-align: center;
 }
 
 .mat-expansion-panel-header-title {
 	display: grid;
-	color: white;
+	color: black;
 	font-size: 18px;
-	font-weight: bold;
-}
-
-.mat-expansion-panel {
-	background-color: #304f25;
+	text-align: center;
 }
 
 .ng-star-inserted {
 	font-weight: bold;
+	color: black;
 }
 
 .btn {
-	margin: 10px;
+	margin: 20px;
+}
+mat-form-field {
+  margin-top: 5px;
+}
+
+.mat-input-element {
+  color: white;
+}
+
+#quantidade {
+  /* display: grid; */
+  width: 180px;
+  text-align: center;
+  /* justify-self: center; */
+}
+
+#max {
+  color: black;
 }

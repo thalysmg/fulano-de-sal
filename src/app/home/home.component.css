@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+img {
+  width: 90%;
+}
+
 #fb {
   background-color: darkblue;
   color: white;
@@ -47,15 +51,16 @@ h1 {
 
 #image {
   height: 64%;
-  background-image: url("/../assets/images/login_img.jpeg");
+  background: linear-gradient(to bottom, rgba(255,255,255,0.2), #1B2A3B ), url("/../assets/images/login_img.jpeg");
   margin: unset;
   background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
 }
 
 #footer  {
   height: 36%;
   background-color: #1B2A3B;
-  background: linear-gradient(to top, #1B2A3B, #1B2A2A);
+  background: linear-gradient(to top, #1B2A3B, #1B2A3F);
   margin: unset;
 }

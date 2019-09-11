@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { log } from 'util';
 
 @Component({
@@ -9,13 +10,21 @@ import { log } from 'util';
 })
 export class PedirMarmitaComponent implements OnInit {
 
+  userInfo = {
+    username: '',
+    email: '',
+    phoneNumber: '',
+    photoUrl: '',
+    roles: []
+  };
+
   menu = [];
+
   order = {
-    authorEmail: 'thalys@mail',
-    authorName: 'Thalys',
-    authorPhoneNumber: '83987523433',
+    authorEmail: '',
+    authorName: '',
+    authorPhoneNumber: '',
     basePrice: 5.0,
-    deliveryPlace: '',
     orderItens: [
       {secao: 'Arroz', itens: []},
       {secao: 'Feijão', itens: []},
@@ -24,7 +33,8 @@ export class PedirMarmitaComponent implements OnInit {
       {secao: 'Salada', itens: []},
       {secao: 'Acompanhamentos', itens: []},
       {secao: 'Bebida', itens: []},
-      {secao: 'Sobremesa', itens: []}
+      {secao: 'Sobremesa', itens: []},
+      {secao: 'Local', itens: []}
     ],
     comment: ''
   };
@@ -32,11 +42,14 @@ export class PedirMarmitaComponent implements OnInit {
   menuAppeared = false;
   pedidoValido = true;
 
-  constructor(public orderService: OrderService) { }
+  constructor(private orderService: OrderService, private db: AngularFirestore) { }
 
   ngOnInit() {
     this.menu = this.orderService.getMenu(1);
     // console.log(this.menu[0].menu);
+
+    this.getUserInfo(localStorage.getItem('uid'));
+
   }
 
   /**
@@ -87,18 +100,39 @@ export class PedirMarmitaComponent implements OnInit {
    */
   addCostToOrder(opcao: string) {
     let valorExtra = 0;
-    if (opcao === 'bebida') {
+    if (opcao === 'bebida' && this.order.orderItens[6].itens.length) {
       this.order.orderItens[6].itens.forEach(bebida => {
         valorExtra += bebida.unitPrice;
       });
       this.order.basePrice += valorExtra;
 
-    } else if (opcao === 'sobremesa') {
+    } else if (opcao === 'sobremesa' && this.order.orderItens[7].itens.length) {
       this.order.orderItens[7].itens.forEach(sobremesa => {
         valorExtra += sobremesa.unitPrice;
       });
       this.order.basePrice += valorExtra;
     }
+  }
+  /**
+   * Essa função retorna um usuário do banco de dados através do seu id
+   * @param id id do usuário
+   */
+  getUserInfo(id) {
+    this.db.collection('users').doc(id).get().toPromise().then((res) => {
+      this.userInfo = res.data() as {
+        username: string,
+        email: string,
+        phoneNumber: string,
+        photoUrl: string,
+        roles: []
+      };
+      this.order.authorEmail = this.userInfo.email;
+      this.order.authorName = this.userInfo.username;
+      this.order.authorPhoneNumber = this.userInfo.phoneNumber;
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 }
 

@@ -20,11 +20,18 @@
 
 #table {
   background-color: #304f25;
-  margin-left: 300px;
-  margin-right: 300px;
   text-align: center;
 }
 
 .txt {
   color: white;
+  font-size: 18px;
+}
+
+h1, h5 {
+  color: white;
+}
+
+td {
+  border-bottom: 1px solid white;
 }

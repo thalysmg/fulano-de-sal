@@ -41,6 +41,8 @@ export class AuthService {
       alert('Login realizado com sucesso');
       console.log(result);
       localStorage.setItem('uid', result.user.uid);
+      // localStorage.setItem('name', result.additionalUserInfo.profile.name);
+      // localStorage.setItem('email', result.additionalUserInfo.profile.email);
       const uid = localStorage.getItem('uid');
       console.log(uid);
 

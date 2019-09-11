@@ -59,6 +59,12 @@ export class CreateMenuComponent implements OnInit {
       maxChoices: 0,
       nome: 'Sobremesa',
       opcoes: []
+    },
+    {
+      id: 8,
+      maxChoices: 0,
+      nome: 'Local',
+      opcoes: []
     }
   ];
 

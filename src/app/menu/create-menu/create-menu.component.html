@@ -1,31 +1,29 @@
-<div id="header" class="row">
-	<h1>Fulano de Sal</h1>
-</div>
-
 <div id="main" class="row">
-	<mat-accordion>
-		<h2>Selecione os itens do Cardápio</h2>
-		<mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
-			<mat-expansion-panel-header>
-				<mat-panel-title >{{categoria.nome}}</mat-panel-title>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione o(s) item(s)</mat-label>
-				<mat-select [(ngModel)]="menu[i].opcoes" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao.name}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-			<input [(ngModel)]="menu[i].maxChoices" type="number">
-			<!-- <p *ngIf="menu[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
-		</mat-expansion-panel>
-		<button type="button" (click)="onCreateMenu()" class="btn btn-primary">Montar Cardápio</button>
-	</mat-accordion>
+  <div id="header" class="row">
+    <h1>Fulano de Sal</h1>
+  </div>
+
+  <div id="menu" class="row">
+    <mat-accordion>
+      <h2>Selecione os itens do Cardápio</h2>
+      <mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
+        <mat-expansion-panel-header>
+          <mat-panel-title >{{categoria.nome}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <mat-label>Selecione o(s) item(s)</mat-label>
+          <mat-select [(ngModel)]="menu[i].opcoes" multiple>
+            <mat-option [value]="opcao" *ngFor="let opcao of categoria.opcoes">{{opcao.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <label id="max" for="quantidade">Digite a quantidade máxima:</label>
+        <br>
+        <input id="quantidade" [(ngModel)]="menu[i].maxChoices" type="number" min="0">
+        <!-- <p *ngIf="menu[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
+      </mat-expansion-panel>
+      <button type="button" (click)="onCreateMenu()" class="btn btn-primary">Montar Cardápio</button>
+    </mat-accordion>
+  </div>
 </div>
 
-<!-- <ng-template #createModal>
-  <div class="modal-body text-center">
-    <p>Você deseja confirmar o pedido ?</p>
-    <button type="button" class="btn btn-default" (click)="onCreateMenu()">Confirmar</button>
-    <button type="button" class="btn btn-primary" (click)="onDeclineCreate()" >Cancelar</button>
-  </div>
-</ng-template> -->

@@ -4,12 +4,12 @@
     text-align: center;
     margin: unset;
   }
-  
+
   #header {
     height: auto;
     border: 0.1px solid #304f25;
   }
-  
+
   #list {
     height: auto;
     background-color: #304f25;
@@ -17,15 +17,19 @@
     top: 50px;
     border: 0.1px solid #304f25;
   }
-  
+
   #table {
     background-color: #304f25;
     margin-left: 300px;
     margin-right: 300px;
     text-align: center;
   }
-  
+
   .txt {
     color: white;
+    font-size: 18px;
   }
-  
+
+  h1, h5 {
+    color: white;
+  }
