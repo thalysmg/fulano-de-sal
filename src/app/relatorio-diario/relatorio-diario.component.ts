@@ -16,7 +16,7 @@ export class RelatorioDiarioComponent implements OnInit {
   ngOnInit() {
     this.reportService.getReportFromDb().then(res => {
 
-      const relatorioObj = Object.entries(res); //convertendo objeto num array no formato: [[key0, value0], [key1, value1]]
+      const relatorioObj = Object.entries(res); // convertendo objeto num array no formato: [[key0, value0], [key1, value1]]
       console.log(relatorioObj);
 
       for (const item of relatorioObj ) {
@@ -24,6 +24,12 @@ export class RelatorioDiarioComponent implements OnInit {
       }
       console.log(this.relatorio);
     });
+    if (this.relatorio.length) {
+      // this.relatorio.sort(this.compareValues('quantidade', 'desc'));
+      this.relatorio = this.relatorio.sort((a, b) => {
+        return b.quantidade - a.quantidade; //desse modo a ordenação é decrescente
+      });
+    }
   }
 }
 
