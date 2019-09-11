@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'home-component',
@@ -12,11 +12,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-}
+  }
 
-onResize(event) {
-  this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
-}
-
-
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+  }
 }

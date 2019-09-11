@@ -13,12 +13,13 @@
 			</mat-expansion-panel-header>
 			<mat-form-field>
 				<mat-label>Selecione o(s) item(s)</mat-label>
-				<mat-select [(ngModel)]="order.orderItens[i]" multiple>
+				<mat-select (selectionChange)="validateSelectedOptions(i)" [(ngModel)]="order.orderItens[i].itens" multiple>
 					<mat-option [value]="opcao" *ngFor="let opcao of secao.opcoes">{{opcao.name}} - R$ {{opcao.unitPrice}}</mat-option>
-				</mat-select>
+        </mat-select>
 			</mat-form-field>
-		</mat-expansion-panel>
-	</mat-accordion>
+    </mat-expansion-panel>
+      <textarea [(ngModel)]="order.comment" placeholder="Digite uma observação:"></textarea>
+    </mat-accordion>
 	<button (click)="onMakeOrder()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
 </div>
 

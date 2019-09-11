@@ -25,7 +25,6 @@ import 'materialize-css';
 import { MaterializeModule } from 'angular2-materialize';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 
-import { MenuService } from './menu/menu.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -78,7 +77,7 @@ import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.co
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [MenuService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

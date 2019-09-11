@@ -1,35 +1,31 @@
 #main {
-    background-color: #FF1655;
+    background-color: #304f25;
     height: 100%;
     text-align: center;
-    /* display: grid; */
-    border: 1.0px solid #FF1655;
-}
-
-#header {
-    height: 20%;
-}
-
-#list {
-    height: 77%;
-    background-color: #FF1655;
+    margin: unset;
+  }
+  
+  #header {
+    height: auto;
+    border: 0.1px solid #304f25;
+  }
+  
+  #list {
+    height: auto;
+    background-color: #304f25;
     text-align: center;
     top: 50px;
-}
-
-#table {
-    background-color: #FF1655;
+    border: 0.1px solid #304f25;
+  }
+  
+  #table {
+    background-color: #304f25;
     margin-left: 300px;
     margin-right: 300px;
     text-align: center;
-}
-
-.btn {
-    width: 60%;
-    margin: 20px;
-    vertical-align: center;
-}
-
-.txt {
+  }
+  
+  .txt {
     color: white;
-}
+  }
+  

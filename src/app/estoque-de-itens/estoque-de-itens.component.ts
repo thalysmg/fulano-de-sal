@@ -5,7 +5,7 @@ import { ItemService } from '../firebase-services/items.service';
 export class App {
   desc: string;
   name: string;
-  price: string;
+  price: number;
 }
 
 @Component({
@@ -84,7 +84,7 @@ export class EstoqueDeItensComponent implements OnInit {
 
   deleteArroz(arroz: App) {
       this.tiposArroz.splice(this.tiposArroz.indexOf(arroz), 1);
-      this.itemService.removeItem('Arroz', arroz.desc);
+      this.itemService.removeItem('Arroz', arroz.name);
   }
 
   saveMacarrao(macarrao: App) {
@@ -177,7 +177,7 @@ export class EstoqueDeItensComponent implements OnInit {
 
   itemBebida() {
     this.bebida.name = (document.getElementById('nameBebida') as HTMLInputElement).value;
-    this.bebida.price = (document.getElementById('priceBebida') as HTMLInputElement).value;
+    this.bebida.price = parseFloat((document.getElementById('priceBebida') as HTMLInputElement).value);
     this.saveBebida(this.bebida, this.bebida.name, this.bebida.price);
   }
 
@@ -185,7 +185,7 @@ export class EstoqueDeItensComponent implements OnInit {
       this.tiposBebida.push(bebida);
       this.bebida = new App();
       this.tiposBebida = Object.assign([], this.tiposBebida);
-      this.itemService.addItem('Bebidas', { name, unitPrice: price });
+      this.itemService.addItem('Bebidas', { name, unitPrice: Number(price) });
   }
 
   deleteBebida(bebida: App) {
@@ -195,7 +195,8 @@ export class EstoqueDeItensComponent implements OnInit {
 
   itemSobremesa() {
     this.sobremesa.name = (document.getElementById('nameSobremesa') as HTMLInputElement).value;
-    this.sobremesa.price = (document.getElementById('priceSobremesa') as HTMLInputElement).value;
+    this.sobremesa.price = Number((document.getElementById('priceSobremesa') as HTMLInputElement).value);
+    console.log(typeof this.sobremesa.price);
     this.saveSobremesa(this.sobremesa, this.sobremesa.name, this.sobremesa.price);
   }
 
@@ -203,7 +204,7 @@ export class EstoqueDeItensComponent implements OnInit {
       this.tiposSobremesa.push(sobremesa);
       this.sobremesa = new App();
       this.tiposSobremesa = Object.assign([], this.tiposSobremesa);
-      this.itemService.addItem('Sobremesas', {name, price});
+      this.itemService.addItem('Sobremesas', { name, unitPrice: Number(price) });
   }
 
   deleteSobremesa(sobremesa: App) {
