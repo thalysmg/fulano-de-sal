@@ -21,6 +21,34 @@ export class RelatorioMensalComponent implements OnInit {
         this.relatorio.push({ nome: item[0], quantidade: item[1] });
       }
       console.log(this.relatorio);
+
+      if (this.relatorio.length) {
+        // this.relatorio.sort(this.compareValues('quantidade', 'desc'));
+        this.relatorio = this.relatorio.sort((a, b) => {
+          return b.quantidade - a.quantidade; //desse modo a ordenação é decrescente
+        });
+      }
     });
   }
+  // compareValues(key, order= 'asc') {
+  //   return (a, b) => {
+  //     if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+  //       return 0;
+  //     }
+
+  //     const varA = a[key];
+  //     const varB = b[key];
+
+  //     let comparison = 0;
+
+  //     if (varA >= varB) {
+  //       comparison = 1;
+  //     } else if (varA < varB) {
+  //       comparison = -1;
+  //     }
+  //     return (
+  //       (order === 'desc') ? (comparison * -1) : comparison
+  //     );
+  //   };
+  // }
 }
