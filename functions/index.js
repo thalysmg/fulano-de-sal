@@ -184,15 +184,18 @@ function writeOrders(orders){
     var docDefinition = {
         content: [],
         defaultStyle: {
-            fontSize: 11
+            fontSize: 30
         }
     }
     orders.forEach(order => {
         var tableObject = {
-            style: 'tableExample',
+            dontBreakRows: true,
             table: {
-                body: [[],[]] //Each line of body should be a list
-            }
+                body: [] //Each line of body should be a list
+            },
+            widths: [ 'auto', 'auto', 'auto', 'auto' ],
+            pageBreak: 'after'
+            
 
         }
         order.orderItens.forEach(orderItem => {
@@ -204,14 +207,10 @@ function writeOrders(orders){
                     itens = item.name;
                 }
             })
-            if(itens !== ''){
-                tableObject.table.body[0].push(orderItem.secao)
-                tableObject.table.body[1].push(itens)
-            }
+            tableObject.table.body.push([orderItem.secao, itens])
         })
-        docDefinition.content.push({
-            text: '\n'+'Cliente: ' + order.authorName + ' - Fone: ' + order.authorPhoneNumber
-        })
+        tableObject.table.body.push(['Observação', order.comment])
+        tableObject.table.body.push(['Cliente e telefone ', order.authorName + ' - ' + order.authorPhoneNumber])
         docDefinition.content.push(tableObject)
     })
     var pdfDoc = printer.createPdfKitDocument(docDefinition);
