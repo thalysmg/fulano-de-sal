@@ -2,12 +2,20 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin')
 admin.initializeApp()
 const firestore = admin.firestore();
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+
+/*PdfPrinter fonts */
+var fonts = {
+    Roboto: {
+        normal: './fonts/Roboto-Regular.ttf',
+        bold: './fonts/Roboto-Regular.ttf',
+        italics: './fonts/Roboto-Regular.ttf',
+        bolditalics: './fonts/Roboto-Regular.ttf'
+    }
+};
+
+var PdfPrinter = require('pdfmake/src/printer');
+var printer = new PdfPrinter(fonts);
+
 
 /*
     Funcao chamada no momento em que um novo usuario faz o registro no webapp
@@ -148,5 +156,66 @@ exports.sendMessage = functions.https.onRequest(async (req, res) => {
         res.send('Mensagens enviadas com sucesso')
 })
 
+
+
+exports.printOrders = functions.https.onRequest(async (req, res) => {
+
+    const querySnapshot = await firestore.collection('orders').where('printed', '==', false).get()
+    var orders = []
+    querySnapshot.forEach(doc => {
+        orders.push(doc.data())
+    });
+    res.set('Content-type', 'application/pdf')
+    res.set('Content-disposition', 'inline; filename="Example.pdf"')
+    res.set('Access-Control-Allow-Origin', '*')
+    var doc = writeOrders(orders);
+    doc.pipe(res).on('finish', ()=> {
+        console.log('PDF gerado com sucesso');
+    }).on('error', () => {
+        console.log('Erro ao gerar o PDF');
+    })
+    doc.end()
+
+})
+
+
+/*Takes a list of orders and generate a PDF file from it */
+function writeOrders(orders){
+    var docDefinition = {
+        content: [],
+        defaultStyle: {
+            fontSize: 11
+        }
+    }
+    orders.forEach(order => {
+        var tableObject = {
+            style: 'tableExample',
+            table: {
+                body: [[],[]] //Each line of body should be a list
+            }
+
+        }
+        order.orderItens.forEach(orderItem => {
+            var itens = '';
+            orderItem.itens.forEach(item => {
+                if(itens){
+                    itens = itens + ', \n' + item.name;
+                }else{
+                    itens = item.name;
+                }
+            })
+            if(itens !== ''){
+                tableObject.table.body[0].push(orderItem.secao)
+                tableObject.table.body[1].push(itens)
+            }
+        })
+        docDefinition.content.push({
+            text: '\n'+'Cliente: ' + order.authorName + ' - Fone: ' + order.authorPhoneNumber
+        })
+        docDefinition.content.push(tableObject)
+    })
+    var pdfDoc = printer.createPdfKitDocument(docDefinition);
+    return pdfDoc;
+}
 
 
