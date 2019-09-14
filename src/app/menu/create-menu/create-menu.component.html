@@ -1,12 +1,12 @@
 <div id="main" class="row">
   <div id="header" class="row">
-    <h1>Fulano de Sal</h1>
+    <img src="../../../assets/images/logo_boa2.png" alt="">
   </div>
 
   <div id="menu" class="row">
     <mat-accordion>
-      <h2>Selecione os itens do Cardápio</h2>
-      <mat-expansion-panel *ngFor="let categoria of categorias; let i = index">
+      <h5>Selecione os itens do Cardápio</h5>
+      <mat-expansion-panel class="center-aligned" *ngFor="let categoria of categorias; let i = index">
         <mat-expansion-panel-header>
           <mat-panel-title >{{categoria.nome}}</mat-panel-title>
         </mat-expansion-panel-header>

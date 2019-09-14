@@ -4,6 +4,41 @@ h2, h5 {
   color: white;
 }
 
+@media (min-width: 728px) {
+  img {
+    width: 40%;
+    margin-top: 20px;
+  }
+  h5 {
+    margin: 20px;
+  }
+  #menu {
+    height: auto;
+    text-align: center;
+    background-color: #304f25;
+    margin: unset;
+    display: grid;
+    justify-content: center;
+  }
+  .mat-expansion-panel {
+    width: 416px;
+  }
+}
+
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+    margin: 30px;
+  }
+  #menu {
+    height: auto;
+    text-align: center;
+    background-color: #304f25;
+    margin: unset;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
 .mat-list-icon {
   color: rgba(0, 0, 0, 0.54);
 }
@@ -15,13 +50,6 @@ h2, h5 {
   background-color: #304f25;
   text-align: center;
   height: 100%;
-  margin: unset;
-}
-
-#menu {
-  height: auto;
-  text-align: center;
-  background-color: #304f25;
   margin: unset;
 }
 
@@ -48,7 +76,13 @@ h2, h5 {
 	display: grid;
 	color: black;
 	font-size: 18px;
-	text-align: center;
+	/* font-weight: bold; */
+}
+
+#max {
+	margin-right: 10px;
+	margin-top: 7px;
+	color: black;
 }
 
 .ng-star-inserted {
@@ -57,23 +91,30 @@ h2, h5 {
 }
 
 .btn {
-	margin: 20px;
+  margin: 20px;
+  width: 360px;
 }
 mat-form-field {
   margin-top: 5px;
 }
-
 .mat-input-element {
   color: white;
 }
 
-#quantidade {
-  /* display: grid; */
-  width: 180px;
-  text-align: center;
-  /* justify-self: center; */
+::ng-deep .mat-form-field-label {
+  color: white !important;
 }
 
-#max {
-  color: black;
+::ng-deep .mat-focused {
+  color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline when focused*/
+  background-color: white !important;;
+ }
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: white !important;;
 }

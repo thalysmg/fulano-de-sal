@@ -7,7 +7,6 @@ import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.componen
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
-import { TelaUsuarioComponent } from './tela-usuario/tela-usuario.component';
 import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
@@ -41,10 +40,6 @@ const routes: Routes = [
   {
     path: "home-admin",
     component: HomeAdminComponent
-  },
-  {
-    path: "tela-usuario",
-    component: TelaUsuarioComponent
   },
   {
     path: "pedir-marmita",
