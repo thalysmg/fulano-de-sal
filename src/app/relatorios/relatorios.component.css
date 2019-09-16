@@ -19,16 +19,21 @@
 @media (max-width: 728px) {
   img {
     width: 90%;
-    margin: 30px;
+    margin-top: 30px;
   }
 }
 
-#header {
-  height: 60%;
+header {
+  text-align: left;
 }
 
-#btns {
-  height: 40%;
+a {
+  color: white;
+  cursor: pointer;
+}
+
+#logo {
+  height: 60%;
 }
 
 .btn {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { log } from 'util';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -40,9 +41,11 @@ export class PedirMarmitaComponent implements OnInit {
   };
 
   menuAppeared = false;
+  secoesValidas = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   pedidoValido = true;
 
-  constructor(private orderService: OrderService, private db: AngularFirestore) { }
+
+  constructor(private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
 
   ngOnInit() {
     this.menu = this.orderService.getMenu(1);
@@ -69,7 +72,7 @@ export class PedirMarmitaComponent implements OnInit {
    */
   onMakeOrder() {
     console.log(this.order);
-    console.log(this.pedidoValido);
+    console.log(this.secoesValidas);
     if (this.order.orderItens[6].itens !== undefined && this.order.orderItens[6].itens.length) {
       this.addCostToOrder('bebida');
     }
@@ -82,16 +85,17 @@ export class PedirMarmitaComponent implements OnInit {
   /**
    * Função que valida o pedido (se a quantidade de itens selecionados da categoria no índice i
    * for maior que a quantidade máxima definida pelo admin na
-   * hora de montar o cardápio, pedidoValido é false, o que impossibiita de fazer o pedido, deixando o botão desativado).
+   * hora de montar o cardápio, secoesValidas é false, o que impossibiita de fazer o pedido, deixando o botão desativado).
    * Essa função é chamada no select, com a classe que emite eventos "selectionChange"
    * @param i índice da categoria a ser checada
    */
   validateSelectedOptions(i: number) {
     if (this.order.orderItens[i].itens !== undefined && this.order.orderItens[i].itens.length > this.menu[0].menu[i].maxChoices) {
-      this.pedidoValido = false;
+      this.secoesValidas[i] = 0;
     } else {
-      this.pedidoValido = true;
+      this.secoesValidas[i] = 1;
     }
+    this.pedidoValido = !this.secoesValidas.includes(0);
   }
 
   /**
@@ -134,6 +138,11 @@ export class PedirMarmitaComponent implements OnInit {
       console.log(err);
     });
   }
+
+  goToPreviousPage() {
+    this.location.back();
+  }
+
 }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../firebase-services/items.service';
+import { Location } from '@angular/common';
 
 
 export class App {
@@ -17,7 +18,7 @@ export class App {
 export class EstoqueDeItensComponent implements OnInit {
 
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private location: Location) { }
 
   feijao: App = new App();
   tiposFeijao: App[] = [];
@@ -211,4 +212,9 @@ export class EstoqueDeItensComponent implements OnInit {
       this.tiposSobremesa.splice(this.locaisEntrega.indexOf(sobremesa), 1);
       this.itemService.removeItem('Sobremesas', sobremesa.name);
   }
+
+  goToPreviousPage() {
+    this.location.back();
+  }
+
 }

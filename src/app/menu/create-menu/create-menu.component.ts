@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
+import { Location } from '@angular/common';
 //import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 //import { log } from 'util';
 
@@ -68,7 +69,7 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  constructor(public createMenuService: CreateMenuService) {}
+  constructor(public createMenuService: CreateMenuService, private location: Location) {}
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
@@ -86,6 +87,8 @@ export class CreateMenuComponent implements OnInit {
     });
 
   }
-
+  goToPreviousPage() {
+    this.location.back();
+  }
 }
 

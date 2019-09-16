@@ -19,7 +19,16 @@
   }
 }
 
-#header {
+header {
+  text-align: start;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+#logo {
   height: auto;
   border: 0.1px solid #304f25;
 }

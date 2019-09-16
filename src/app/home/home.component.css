@@ -10,15 +10,12 @@
     width: 60%;
     margin-top: 20px;
   }
-  h5 {
-    margin: 30px;
-  }
 }
 
 @media (max-width: 728px) {
   img {
     width: 90%;
-    margin: 30px;
+    margin: 20px;
   }
 }
 

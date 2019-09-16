@@ -12,6 +12,15 @@
   }
 }
 
+header {
+  text-align: start;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
 @media (max-width: 728px) {
   img {
     width: 90%;
@@ -19,7 +28,7 @@
   }
 }
 
-#header {
+#logo {
   height: auto;
   border: 0.1px solid #304f25;
 }

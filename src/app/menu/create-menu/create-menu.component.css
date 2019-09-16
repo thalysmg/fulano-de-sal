@@ -4,13 +4,22 @@ h2, h5 {
   color: white;
 }
 
+header {
+  text-align: start;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
 @media (min-width: 728px) {
   img {
     width: 40%;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   h5 {
-    margin: 20px;
+    margin: 10px;
   }
   #menu {
     height: auto;
@@ -28,7 +37,7 @@ h2, h5 {
 @media (max-width: 728px) {
   img {
     width: 90%;
-    margin: 30px;
+    margin-top: 30px;
   }
   #menu {
     height: auto;
@@ -53,7 +62,7 @@ h2, h5 {
   margin: unset;
 }
 
-#header {
+#logo {
   border: 0.1px solid #304f25;
   height: auto;
 	background-color: #304f25;
@@ -62,8 +71,8 @@ h2, h5 {
 }
 
 .mat-expansion-panel {
-	margin-top: 1px;
-	margin-bottom: 1px;
+	margin-top: 2px;
+	margin-bottom: 2px;
   background-color: lightgray;
 }
 

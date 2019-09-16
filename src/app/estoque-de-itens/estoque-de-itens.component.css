@@ -8,3 +8,38 @@
 h1 {
     color: white;
 }
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+#main {
+  background-color: #304f25;
+}
+
+h3 {
+  color: white;
+}
+
+.mat-subheader {
+  color: white;
+}
+
+::ng-deep .mat-form-field-label {
+  color: white !important;
+}
+
+::ng-deep .mat-focused {
+  color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline when focused*/
+  background-color: white !important;;
+ }
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: white !important;;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-atualiza-dados',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AtualizaDadosComponent implements OnInit {
 
-  constructor(public db: AngularFirestore, private router: Router) { }
+  constructor(public db: AngularFirestore, private router: Router, private location: Location) { }
 
   ngOnInit() {
   }
@@ -32,4 +33,9 @@ export class AtualizaDadosComponent implements OnInit {
       console.log(err);
     });
   }
+
+  goToPreviousPage() {
+    this.location.back();
+  }
+
 }

@@ -38,7 +38,6 @@ export class AuthService {
   authLogin(authProvider) {
     this.afAuth.auth.signInWithPopup(authProvider)
     .then(result => {
-      alert('Login realizado com sucesso');
       console.log(result);
       localStorage.setItem('uid', result.user.uid);
       // localStorage.setItem('name', result.additionalUserInfo.profile.name);
@@ -87,7 +86,6 @@ export class AuthService {
   emailAndPasswordAuth(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then(res => {
-      alert('Login de administrador realizado com sucesso!');
       console.log(res);
       this.route.navigate(['/home-admin']);
     }).catch(err => {

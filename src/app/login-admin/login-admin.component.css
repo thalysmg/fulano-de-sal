@@ -3,6 +3,16 @@
   text-align: center;
   border: 0.1px solid #304f25;
   height: 100%;
+  margin: unset;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+header {
+  text-align: start;
 }
 
 h5 {
