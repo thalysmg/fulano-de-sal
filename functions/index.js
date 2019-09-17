@@ -42,7 +42,7 @@ exports.registerUser = functions.auth.user().onCreate((user, context) => {
 exports.createMenu = functions.firestore.document('menu/{menuId}').onCreate((snap, context) => {
     const menuValue = snap.data();
     menuValue.timestamp = Date.now();
-    menuValue.available = false;
+    menuValue.available = true;
     firestore.collection('menu').doc(context.params.menuId).set(menuValue)
     .then(res => {
         console.log('Menu criado com sucesso!');
