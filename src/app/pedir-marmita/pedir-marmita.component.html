@@ -6,12 +6,14 @@
     <img src="../../assets/images/logo_boa2.png" alt="">
     <br>
     <h5>Selecione os itens do Cardápio</h5>
-    <span>Preço base da marmita: R$ {{order.basePrice}},00</span>
+    <span>Preço base da marmita: R$ {{order.basePrice}}</span>
   </div>
 
-  <div id="menu" class="row">
-    <mat-accordion *ngIf="menu.length">
-      <span *ngFor="let secao of menu[0].menu; let i = index">
+  <!-- Essa div é o menu
+  que só aparece caso o adm tenha disponibilizado -->
+  <div *ngIf="menu.available" id="menu" class="row">
+    <mat-accordion>
+      <span *ngFor="let secao of menu.menu; let i = index">
         <mat-expansion-panel *ngIf="secao.maxChoices > 0">
           <mat-expansion-panel-header>
             <mat-panel-title >{{secao.nome}}</mat-panel-title>
@@ -34,5 +36,10 @@
       </mat-accordion>
     <button (click)="onMakeOrder()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
   </div>
+
+  <div *ngIf="!menu.available">
+    <span id="notAvailable">O cardápio ainda não foi disponibilizado</span>
+  </div>
+
 </div>
 

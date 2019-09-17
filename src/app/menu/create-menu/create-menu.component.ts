@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
 import { Location } from '@angular/common';
+import { OrderService } from 'src/app/firebase-services/orderService.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import Axios from 'axios';
 //import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 //import { log } from 'util';
 
@@ -12,6 +15,11 @@ import { Location } from '@angular/common';
 export class CreateMenuComponent implements OnInit {
   categorias = [];
   message: string;
+  menu1 = {
+    available: true,
+    menu: [],
+    additionalSections: []
+  };
   menu = [
     {
       id: 0,
@@ -69,11 +77,27 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  constructor(public createMenuService: CreateMenuService, private location: Location) {}
+  constructor(private createMenuService: CreateMenuService, private orderMenu: OrderService,
+              private location: Location, private ngZone: NgZone, private db: AngularFirestore) {}
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
     console.log(this.categorias);
+
+    this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
+    .then(result => {
+      result.docs.map(doc => {
+        this.ngZone.run(() => {
+          this.menu1 = doc.data() as {menu: [], additionalSections: [], available: boolean};
+        });
+        console.log(this.menu1);
+      });
+    })
+    .catch(err => {
+      console.log('Erro ao recuperar o cardápio do dia');
+      console.log(err);
+    });
+
   }
 
 
@@ -81,14 +105,30 @@ export class CreateMenuComponent implements OnInit {
    * Função que cria o menu do dia
    */
   onCreateMenu() {
-    this.createMenuService.createMenu({
-      menu: this.menu,
-      additionalSections: [this.menu[6], this.menu[7]]
+    this.db.collection('menu').add({menu: this.menu})
+    .then(res => {
+      console.log('Cardapio atualizado com sucesso!');
+      window.location.reload();
+    })
+    .catch(err => {
+      console.log('Erro ao atualizar cardapio!');
     });
+    console.log(this.menu);
 
+    // this.createMenuService.createMenu({
+    //   menu: this.menu,
+    //   additionalSections: [this.menu[6], this.menu[7]]
+    // });
   }
   goToPreviousPage() {
     this.location.back();
+  }
+
+  closeMenu() {
+    Axios.get('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/closeMenu').then((res) => {
+      console.log(res);
+      window.location.reload();
+    });
   }
 }
 

@@ -7,7 +7,8 @@
   </div>
 
   <div id="menu" class="row">
-    <mat-accordion>
+    <h5 *ngIf="menu1.available">Feche o cardápio para montar um novo</h5>
+    <mat-accordion *ngIf="!menu1.available">
       <h5>Selecione os itens do Cardápio</h5>
       <mat-expansion-panel class="center-aligned" *ngFor="let categoria of categorias; let i = index">
         <mat-expansion-panel-header>
@@ -25,8 +26,9 @@
         <input id="quantidade" [(ngModel)]="menu[i].maxChoices" type="number" min="0">
         <!-- <p *ngIf="menu[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
       </mat-expansion-panel>
-      <button type="button" (click)="onCreateMenu()" class="btn btn-primary">Montar Cardápio</button>
     </mat-accordion>
+    <button *ngIf="!menu1.available" type="button" (click)="onCreateMenu()" class="btn">Montar Cardápio</button>
+    <button *ngIf="menu1.available" class="btn red" (click)="closeMenu()">Fechar Cardápio</button>
   </div>
 </div>
 

@@ -130,3 +130,7 @@ mat-form-field {
  /*change color of underline when focused*/
  background-color: white !important;;
 }
+
+#notAvailable {
+  color: white;
+}

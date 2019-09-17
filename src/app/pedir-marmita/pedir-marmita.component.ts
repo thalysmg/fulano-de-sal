@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { log } from 'util';
@@ -19,7 +19,11 @@ export class PedirMarmitaComponent implements OnInit {
     roles: []
   };
 
-  menu = [];
+  menu = {
+    available: true,
+    menu: [],
+    additionalSections: []
+  };
 
   order = {
     authorEmail: '',
@@ -45,24 +49,24 @@ export class PedirMarmitaComponent implements OnInit {
   pedidoValido = true;
 
 
-  constructor(private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+  constructor(private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
 
   ngOnInit() {
-    this.menu = this.orderService.getMenu(1);
-    // console.log(this.menu[0].menu);
-
-    this.getUserInfo(localStorage.getItem('uid'));
-
-  }
-
-  /**
-   * Função que faz parte do ciclo de vida de um componente angular
-   * É executada apenas quando a view foi toda carregada e checada
-   */
-  ngAfterViewChecked() {
-    if (this.menu[0] !== undefined && this.menuAppeared === false) {
-      console.log(this.menu[0]);
-      this.menuAppeared = true;
+    this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
+    .then(result => {
+      result.docs.map(doc => {
+        this.ngZone.run(() => {
+          this.menu = doc.data() as {menu: [], additionalSections: [], available: boolean};
+        });
+        console.log(this.menu);
+      });
+    })
+    .catch(err => {
+      console.log('Erro ao recuperar o cardápio do dia');
+      console.log(err);
+    });
+    if (localStorage.getItem('uid') !== null) {
+      this.getUserInfo(localStorage.getItem('uid'));
     }
   }
 
@@ -90,7 +94,7 @@ export class PedirMarmitaComponent implements OnInit {
    * @param i índice da categoria a ser checada
    */
   validateSelectedOptions(i: number) {
-    if (this.order.orderItens[i].itens !== undefined && this.order.orderItens[i].itens.length > this.menu[0].menu[i].maxChoices) {
+    if (this.order.orderItens[i].itens !== undefined && this.order.orderItens[i].itens.length > this.menu.menu[i].maxChoices) {
       this.secoesValidas[i] = 0;
     } else {
       this.secoesValidas[i] = 1;
