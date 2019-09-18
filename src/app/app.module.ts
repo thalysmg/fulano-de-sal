@@ -31,7 +31,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { config } from './config/firebase-config';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
-import { TelaUsuarioComponent } from './tela-usuario/tela-usuario.component';
 import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
@@ -47,7 +46,6 @@ import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.co
     CreateMenuComponent,
     HomeAdminComponent,
     EstoqueDeItensComponent,
-    TelaUsuarioComponent,
     PedirMarmitaComponent,
     RelatoriosComponent,
     RelatorioDiarioComponent,

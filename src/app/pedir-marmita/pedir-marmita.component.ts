@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { log } from 'util';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -9,13 +11,25 @@ import { log } from 'util';
 })
 export class PedirMarmitaComponent implements OnInit {
 
-  menu = [];
+  userInfo = {
+    username: '',
+    email: '',
+    phoneNumber: '',
+    photoUrl: '',
+    roles: []
+  };
+
+  menu = {
+    available: true,
+    menu: [],
+    additionalSections: []
+  };
+
   order = {
-    authorEmail: 'thalys@mail',
-    authorName: 'Thalys',
-    authorPhoneNumber: '83987523433',
+    authorEmail: '',
+    authorName: '',
+    authorPhoneNumber: '',
     basePrice: 5.0,
-    deliveryPlace: '',
     orderItens: [
       {secao: 'Arroz', itens: []},
       {secao: 'Feijão', itens: []},
@@ -24,29 +38,38 @@ export class PedirMarmitaComponent implements OnInit {
       {secao: 'Salada', itens: []},
       {secao: 'Acompanhamentos', itens: []},
       {secao: 'Bebida', itens: []},
-      {secao: 'Sobremesa', itens: []}
+      {secao: 'Sobremesa', itens: []},
+      {secao: 'Local', itens: []}
     ],
     comment: ''
   };
 
   menuAppeared = false;
+  secoesValidas = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   pedidoValido = true;
 
-  constructor(public orderService: OrderService) { }
+
+  constructor(private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
 
   ngOnInit() {
-    this.menu = this.orderService.getMenu(1);
-    // console.log(this.menu[0].menu);
-  }
-
-  /**
-   * Função que faz parte do ciclo de vida de um componente angular
-   * É executada apenas quando a view foi toda carregada e checada
-   */
-  ngAfterViewChecked() {
-    if (this.menu[0] !== undefined && this.menuAppeared === false) {
-      console.log(this.menu[0]);
-      this.menuAppeared = true;
+    this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
+    .then(result => {
+      result.docs.map(doc => {
+        this.ngZone.run(() => {
+          this.menu = doc.data() as {menu: [], additionalSections: [], available: boolean};
+        });
+        console.log(this.menu);
+      });
+    })
+    .catch(err => {
+      console.log('Erro ao recuperar o cardápio do dia');
+      console.log(err);
+    });
+    if (localStorage.getItem('uid') !== null) {
+      this.getUserInfo(localStorage.getItem('uid'));
+    } else {
+      this.order.authorName = localStorage.getItem('username');
+      this.order.authorPhoneNumber = localStorage.getItem('phoneNumber');
     }
   }
 
@@ -56,7 +79,7 @@ export class PedirMarmitaComponent implements OnInit {
    */
   onMakeOrder() {
     console.log(this.order);
-    console.log(this.pedidoValido);
+    // console.log(this.secoesValidas);
     if (this.order.orderItens[6].itens !== undefined && this.order.orderItens[6].itens.length) {
       this.addCostToOrder('bebida');
     }
@@ -69,16 +92,17 @@ export class PedirMarmitaComponent implements OnInit {
   /**
    * Função que valida o pedido (se a quantidade de itens selecionados da categoria no índice i
    * for maior que a quantidade máxima definida pelo admin na
-   * hora de montar o cardápio, pedidoValido é false, o que impossibiita de fazer o pedido, deixando o botão desativado).
+   * hora de montar o cardápio, secoesValidas é false, o que impossibiita de fazer o pedido, deixando o botão desativado).
    * Essa função é chamada no select, com a classe que emite eventos "selectionChange"
    * @param i índice da categoria a ser checada
    */
   validateSelectedOptions(i: number) {
-    if (this.order.orderItens[i].itens !== undefined && this.order.orderItens[i].itens.length > this.menu[0].menu[i].maxChoices) {
-      this.pedidoValido = false;
+    if (this.order.orderItens[i].itens !== undefined && this.order.orderItens[i].itens.length > this.menu.menu[i].maxChoices) {
+      this.secoesValidas[i] = 0;
     } else {
-      this.pedidoValido = true;
+      this.secoesValidas[i] = 1;
     }
+    this.pedidoValido = !this.secoesValidas.includes(0);
   }
 
   /**
@@ -87,19 +111,45 @@ export class PedirMarmitaComponent implements OnInit {
    */
   addCostToOrder(opcao: string) {
     let valorExtra = 0;
-    if (opcao === 'bebida') {
+    if (opcao === 'bebida' && this.order.orderItens[6].itens.length) {
       this.order.orderItens[6].itens.forEach(bebida => {
         valorExtra += bebida.unitPrice;
       });
       this.order.basePrice += valorExtra;
 
-    } else if (opcao === 'sobremesa') {
+    } else if (opcao === 'sobremesa' && this.order.orderItens[7].itens.length) {
       this.order.orderItens[7].itens.forEach(sobremesa => {
         valorExtra += sobremesa.unitPrice;
       });
       this.order.basePrice += valorExtra;
     }
   }
+  /**
+   * Essa função retorna um usuário do banco de dados através do seu id
+   * @param id id do usuário
+   */
+  getUserInfo(id) {
+    this.db.collection('users').doc(id).get().toPromise().then((res) => {
+      this.userInfo = res.data() as {
+        username: string,
+        email: string,
+        phoneNumber: string,
+        photoUrl: string,
+        roles: []
+      };
+      this.order.authorEmail = this.userInfo.email;
+      this.order.authorName = this.userInfo.username;
+      this.order.authorPhoneNumber = this.userInfo.phoneNumber;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  goToPreviousPage() {
+    this.location.back();
+  }
+
 }
 
 

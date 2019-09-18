@@ -1,52 +1,137 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
+h2, h5 {
+  color: white;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+header {
+  text-align: start;
+}
+
+@media (min-width: 728px) {
+  img {
+    width: 40%;
+    margin-top: 20px;
+  }
+  h5 {
+    margin: 20px;
+  }
+  #menu {
+    height: auto;
+    text-align: center;
+    background-color: #304f25;
+    margin: unset;
+    display: grid;
+    justify-content: center;
+  }
+  .mat-expansion-panel {
+    width: 416px;
+  }
+}
+
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+    margin-top: 30px;
+  }
+
+  #menu {
+    height: auto;
+    text-align: center;
+    background-color: #304f25;
+    margin: unset;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
 .mat-list-icon {
-    color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.54);
 }
 .content {
-    padding: 5px;
+  padding: 5px;
 }
 
 #main {
-    text-align: center;
+  background-color: #304f25;
+  text-align: center;
+  justify-items: center;
+  height: 100%;
+  margin: unset;
+  border: 0.1px solid #304f25;
 }
 
-#header {
+#logo {
+  border: 0.1px solid #304f25;
+  height: auto;
 	background-color: #304f25;
 	text-align: center;
 	color: white;
-	border: 0.1px solid #304f25;
 }
-  
+
 .mat-expansion-panel {
-	margin-top: 20px;
-	margin-bottom: 20px;
-    background-color: #304f25;
+	margin-top: 2px;
+	margin-bottom: 2px;
+  background-color: lightgray;
 }
 
 .mat-expansion-panel-header {
-	background-color: #304f25;
-    text-align: center;
+	background-color: lightgray;
+  text-align: center;
 }
 
 .mat-expansion-panel-header-title {
 	display: grid;
-	color: white;
+	color: black;
 	font-size: 18px;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 #max {
 	margin-right: 10px;
 	margin-top: 7px;
-	color: white;
+	color: black;
 }
 
 .ng-star-inserted {
 	font-weight: bold;
-	color: goldenrod;
+	color: black;
 }
 
 .btn {
-	margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 360px;
+}
+mat-form-field {
+  margin-top: 5px;
+}
+.mat-input-element {
+  color: white;
+}
+
+::ng-deep .mat-form-field-label {
+  color: white !important;
+}
+
+::ng-deep .mat-focused {
+  color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline when focused*/
+  background-color: white !important;;
+ }
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: white !important;;
+}
+
+#notAvailable {
+  color: white;
 }

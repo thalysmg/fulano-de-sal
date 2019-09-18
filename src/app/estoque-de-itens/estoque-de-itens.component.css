@@ -1,10 +1,133 @@
-/*Google fonts*/
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-.mat-toolbar {
-    background-color: #304f25;
+h2, h5 {
+  color: white;
 }
 
-h1 {
-    color: white;
+header {
+  text-align: start;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+@media (min-width: 728px) {
+  img {
+    width: 40%;
+    margin-top: 15px;
+  }
+  h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #menu {
+    height: auto;
+    text-align: center;
+    background-color: #304f25;
+    margin: unset;
+    display: grid;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  .mat-expansion-panel {
+    width: 416px;
+  }
+}
+
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+    margin-top: 30px;
+  }
+  #menu {
+    height: auto;
+    background-color: #304f25;
+    margin: unset;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+  }
+}
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+#main {
+  background-color: #304f25;
+  text-align: center;
+  height: 100%;
+  margin: unset;
+}
+
+#logo {
+  border: 0.1px solid #304f25;
+  height: auto;
+	background-color: #304f25;
+	text-align: center;
+	color: white;
+}
+
+.mat-expansion-panel {
+	margin-top: 2px;
+	margin-bottom: 2px;
+  background-color: lightgray;
+}
+
+.mat-expansion-panel-header {
+	background-color: lightgray;
+  text-align: center;
+  border: 1px solid black;
+  /* border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; */
+}
+
+.mat-expansion-panel-header-title {
+	display: grid;
+	color: black;
+	font-size: 18px;
+  font-weight: bold;
+}
+
+.ng-star-inserted {
+	color: black;
+}
+
+.btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  justify-self: center;
+}
+
+mat-form-field {
+  margin-top: 5px;
+}
+
+#deleteBtn {
+  cursor: pointer;
+}
+
+li {
+  /* border: 1px solid white; */
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.mat-subheader {
+  color: white;
+}
+
+input[type=text]:not(.browser-default) {
+  width: 40%;
+  margin-right: 10px;
+}
+
+.novoItem {
+  width: 160px;
 }

@@ -1,9 +1,12 @@
 <div id="main" class="row">
-	<div id="header">
-		<h1 class="txt">Fulano de Sal</h1>
+  <header>
+    <a type="button" (click)="goToPreviousPage()">Voltar</a>
+  </header>
+  <div id="logo">
+    <img src="../../../assets/images/logo_boa2.png" alt="">
 	</div>
 	<div id="list">
-    <h5 class="txt">Relatório diário</h5>
+    <h5>Relatório diário</h5>
     <table class="table">
       <thead>
         <tr>
@@ -13,6 +16,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of relatorio">
+            <!-- *ngIf="item.nome !== 'UFCG' && item.nome !== 'UEPB' && item.nome !== 'UFCG-CCBS'"
+            esse pedaço de código excluir do relatório renderizado, as localidades-->
           <td class="txt">{{item.nome}}</td>
           <td class="txt">{{item.quantidade}}</td>
         </tr>

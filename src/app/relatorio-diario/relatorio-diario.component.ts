@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../firebase-services/report.service';
-import { log } from 'util';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-relatorio-diario',
@@ -11,7 +11,7 @@ export class RelatorioDiarioComponent implements OnInit {
 
   relatorio = [];
 
-  constructor(private reportService: ReportService) { }
+  constructor(private reportService: ReportService, private location: Location) { }
 
   ngOnInit() {
     this.reportService.getReportFromDb().then(res => {
@@ -23,13 +23,15 @@ export class RelatorioDiarioComponent implements OnInit {
         this.relatorio.push({ nome: item[0], quantidade: item[1] });
       }
       console.log(this.relatorio);
+      if (this.relatorio.length) {
+        // this.relatorio.sort(this.compareValues('quantidade', 'desc'));
+        this.relatorio = this.relatorio.sort((a, b) => {
+          return b.quantidade - a.quantidade; //desse modo a ordenação é decrescente
+        });
+      }
     });
-    if (this.relatorio.length) {
-      // this.relatorio.sort(this.compareValues('quantidade', 'desc'));
-      this.relatorio = this.relatorio.sort((a, b) => {
-        return b.quantidade - a.quantidade; //desse modo a ordenação é decrescente
-      });
-    }
+  }
+  goToPreviousPage() {
+    this.location.back();
   }
 }
-

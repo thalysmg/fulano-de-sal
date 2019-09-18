@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../firebase-services/report.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-relatorio-mensal',
   templateUrl: './relatorio-mensal.component.html',
@@ -9,7 +10,7 @@ export class RelatorioMensalComponent implements OnInit {
 
   relatorio = [];
 
-  constructor(private reportService: ReportService) { }
+  constructor(private reportService: ReportService, private location: Location) { }
 
   ngOnInit() {
     this.reportService.getMonthlyReportFromDb().then(res => {
@@ -29,6 +30,9 @@ export class RelatorioMensalComponent implements OnInit {
         });
       }
     });
+  }
+  goToPreviousPage() {
+    this.location.back();
   }
   // compareValues(key, order= 'asc') {
   //   return (a, b) => {
