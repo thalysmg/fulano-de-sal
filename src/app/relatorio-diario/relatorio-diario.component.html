@@ -16,6 +16,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of relatorio">
+            <!-- *ngIf="item.nome !== 'UFCG' && item.nome !== 'UEPB' && item.nome !== 'UFCG-CCBS'"
+            esse pedaço de código excluir do relatório renderizado, as localidades-->
           <td class="txt">{{item.nome}}</td>
           <td class="txt">{{item.quantidade}}</td>
         </tr>

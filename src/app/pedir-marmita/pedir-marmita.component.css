@@ -103,7 +103,8 @@ header {
 }
 
 .btn {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 360px;
 }
 mat-form-field {

@@ -1,7 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import {CreateMenuService} from '../../firebase-services/create-menu.service';
 import { Location } from '@angular/common';
-import { OrderService } from 'src/app/firebase-services/orderService.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import Axios from 'axios';
 //import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
@@ -77,11 +76,10 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
-  constructor(private createMenuService: CreateMenuService, private orderMenu: OrderService,
-              private location: Location, private ngZone: NgZone, private db: AngularFirestore) {}
+  constructor(private location: Location, private ngZone: NgZone, private db: AngularFirestore) {}
 
   ngOnInit() {
-    this.categorias = this.createMenuService.getSections();
+    this.categorias = this.getSections();
     console.log(this.categorias);
 
     this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
@@ -100,6 +98,25 @@ export class CreateMenuComponent implements OnInit {
 
   }
 
+  /**
+   * Função que retorna as seções do BD com os itens previamente registrados
+   */
+  getSections() {
+    let sections = [];
+    this.db.collection('sections').ref.orderBy('id').get()
+    .then(result => {
+        result.docs.map(section => {
+            sections.push(section.data());
+        });
+    })
+    .catch(err => {
+        sections = [];
+        console.log(err);
+    });
+    // console.log(sections);
+
+    return sections;
+}
 
   /**
    * Função que cria o menu do dia
@@ -114,11 +131,6 @@ export class CreateMenuComponent implements OnInit {
       console.log('Erro ao atualizar cardapio!');
     });
     console.log(this.menu);
-
-    // this.createMenuService.createMenu({
-    //   menu: this.menu,
-    //   additionalSections: [this.menu[6], this.menu[7]]
-    // });
   }
   goToPreviousPage() {
     this.location.back();

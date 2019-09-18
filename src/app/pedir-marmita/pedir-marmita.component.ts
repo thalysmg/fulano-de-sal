@@ -67,6 +67,9 @@ export class PedirMarmitaComponent implements OnInit {
     });
     if (localStorage.getItem('uid') !== null) {
       this.getUserInfo(localStorage.getItem('uid'));
+    } else {
+      this.order.authorName = localStorage.getItem('username');
+      this.order.authorPhoneNumber = localStorage.getItem('phoneNumber');
     }
   }
 
@@ -76,7 +79,7 @@ export class PedirMarmitaComponent implements OnInit {
    */
   onMakeOrder() {
     console.log(this.order);
-    console.log(this.secoesValidas);
+    // console.log(this.secoesValidas);
     if (this.order.orderItens[6].itens !== undefined && this.order.orderItens[6].itens.length) {
       this.addCostToOrder('bebida');
     }
