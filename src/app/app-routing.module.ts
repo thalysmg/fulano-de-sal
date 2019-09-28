@@ -3,7 +3,6 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
-import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.component';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
@@ -24,10 +23,6 @@ const routes: Routes = [
   {
     path: 'atualiza-dados',
     component: AtualizaDadosComponent
-  },
-  {
-    path: 'dados-pessoais',
-    component: DadosPessoaisComponent
   },
   {
     path: 'create-menu',

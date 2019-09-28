@@ -1,19 +1,60 @@
 <div id="main" class="row">
   <header>
-    <a (click)="goToPreviousPage()">Voltar</a>
+    <a (click)="goToPreviousPage()">
+      <i class="material-icons back">arrow_back_ios</i>
+    </a>
   </header>
   <div class="container row">
     <img src="../../assets/images/logo_boa2.png" alt="">
     <h5>Login de Administrador</h5>
   </div>
   <div class="container row">
-    <form class="col s6 offset-s3">
-      <div class="row">
-        <input type="text" id="email" placeholder="Email">
-      </div>
-      <div class="row">
-        <input type="password" id="password" placeholder="Senha">
-      </div>
+    <form id="web" class="col s4 offset-s4">
+      <mat-form-field class="row">
+        <input
+          name="email"
+          [(ngModel)]="email"
+          matInput required
+          type="email"
+          id="email"
+          placeholder="Email"
+        >
+      </mat-form-field>
+      <mat-form-field class="row">
+        <input
+          name="password"
+          [(ngModel)]="password"
+          matInput required
+          type="password"
+          id="password"
+          placeholder="Senha"
+        >
+      </mat-form-field>
+      <p>
+        <button class="btn" type="submit" (click)="signIn()">Login</button>
+      </p>
+    </form>
+    <form id="mobile" class="col s6 offset-s3">
+      <mat-form-field class="row">
+        <input
+          name="email"
+          [(ngModel)]="email"
+          matInput required
+          type="email"
+          id="email"
+          placeholder="Email"
+        >
+      </mat-form-field>
+      <mat-form-field class="row">
+        <input
+          name="password"
+          [(ngModel)]="password"
+          matInput required
+          type="password"
+          id="password"
+          placeholder="Senha"
+        >
+      </mat-form-field>
       <p>
         <button class="btn" type="submit" (click)="signIn()">Login</button>
       </p>

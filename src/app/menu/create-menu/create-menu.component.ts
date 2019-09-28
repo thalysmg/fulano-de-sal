@@ -23,13 +23,13 @@ export class CreateMenuComponent implements OnInit {
     {
       id: 0,
       maxChoices: 0,
-      nome: 'Arroz',
+      nome: 'Feijão',
       opcoes: []
     },
     {
       id: 1,
       maxChoices: 0,
-      nome: 'Feijão',
+      nome: 'Arroz',
       opcoes: []
     },
     {

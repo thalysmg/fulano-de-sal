@@ -39,7 +39,6 @@ a {
 @media (max-width: 728px) {
   img {
     width: 90%;
-    margin-top: 30px;
   }
   #menu {
     height: auto;

@@ -25,7 +25,10 @@ h5 {
     margin-top: 20px;
   }
   h5 {
-    margin: 30px;
+    margin-top: 30px;
+  }
+  #mobile {
+    display: none;
   }
 }
 
@@ -34,4 +37,72 @@ h5 {
     width: 90%;
     margin: 20px;
   }
+  #web {
+    display: none;
+  }
 }
+
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+  }
+  #menu {
+    height: auto;
+    background-color: #304f25;
+    margin: unset;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  #menu {
+    height: auto;
+    background-color: #304f25;
+    margin: unset;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .btn {
+    width: 100%;
+    margin-top: -50px;
+  }
+}
+
+.col {
+  display: grid;
+}
+
+::ng-deep .mat-form-field-label {
+  color: white !important;
+}
+::ng-deep .mat-form-field-underline {
+  background-color: white !important;;
+}
+::ng-deep .mat-form-field-focused .mat-form-field-ripple {
+  background-color: white !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  height: 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  width: 0 !important;
+}
+
+input[type=email]:not(.browser-default) {
+  height: 1.5rem;
+}
+
+input[type=password]:not(.browser-default) {
+  height: 1.5rem;
+}
+
+.mat-input-element {
+	color: white;
+}
+
