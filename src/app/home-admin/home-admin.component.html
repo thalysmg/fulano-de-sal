@@ -9,7 +9,7 @@
 		<h5 class="txt">Painel Administrativo</h5>
 	</div>
 	<div id="btns">
-    <a class="btn" routerLinkActive="router-link-active">Imprimir Pedidos</a>
+    <a class="btn" (click)="printOrders()">Imprimir Pedidos</a>
     <br>
 		<a class="btn" [routerLink]="['/estoque']" routerLinkActive="router-link-active">Adicionar/Remover Item</a>
     <br>

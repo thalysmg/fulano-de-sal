@@ -31,7 +31,7 @@
     </mat-accordion>
     <button *ngIf="!menu1.available" type="button" (click)="onCreateMenu()" class="btn">Montar Cardápio</button>
     <button *ngIf="menu1.available" class="btn red" (click)="closeMenu()">Fechar Cardápio</button>
-    <button *ngIf="menu1.available" class="btn blue" (click)="closeMenu()">Notificar Fechamento</button>
+    <button *ngIf="menu1.available" class="btn blue" (click)="sendNotification()">Notificar Fechamento</button>
   </div>
 </div>
 
