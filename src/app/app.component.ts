@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MessagingService} from './firebase-services/messaging.service'
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fulano-de-sal';
+
+  constructor(){
+
+  }
+
+  ngOnInit(){
+  }
+
+
+
+
 }
+
  

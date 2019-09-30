@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { log } from 'util';
+import { MessagingService } from '../firebase-services/messaging.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -49,9 +50,13 @@ export class PedirMarmitaComponent implements OnInit {
   pedidoValido = true;
 
 
-  constructor(private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+  constructor(public orderService: OrderService, private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+
 
   ngOnInit() {
+    //Notificacoes
+    this.messagingService.requestPermission(localStorage.getItem('uid'))
+    
     this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
     .then(result => {
       result.docs.map(doc => {

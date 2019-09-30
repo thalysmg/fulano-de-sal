@@ -25,8 +25,9 @@ import { MaterializeModule } from 'angular2-materialize';
 import { CreateMenuComponent } from './menu/create-menu/create-menu.component';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { config } from './config/firebase-config';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
@@ -34,6 +35,7 @@ import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
+import { MessagingService } from './firebase-services/messaging.service';
 
 @NgModule({
   declarations: [
@@ -70,10 +72,11 @@ import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.co
     AngularFireModule.initializeApp(config.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireMessagingModule,
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [MenuService, MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
