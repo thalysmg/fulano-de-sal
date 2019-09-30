@@ -33,13 +33,15 @@ a {
 }
 
 #logo {
-  height: 60%;
+  height: 40%;
 }
 
 .btn {
   width: 300px;
   margin: 20px;
   vertical-align: center;
+  font-size: 88%;
+  font-weight: bold;
 }
 
 .txt {

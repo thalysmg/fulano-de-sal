@@ -50,13 +50,13 @@ export class PedirMarmitaComponent implements OnInit {
   pedidoValido = true;
 
 
-  constructor(public orderService: OrderService, private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+  constructor(private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
 
 
   ngOnInit() {
     //Notificacoes
     this.messagingService.requestPermission(localStorage.getItem('uid'))
-    
+
     this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
     .then(result => {
       result.docs.map(doc => {

@@ -76,7 +76,7 @@ import { MessagingService } from './firebase-services/messaging.service';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [MenuService, MessagingService],
+  providers: [MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
