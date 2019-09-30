@@ -13,6 +13,11 @@ header {
   text-align: start;
 }
 
+.btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 @media (min-width: 728px) {
   img {
     width: 40%;
@@ -37,7 +42,6 @@ header {
 @media (max-width: 728px) {
   img {
     width: 90%;
-    margin-top: 30px;
   }
 
   #menu {
@@ -47,6 +51,9 @@ header {
     margin: unset;
     padding-right: 10px;
     padding-left: 10px;
+  }
+  .btn {
+    width: 100%;
   }
 }
 .mat-list-icon {
@@ -102,11 +109,6 @@ header {
 	color: black;
 }
 
-.btn {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 360px;
-}
 mat-form-field {
   margin-top: 5px;
 }
@@ -134,4 +136,8 @@ mat-form-field {
 
 #notAvailable {
   color: white;
+}
+
+textarea {
+  height: 1.5rem;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import Axios from 'axios';
 
 @Component({
   selector: 'app-home-admin',
@@ -15,6 +16,10 @@ export class HomeAdminComponent implements OnInit {
 
   goToPreviousPage() {
     this.location.back();
+  }
+
+  printOrders() {
+    window.location.replace('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/printOrders');
   }
 
 }

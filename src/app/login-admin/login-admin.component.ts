@@ -10,15 +10,20 @@ import { Location } from '@angular/common';
 })
 export class LoginAdminComponent implements OnInit {
 
+  email = '';
+  password = '';
+
   constructor(public authService: AuthService, private router: Router, private location: Location) { }
 
   ngOnInit() {
   }
 
   signIn() {
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const password = (document.getElementById('password') as HTMLInputElement).value;
-    this.authenticate(email, password);
+    const email1 = (document.getElementById('email') as HTMLInputElement).value;
+    const password2 = (document.getElementById('password') as HTMLInputElement).value;
+    // console.log(email1, password2);
+
+    this.authenticate(email1, password2);
   }
 
   authenticate(email, password) {
@@ -28,5 +33,4 @@ export class LoginAdminComponent implements OnInit {
   goToPreviousPage() {
     this.location.back();
   }
-
 }

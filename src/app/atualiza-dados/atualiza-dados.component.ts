@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-atualiza-dados',
@@ -11,6 +12,11 @@ import { Location } from '@angular/common';
 export class AtualizaDadosComponent implements OnInit {
 
   constructor(public db: AngularFirestore, private router: Router, private location: Location) { }
+
+  formValido = false;
+  formValido1 = false;
+  username = '';
+  phoneNumber = '';
 
   ngOnInit() {
   }
@@ -48,4 +54,21 @@ export class AtualizaDadosComponent implements OnInit {
     this.location.back();
   }
 
+  validateNameAndPhone(form: NgForm) {
+    if (form.valid) {
+      this.formValido = true;
+    } else {
+      this.formValido = false;
+    }
+    console.log(this.formValido);
+
+  }
+
+  validateNameAndPhone1(form1: NgForm) {
+    if (form1.valid) {
+      this.formValido1 = true;
+    } else {
+      this.formValido1 = false;
+    }
+  }
 }

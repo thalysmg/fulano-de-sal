@@ -23,13 +23,13 @@ export class CreateMenuComponent implements OnInit {
     {
       id: 0,
       maxChoices: 0,
-      nome: 'Arroz',
+      nome: 'Feijão',
       opcoes: []
     },
     {
       id: 1,
       maxChoices: 0,
-      nome: 'Feijão',
+      nome: 'Arroz',
       opcoes: []
     },
     {
@@ -113,7 +113,6 @@ export class CreateMenuComponent implements OnInit {
         sections = [];
         console.log(err);
     });
-    // console.log(sections);
 
     return sections;
 }
@@ -134,6 +133,12 @@ export class CreateMenuComponent implements OnInit {
   }
   goToPreviousPage() {
     this.location.back();
+  }
+
+  sendNotification() {
+    Axios.get('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/sendMessage').then(() => {
+      console.log('Notificação enviada');
+    });
   }
 
   closeMenu() {

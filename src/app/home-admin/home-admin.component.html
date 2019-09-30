@@ -1,16 +1,20 @@
 <div id="main" class="row">
   <header>
-    <a type="button" (click)="goToPreviousPage()">Voltar</a>
+    <a type="button" (click)="goToPreviousPage()">
+      <i class="material-icons back">arrow_back_ios</i>
+    </a>
   </header>
 	<div id="logo">
     <img src="../../assets/images/logo_boa2.png" alt="">
 		<h5 class="txt">Painel Administrativo</h5>
 	</div>
 	<div id="btns">
-		<a class="btn" [routerLink]="['/estoque']" routerLinkActive="router-link-active" >Adicionar/Remover Item</a>
+    <a class="btn" (click)="printOrders()">Imprimir Pedidos</a>
     <br>
-    <a class="btn" [routerLink]="['/create-menu']" routerLinkActive="router-link-active" >Montar/Fechar cardápio</a>
+		<a class="btn" [routerLink]="['/estoque']" routerLinkActive="router-link-active">Adicionar/Remover Item</a>
     <br>
-    <a class="btn" [routerLink]="['/relatorios']" routerLinkActive="router-link-active" >Gerar Relatório</a>
+    <a class="btn" [routerLink]="['/create-menu']" routerLinkActive="router-link-active">Montar/Fechar cardápio</a>
+    <br>
+    <a class="btn" [routerLink]="['/relatorios']" routerLinkActive="router-link-active">Gerar Relatório</a>
 	</div>
 </div>

@@ -19,6 +19,14 @@ a {
   cursor: pointer;
 }
 
+.btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-self: center;
+  width: 416px;
+  color: white !important;
+}
+
 @media (min-width: 728px) {
   img {
     width: 40%;
@@ -40,7 +48,6 @@ a {
 @media (max-width: 728px) {
   img {
     width: 90%;
-    margin-top: 30px;
   }
   #menu {
     height: auto;
@@ -48,11 +55,12 @@ a {
     margin: unset;
     padding-right: 10px;
     padding-left: 10px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
+  }
+  .btn {
+    width: 100%;
   }
 }
+
 .mat-list-icon {
   color: rgba(0, 0, 0, 0.54);
 }
@@ -101,12 +109,6 @@ a {
 	color: black;
 }
 
-.btn {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  justify-self: center;
-  width: 360px;
-}
 mat-form-field {
   margin-top: 5px;
 }

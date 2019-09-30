@@ -31,8 +31,8 @@ export class PedirMarmitaComponent implements OnInit {
     authorPhoneNumber: '',
     basePrice: 5.0,
     orderItens: [
-      {secao: 'Arroz', itens: []},
       {secao: 'Feijão', itens: []},
+      {secao: 'Arroz', itens: []},
       {secao: 'Macarrão', itens: []},
       {secao: 'Carne', itens: []},
       {secao: 'Salada', itens: []},
@@ -78,6 +78,12 @@ export class PedirMarmitaComponent implements OnInit {
    * Chama a função para acrescentar o valor das bebidas/sobremesas selecionadas
    */
   onMakeOrder() {
+    console.log(this.order.authorName);
+
+    if (!this.order.authorName || !this.order.authorPhoneNumber) {
+      alert('Não é possível realizar o pedido sem nome e telefone');
+      return;
+    }
     console.log(this.order);
     // console.log(this.secoesValidas);
     if (this.order.orderItens[6].itens !== undefined && this.order.orderItens[6].itens.length) {
@@ -140,6 +146,8 @@ export class PedirMarmitaComponent implements OnInit {
       this.order.authorEmail = this.userInfo.email;
       this.order.authorName = this.userInfo.username;
       this.order.authorPhoneNumber = this.userInfo.phoneNumber;
+      console.log(this.order);
+
     })
     .catch(err => {
       console.log(err);

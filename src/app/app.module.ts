@@ -6,7 +6,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
-import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +40,6 @@ import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.co
     AppComponent,
     HomeComponent,
     AtualizaDadosComponent,
-    DadosPessoaisComponent,
     LoginAdminComponent,
     CreateMenuComponent,
     HomeAdminComponent,
