@@ -50,7 +50,7 @@ export class PedirMarmitaComponent implements OnInit {
   pedidoValido = true;
 
 
-  constructor(public orderService: OrderService, private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+  constructor(public orderService: OrderService, private messagingService: MessagingService, private ngZone: NgZone,  private db: AngularFirestore, private location: Location) { }
 
 
   ngOnInit() {

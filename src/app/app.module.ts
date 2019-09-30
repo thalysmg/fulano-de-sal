@@ -7,7 +7,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './home/home.component';
 import { AtualizaDadosComponent } from './atualiza-dados/atualiza-dados.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -76,7 +75,7 @@ import { MessagingService } from './firebase-services/messaging.service';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [MenuService, MessagingService],
+  providers: [MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
