@@ -1,24 +1,45 @@
-<div id="header">
-    <h1>Monte seu prato</h1>
-</div>
-
 <div id="main" class="row">
-	<h2>Selecione os itens do Cardápio</h2>
-	<h5>Total: R$ {{order.basePrice}}</h5>
-	<mat-accordion *ngIf="menu.length">
-		<mat-expansion-panel *ngFor="let secao of menu[0].menu; let i = index">
-			<mat-expansion-panel-header>
-				<mat-panel-title >{{secao.nome}}</mat-panel-title>
-				<span id="max">Qtd. Máx: {{secao.maxChoices}}</span>
-			</mat-expansion-panel-header>
-			<mat-form-field>
-				<mat-label>Selecione o(s) item(s)</mat-label>
-				<mat-select [(ngModel)]="order.orderItens[i]" multiple>
-					<mat-option [value]="opcao" *ngFor="let opcao of secao.opcoes">{{opcao.name}} - R$ {{opcao.unitPrice}}</mat-option>
-				</mat-select>
-			</mat-form-field>
-		</mat-expansion-panel>
-	</mat-accordion>
-	<button (click)="onMakeOrder()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
+  <header>
+    <a (click)="goToPreviousPage()">Voltar</a>
+  </header>
+  <div id="logo" class="row">
+    <img src="../../assets/images/logo_boa2.png" alt="">
+    <br>
+    <h5>Selecione os itens do Cardápio</h5>
+    <span>Preço base da marmita: R$ {{order.basePrice}}</span>
+  </div>
+
+  <!-- Essa div é o menu
+  que só aparece caso o adm tenha disponibilizado -->
+  <div *ngIf="menu.available" id="menu" class="row">
+    <mat-accordion>
+      <span *ngFor="let secao of menu.menu; let i = index">
+        <mat-expansion-panel *ngIf="secao.maxChoices > 0">
+          <mat-expansion-panel-header>
+            <mat-panel-title >{{secao.nome}}</mat-panel-title>
+            <span id="max">Qtd. Máx: {{secao.maxChoices}}</span>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-label>Selecione o(s) item(s)</mat-label>
+            <mat-select (selectionChange)="validateSelectedOptions(i)" [(ngModel)]="order.orderItens[i].itens" multiple>
+              <span *ngFor="let opcao of secao.opcoes">
+                <mat-option *ngIf="opcao.unitPrice !== undefined" [value]="opcao">{{opcao.name}} - R$ {{opcao.unitPrice}}</mat-option>
+                <mat-option *ngIf="opcao.unitPrice === undefined" [value]="opcao">{{opcao.name}}</mat-option>
+              </span>
+            </mat-select>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </span>
+      <mat-form-field>
+        <textarea matInput id="obs" [(ngModel)]="order.comment" placeholder="Digite uma observação:"></textarea>
+      </mat-form-field>
+      </mat-accordion>
+    <button (click)="onMakeOrder()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
+  </div>
+
+  <div *ngIf="!menu.available">
+    <span id="notAvailable">O cardápio ainda não foi disponibilizado</span>
+  </div>
+
 </div>
 

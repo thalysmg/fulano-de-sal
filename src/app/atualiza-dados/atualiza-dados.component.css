@@ -3,25 +3,49 @@ h1 {
   color: white;
 }
 
-h5 {
-  text-align: center;
-  margin-top: 50px;
+@media (min-width: 728px) {
+  img {
+    width: 50%;
+    margin-top: 20px;
+  }
+  h5 {
+    margin: 30px;
+  }
 }
 
-#header {
+a {
+  color: white;
+  cursor: pointer;
+}
+
+#main {
+  height: 100%;
+  background-color: #304f25;
+}
+
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+    margin-top: 30px;
+  }
+}
+
+h5 {
+  text-align: center;
+  color: white;
+}
+
+#logo {
   background-color: #304f25;
   border: 0.1px solid #304f25; /*sem essas bordas, o componente fica com margem*/
-  height: 30%;
+  height: 50%;
   margin: unset;
+  text-align: center;
 }
 
 #form {
-  height: 70%;
+  border: 0.1px solid #304f25;
+  background-color: #304f25;
   margin: unset;
-  border: 0.1px solid white;
 }
 
-#dataForm {
-  /* border: 1px solid black; */
-  margin-top: 100px;
-}

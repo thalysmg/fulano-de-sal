@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { log } from 'util';
 import { MessagingService } from '../firebase-services/messaging.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -10,88 +12,149 @@ import { MessagingService } from '../firebase-services/messaging.service';
 })
 export class PedirMarmitaComponent implements OnInit {
 
-  menu = [];
+  userInfo = {
+    username: '',
+    email: '',
+    phoneNumber: '',
+    photoUrl: '',
+    roles: []
+  };
+
+  menu = {
+    available: true,
+    menu: [],
+    additionalSections: []
+  };
+
   order = {
-    authorEmail: 'thalys@mail',
-    authorName: 'Thalys',
-    authorPhoneNumber: '83987523433',
-    basePrice: 10.5,
-    deliveryPlace: 'Rua José de Alencar, 263, Prata, Ap 401',
-    orderItens: []
+    authorEmail: '',
+    authorName: '',
+    authorPhoneNumber: '',
+    basePrice: 5.0,
+    orderItens: [
+      {secao: 'Arroz', itens: []},
+      {secao: 'Feijão', itens: []},
+      {secao: 'Macarrão', itens: []},
+      {secao: 'Carne', itens: []},
+      {secao: 'Salada', itens: []},
+      {secao: 'Acompanhamentos', itens: []},
+      {secao: 'Bebida', itens: []},
+      {secao: 'Sobremesa', itens: []},
+      {secao: 'Local', itens: []}
+    ],
+    comment: ''
   };
 
   menuAppeared = false;
+  secoesValidas = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   pedidoValido = true;
 
-  constructor(public orderService: OrderService, private messagingService: MessagingService) { }
+
+  constructor(public orderService: OrderService, private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+
 
   ngOnInit() {
-    this.menu = this.orderService.getMenu(1);
-    // console.log(this.menu[0].menu);
-
-
     //Notificacoes
     this.messagingService.requestPermission(localStorage.getItem('uid'))
-  }
-
-  ngDoCheck() {
-    this.validateSelectedOptions();
-  }
-
-  ngAfterViewChecked() {
-    if (this.menu[0] !== undefined && this.menuAppeared === false) {
-      console.log(this.menu[0]);
-      this.menuAppeared = true;
+    
+    this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
+    .then(result => {
+      result.docs.map(doc => {
+        this.ngZone.run(() => {
+          this.menu = doc.data() as {menu: [], additionalSections: [], available: boolean};
+        });
+        console.log(this.menu);
+      });
+    })
+    .catch(err => {
+      console.log('Erro ao recuperar o cardápio do dia');
+      console.log(err);
+    });
+    if (localStorage.getItem('uid') !== null) {
+      this.getUserInfo(localStorage.getItem('uid'));
+    } else {
+      this.order.authorName = localStorage.getItem('username');
+      this.order.authorPhoneNumber = localStorage.getItem('phoneNumber');
     }
   }
 
   /**
-   * Método para criar um pedido e enviar para o db
+   * Função que cria um pedido e envia para o DB
+   * Chama a função para acrescentar o valor das bebidas/sobremesas selecionadas
    */
-
   onMakeOrder() {
-    console.log(this.order.orderItens);
-    console.log(this.pedidoValido);
-    if (this.order.orderItens[6] !== undefined && this.order.orderItens[6].length) {
-      this.addDrinkCostToOrder();
+    console.log(this.order);
+    // console.log(this.secoesValidas);
+    if (this.order.orderItens[6].itens !== undefined && this.order.orderItens[6].itens.length) {
+      this.addCostToOrder('bebida');
     }
-    if (this.order.orderItens[7] !== undefined && this.order.orderItens[7].length > 0) {
-      this.addDesertCostToOrder();
+    if (this.order.orderItens[7].itens !== undefined && this.order.orderItens[7].itens.length) {
+      this.addCostToOrder('sobremesa');
     }
+    this.orderService.createOrder(this.order);
   }
 
   /**
-   * Método que verifica se a quantidade de itens
-   * selecionados em cada seção está dentro do limite
-   * estabelecido pelo ADM.
-   * Caso ultrapasse o limite, o botão 'realizar' pedido
-   * é desativado.
+   * Função que valida o pedido (se a quantidade de itens selecionados da categoria no índice i
+   * for maior que a quantidade máxima definida pelo admin na
+   * hora de montar o cardápio, secoesValidas é false, o que impossibiita de fazer o pedido, deixando o botão desativado).
+   * Essa função é chamada no select, com a classe que emite eventos "selectionChange"
+   * @param i índice da categoria a ser checada
    */
+  validateSelectedOptions(i: number) {
+    if (this.order.orderItens[i].itens !== undefined && this.order.orderItens[i].itens.length > this.menu.menu[i].maxChoices) {
+      this.secoesValidas[i] = 0;
+    } else {
+      this.secoesValidas[i] = 1;
+    }
+    this.pedidoValido = !this.secoesValidas.includes(0);
+  }
 
-  validateSelectedOptions() {
-    const orderItensSize = this.order.orderItens.length;
-    for (let i = 0; i < orderItensSize; i++) {
-      if (this.order.orderItens[i] !== undefined && this.order.orderItens[i].length > this.menu[0].menu[i].maxChoices) {
-        this.pedidoValido = false;
-      } else {
-        this.pedidoValido = true;
-      }
-      // console.log(this.order.orderItens[i])
+  /**
+   * Função para acrescentar o custo extra de bebidas e/ou sobremesas adicionadas no preço do pedido
+   * @param opcao Pode ser 'bebida' ou 'sobremesa'
+   */
+  addCostToOrder(opcao: string) {
+    let valorExtra = 0;
+    if (opcao === 'bebida' && this.order.orderItens[6].itens.length) {
+      this.order.orderItens[6].itens.forEach(bebida => {
+        valorExtra += bebida.unitPrice;
+      });
+      this.order.basePrice += valorExtra;
+
+    } else if (opcao === 'sobremesa' && this.order.orderItens[7].itens.length) {
+      this.order.orderItens[7].itens.forEach(sobremesa => {
+        valorExtra += sobremesa.unitPrice;
+      });
+      this.order.basePrice += valorExtra;
     }
   }
-  addDrinkCostToOrder() {
-    let valorBebidas = 0;
-    this.order.orderItens[6].forEach(bebida => {
-      valorBebidas += bebida.unitPrice;
+  /**
+   * Essa função retorna um usuário do banco de dados através do seu id
+   * @param id id do usuário
+   */
+  getUserInfo(id) {
+    this.db.collection('users').doc(id).get().toPromise().then((res) => {
+      this.userInfo = res.data() as {
+        username: string,
+        email: string,
+        phoneNumber: string,
+        photoUrl: string,
+        roles: []
+      };
+      this.order.authorEmail = this.userInfo.email;
+      this.order.authorName = this.userInfo.username;
+      this.order.authorPhoneNumber = this.userInfo.phoneNumber;
+    })
+    .catch(err => {
+      console.log(err);
     });
-    this.order.basePrice += valorBebidas;
   }
 
-  addDesertCostToOrder() {
-    let valorSobremesas = 0;
-    this.order.orderItens[7].forEach(sobremesa => {
-      valorSobremesas += sobremesa.unitPrice;
-    });
-    this.order.basePrice += valorSobremesas;
+  goToPreviousPage() {
+    this.location.back();
   }
+
 }
+
+

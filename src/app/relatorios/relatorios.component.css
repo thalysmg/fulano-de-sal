@@ -1,25 +1,47 @@
 #main {
-    background-color: #304f25;
-    height: 100%;
-    text-align: center;
-    /* display: grid; */
-    border: 0.1px solid #304f25;
+  background-color: #304f25;
+  height: 100%;
+  text-align: center;
+  /* display: grid; */
+  border: 0.1px solid #304f25;
+  margin: unset;
+}
+@media (min-width: 728px) {
+  img {
+    width: 60%;
+    margin-top: 20px;
+  }
+  h5 {
+    margin: 30px;
+  }
 }
 
-#header {
-    height: 50%;
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+    margin-top: 30px;
+  }
 }
 
-#btns {
-    height: 50%;
+header {
+  text-align: left;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+#logo {
+  height: 60%;
 }
 
 .btn {
-    width: 60%;
-    margin: 20px;
-    vertical-align: center;
+  width: 300px;
+  margin: 20px;
+  vertical-align: center;
 }
 
 .txt {
-    color: white;
+  color: white;
 }

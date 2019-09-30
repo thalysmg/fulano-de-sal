@@ -3,8 +3,35 @@
   text-align: center;
   border: 0.1px solid #304f25;
   height: 100%;
+  margin: unset;
 }
 
-h1 {
+a {
   color: white;
+  cursor: pointer;
+}
+
+header {
+  text-align: start;
+}
+
+h5 {
+  color: white;
+}
+
+@media (min-width: 728px) {
+  img {
+    width: 60%;
+    margin-top: 20px;
+  }
+  h5 {
+    margin: 30px;
+  }
+}
+
+@media (max-width: 728px) {
+  img {
+    width: 90%;
+    margin: 20px;
+  }
 }

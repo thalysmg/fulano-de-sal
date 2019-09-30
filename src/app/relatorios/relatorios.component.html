@@ -1,10 +1,14 @@
 <div id="main" class="row">
-	<div id="header">
-		<h1 class="txt">Fulano de Sal</h1>
-		<h3 class="txt">Selecione uma opção</h3>
+  <header>
+    <a (click)="goToPreviousPage()">Voltar</a>
+  </header>
+  <div id="logo">
+    <img src="../../../assets/images/logo_boa2.png" alt="">
+		<h5 class="txt">Selecione uma opção</h5>
 	</div>
 	<div id="btns">
-        <a class="btn" [routerLink]="['/relatorio-diario']" routerLinkActive="router-link-active" >Gerar Relatório diário</a>
-        <a class="btn" [routerLink]="['/relatorio-mensal']" routerLinkActive="router-link-active" >Gerar Relatório mensal</a>
+    <a class="btn" [routerLink]="['/relatorio-diario']" routerLinkActive="router-link-active" >Gerar Relatório diário</a>
+    <br>
+    <a class="btn" [routerLink]="['/relatorio-mensal']" routerLinkActive="router-link-active" >Gerar Relatório mensal</a>
 	</div>
 </div>

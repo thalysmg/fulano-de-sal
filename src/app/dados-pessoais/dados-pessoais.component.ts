@@ -13,13 +13,13 @@ export class DadosPessoaisComponent implements OnInit {
   ngOnInit() {
   }
 
-  registerUser(){
-    var username = (<HTMLInputElement>document.getElementById('username')).value;
-    var phonenumber = (<HTMLInputElement>document.getElementById('phone-number')).value;
+  registerUser() {
+    const username = ( document.getElementById('username') as HTMLInputElement).value;
+    const phonenumber = ( document.getElementById('phone-number') as HTMLInputElement).value;
     this.registerUserData(localStorage.getItem('uid'), username, phonenumber);
   }
 
-  registerUserData(uid, name, number){
+  registerUserData(uid, name, number) {
     this.db.collection('users').doc(uid).update({username: name, phoneNumber: number})
     .then(() => {
       console.log('Usuario cadastrado com sucesso');
@@ -27,7 +27,7 @@ export class DadosPessoaisComponent implements OnInit {
     .catch(err => {
       console.log('Erro ao cadastrar os dados do usuario');
       console.log(err);
-    })
+    });
   }
 
 
