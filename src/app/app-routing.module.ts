@@ -10,6 +10,7 @@ import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -25,32 +26,38 @@ const routes: Routes = [
     component: AtualizaDadosComponent
   },
   {
-    path: 'create-menu',
-    component: CreateMenuComponent
+    path: 'montar-cardapio',
+    component: CreateMenuComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'estoque',
-    component: EstoqueDeItensComponent
+    component: EstoqueDeItensComponent,
+    canActivate: [AuthGuardService]
   },
   {
-    path: "home-admin",
-    component: HomeAdminComponent
+    path: 'home-admin',
+    component: HomeAdminComponent,
+    canActivate: [AuthGuardService]
   },
   {
-    path: "pedir-marmita",
+    path: 'pedir-marmita',
     component: PedirMarmitaComponent
   },
   {
-    path: "relatorios",
-    component: RelatoriosComponent
+    path: 'relatorios',
+    component: RelatoriosComponent,
+    canActivate: [AuthGuardService]
   },
   {
-    path: "relatorio-diario",
-    component: RelatorioDiarioComponent
+    path: 'relatorio-diario',
+    component: RelatorioDiarioComponent,
+    canActivate: [AuthGuardService]
   },
   {
-    path: "relatorio-mensal",
-    component: RelatorioMensalComponent
+    path: 'relatorio-mensal',
+    component: RelatorioMensalComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

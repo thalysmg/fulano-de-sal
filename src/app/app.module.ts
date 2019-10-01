@@ -36,6 +36,7 @@ import { RelatoriosComponent } from './relatorios/relatorios.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
 import { MessagingService } from './firebase-services/messaging.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ import { MessagingService } from './firebase-services/messaging.service';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [MessagingService],
+  providers: [MessagingService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

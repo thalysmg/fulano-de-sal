@@ -37,7 +37,7 @@
     </mat-accordion>
     <button *ngIf="!menu1.available" type="button" (click)="displayModal()" class="btn bt">Montar Cardápio</button>
     <button *ngIf="menu1.available" class="btn red bt" (click)="closeMenu()">Fechar Cardápio</button>
-    <button *ngIf="menu1.available" class="btn blue bt" (click)="sendCloseMenuNotification()">Notificar Fechamento</button>
+    <button *ngIf="menu1.available" class="btn blue bt" (click)="sendCloseMenuNotification()">Notificar Fechamento e Fechar Cardápio</button>
   </div>
 </div>
 

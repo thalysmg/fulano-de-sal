@@ -16,6 +16,7 @@ export class HomeAdminComponent implements OnInit {
 
   goToPreviousPage() {
     this.location.back();
+    localStorage.clear();
   }
 
   printOrders() {

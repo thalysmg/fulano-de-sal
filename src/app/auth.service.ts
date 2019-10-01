@@ -87,6 +87,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then(res => {
       console.log(res);
+      localStorage.setItem('uid', res.user.uid);
       this.route.navigate(['/home-admin']);
     }).catch(err => {
       alert('Ocorreu um erro ao tentar realizar o login');

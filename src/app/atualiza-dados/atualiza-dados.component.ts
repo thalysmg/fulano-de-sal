@@ -52,6 +52,7 @@ export class AtualizaDadosComponent implements OnInit {
 
   goToPreviousPage() {
     this.location.back();
+    localStorage.clear();
   }
 
   validateNameAndPhone(form: NgForm) {
