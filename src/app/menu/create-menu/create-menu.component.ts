@@ -174,7 +174,9 @@ export class CreateMenuComponent implements OnInit {
         alert('Não foi possível enviar a notificação');
         console.log(err);
       });
-      this.location.back();
+      if (window.location.pathname === '/montar-cardapio') {
+        this.location.back();
+      }
     }).catch((err) => {
       console.log(err);
       alert('Não foi possível fechar o cardápio');
