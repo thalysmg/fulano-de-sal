@@ -23,8 +23,8 @@ export class EstoqueDeItensComponent implements OnInit {
   categorias = [];
 
   itemPorCategoria = [
-    {nomeCategoria: 'Arroz', nomeItem: ''},
     {nomeCategoria: 'Feijão', nomeItem: ''},
+    {nomeCategoria: 'Arroz', nomeItem: ''},
     {nomeCategoria: 'Macarrão', nomeItem: ''},
     {nomeCategoria: 'Carne', nomeItem: ''},
     {nomeCategoria: 'Saladas', nomeItem: ''},
