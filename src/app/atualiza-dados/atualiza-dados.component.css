@@ -3,6 +3,19 @@ h1 {
   color: white;
 }
 
+#logo {
+  background-color: #304f25;
+  border: 0.1px solid #304f25; /*sem essas bordas, o componente fica com margem*/
+  margin: unset;
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+}
+
 @media (min-width: 728px) {
   img {
     width: 50%;
@@ -24,6 +37,9 @@ h1 {
   #web {
     display: none;
   }
+  #logo {
+    height: 40%;
+  }
 }
 
 a {
@@ -34,19 +50,6 @@ a {
 #main {
   height: 100%;
   background-color: #304f25;
-}
-
-h5 {
-  text-align: center;
-  color: white;
-}
-
-#logo {
-  background-color: #304f25;
-  border: 0.1px solid #304f25; /*sem essas bordas, o componente fica com margem*/
-  height: 50%;
-  margin: unset;
-  text-align: center;
 }
 
 .col {

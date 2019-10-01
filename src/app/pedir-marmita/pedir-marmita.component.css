@@ -141,3 +141,19 @@ mat-form-field {
 textarea {
   height: 1.5rem;
 }
+
+#modal {
+  background-color: bisque;
+  position: fixed;
+  z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+}
+
+.modalBtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

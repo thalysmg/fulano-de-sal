@@ -6,6 +6,11 @@
   border: 0.1px solid #304f25;
   margin: unset;
 }
+
+#logo {
+  height: 60%;
+}
+
 @media (min-width: 728px) {
   img {
     width: 60%;
@@ -21,6 +26,9 @@
     width: 90%;
     margin-bottom: 20px;
   }
+  #logo {
+    height: 40%;
+  }
 }
 
 header {
@@ -32,15 +40,10 @@ a {
   cursor: pointer;
 }
 
-#logo {
-  height: 40%;
-}
-
 .btn {
   width: 300px;
   margin: 20px;
   vertical-align: center;
-  font-size: 88%;
   font-weight: bold;
 }
 

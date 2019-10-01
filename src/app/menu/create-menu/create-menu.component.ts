@@ -76,6 +76,8 @@ export class CreateMenuComponent implements OnInit {
     }
   ];
 
+  showModal = false;
+
   constructor(private location: Location, private ngZone: NgZone, private db: AngularFirestore) {}
 
   ngOnInit() {
@@ -115,7 +117,11 @@ export class CreateMenuComponent implements OnInit {
     });
 
     return sections;
-}
+  }
+
+  displayModal() {
+    this.showModal = !this.showModal;
+  }
 
   /**
    * Função que cria o menu do dia
@@ -124,7 +130,14 @@ export class CreateMenuComponent implements OnInit {
     this.db.collection('menu').add({menu: this.menu})
     .then(res => {
       console.log('Cardapio atualizado com sucesso!');
-      window.location.reload();
+      Axios.post('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/sendMessage', {
+        title: 'Cardápio Disponibilizado',
+        message: 'Faça agora o seu pedido!'
+      })
+      .then(() => {
+        console.log('Notificação enviada');
+      });
+      this.location.back();
     })
     .catch(err => {
       console.log('Erro ao atualizar cardapio!');
@@ -135,16 +148,36 @@ export class CreateMenuComponent implements OnInit {
     this.location.back();
   }
 
-  sendNotification() {
-    Axios.get('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/sendMessage').then(() => {
-      console.log('Notificação enviada');
+  sendCloseMenuNotification() {
+    Axios.post('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/sendMessage', {
+      title: 'Cardápio será fechado em breve',
+      message: 'Ainda não fez o seu pedido? Corre lá que ainda dá tempo!'
+    }).then((res) => {
+      setTimeout(() => {
+        this.closeMenu();
+      }, 900000);
     });
   }
 
   closeMenu() {
+    //Essa requisição é para fechar o menu
     Axios.get('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/closeMenu').then((res) => {
       console.log(res);
-      window.location.reload();
+      //Essa requisição é para enviar a notificação
+      Axios.post('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/sendMessage', {
+        title: 'Pedidos encerrados',
+        message: 'Por hoje encerramos, mas amanhã estamos de volta!'
+      }).then((res1) => {
+        console.log('Notificação enviada');
+        console.log(res1);
+      }).catch((err) => {
+        alert('Não foi possível enviar a notificação');
+        console.log(err);
+      });
+      this.location.back();
+    }).catch((err) => {
+      console.log(err);
+      alert('Não foi possível fechar o cardápio');
     });
   }
 }

@@ -5,6 +5,10 @@
   margin: unset;
 }
 
+h5 {
+  color: white;
+}
+
 a {
   text-align: left;
   color: white;
@@ -44,15 +48,13 @@ header {
 }
 
 #btns {
-  /* height: 40%; */
   border: 1px solid #304f25;
 }
 
 .btn {
-  width: 260px;
+  width: 300px;
   margin: 10px;
   vertical-align: center;
-  font-size: 88%;
   font-weight: bold;
   text-align: center;
 }

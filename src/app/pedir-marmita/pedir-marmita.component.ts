@@ -48,14 +48,15 @@ export class PedirMarmitaComponent implements OnInit {
   menuAppeared = false;
   secoesValidas = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   pedidoValido = true;
-
+  localSelecionado = false;
+  showModal = false;
 
   constructor(private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
 
 
   ngOnInit() {
     //Notificacoes
-    this.messagingService.requestPermission(localStorage.getItem('uid'))
+    this.messagingService.requestPermission(localStorage.getItem('uid'));
 
     this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
     .then(result => {
@@ -65,6 +66,7 @@ export class PedirMarmitaComponent implements OnInit {
         });
         console.log(this.menu);
       });
+      this.validateSelectedOptions(8);
     })
     .catch(err => {
       console.log('Erro ao recuperar o cardápio do dia');
@@ -76,6 +78,10 @@ export class PedirMarmitaComponent implements OnInit {
       this.order.authorName = localStorage.getItem('username');
       this.order.authorPhoneNumber = localStorage.getItem('phoneNumber');
     }
+  }
+
+  displayModal() {
+    this.showModal = !this.showModal;
   }
 
   /**
@@ -113,6 +119,15 @@ export class PedirMarmitaComponent implements OnInit {
     } else {
       this.secoesValidas[i] = 1;
     }
+
+    //Esse código verifica se há um local selecionado. Caso não haja, não é possível fazer o pedido
+    if (!this.order.orderItens[8].itens.length) {
+      this.secoesValidas[8] = 0;
+      this.localSelecionado = false;
+    } else {
+      this.localSelecionado = true;
+    }
+
     this.pedidoValido = !this.secoesValidas.includes(0);
   }
 
