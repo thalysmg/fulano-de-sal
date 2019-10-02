@@ -37,6 +37,8 @@ import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.co
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
 import { MessagingService } from './firebase-services/messaging.service';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
@@ -77,7 +80,10 @@ import { AuthGuardService } from './guards/auth-guard.service';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [MessagingService, AuthGuardService],
+  providers: [MessagingService, AuthGuardService, {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

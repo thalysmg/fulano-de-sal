@@ -1,86 +1,80 @@
 <div id="main">
   <header>
-      <a (click)="goToPreviousPage()">
-        <i class="material-icons back">
-          arrow_back_ios
-        </i>
-      </a>
+    <i type="button" (click)="goToPreviousPage()" class="material-icons back">arrow_back_ios</i>
   </header>
 
-  <div id="logo" class="row">
+  <div class="container row">
     <img src="../../assets/images/logo_boa2.png" alt="">
     <h5>Atualize seus dados</h5>
   </div>
 
-  <div id="form" class="row">
-    <div class="container row">
-      <form id="web" class="col s4 offset-s4" (submit) ="updateUser()" #form="ngForm">
-        <mat-form-field>
-          <input
-            id="username"
-            name="username"
-            [(ngModel)]="username"
-            matInput
-            required minlength="6"
-            type="text"
-            #nome="ngModel"
-            placeholder="Digite nome e sobrenome"
-            (change)="validateNameAndPhone(form)"
-          >
-          <mat-error *ngIf="nome.invalid">Digite um nome válido</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            id="phone-number"
-            name="phone"
-            [(ngModel)]="phoneNumber"
-            matInput
-            required minlength="11"
-            type="text"
-            #phone="ngModel"
-            placeholder="(XX)9XXXX-XXXX"
-            (change)="validateNameAndPhone(form)"
-          >
-          <mat-error *ngIf="phone.invalid">Digite um telefone válido</mat-error>
-        </mat-form-field>
-        <p>
-          <button [disabled]="!formValido" class="btn" type="submit">Confirmar</button>
-        </p>
-      </form>
-      <form id="mobile" class="col s6 offset-s3" (submit)="updateUser()" #form1="ngForm">
-        <mat-form-field class="row">
-          <input
-            id="username"
-            name="username"
-            [(ngModel)]="username"
-            matInput
-            required minlength="6"
-            type="text"
-            #nome="ngModel"
-            placeholder="Digite nome e sobrenome"
-            (change)="validateNameAndPhone1(form1)"
-          >
-          <mat-error *ngIf="nome.invalid">Digite um nome válido</mat-error>
-        </mat-form-field>
-        <mat-form-field class="row">
-          <input
-            id="phone-number"
-            name="phone"
-            [(ngModel)]="phoneNumber"
-            matInput
-            #phone="ngModel"
-            required minlength="11"
-            type="text"
-            placeholder="(XX)9XXXX-XXXX"
-            (change)="validateNameAndPhone1(form1)"
-          >
-          <mat-error *ngIf="phone.invalid">Digite um telefone válido</mat-error>
-        </mat-form-field>
-        <p>
-          <button [disabled]="!formValido1" class="btn" type="submit">Confirmar</button>
-        </p>
-      </form>
-    </div>
+  <div class="container row">
+    <form id="web" class="col s4 offset-s4" (submit) ="updateUser()" #form="ngForm">
+      <mat-form-field>
+        <input
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          matInput
+          required minlength="6"
+          type="text"
+          #nome="ngModel"
+          placeholder="Digite nome e sobrenome"
+          (change)="validateNameAndPhone(form)"
+        >
+        <mat-error *ngIf="nome.invalid">Digite um nome válido</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          id="phone-number"
+          name="phone"
+          [(ngModel)]="phoneNumber"
+          matInput
+          required minlength="11"
+          type="text"
+          #phone="ngModel"
+          placeholder="(XX)9XXXX-XXXX"
+          (change)="validateNameAndPhone(form)"
+        >
+        <mat-error *ngIf="phone.invalid">Digite um telefone válido</mat-error>
+      </mat-form-field>
+      <p>
+        <button [disabled]="!formValido" class="btn" type="submit">Confirmar</button>
+      </p>
+    </form>
+    <form id="mobile" class="col s6 offset-s3" (submit)="updateUser()" #form1="ngForm">
+      <mat-form-field class="row">
+        <input
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          matInput
+          required minlength="6"
+          type="text"
+          #nome="ngModel"
+          placeholder="Digite nome e sobrenome"
+          (change)="validateNameAndPhone1(form1)"
+        >
+        <mat-error *ngIf="nome.invalid">Digite um nome válido</mat-error>
+      </mat-form-field>
+      <mat-form-field class="row">
+        <input
+          id="phone-number"
+          name="phone"
+          [(ngModel)]="phoneNumber"
+          matInput
+          #phone="ngModel"
+          required minlength="11"
+          type="text"
+          placeholder="(XX)9XXXX-XXXX"
+          (change)="validateNameAndPhone1(form1)"
+        >
+        <mat-error *ngIf="phone.invalid">Digite um telefone válido</mat-error>
+      </mat-form-field>
+      <p>
+        <button [disabled]="!formValido1" class="btn" type="submit">Confirmar</button>
+      </p>
+    </form>
   </div>
 </div>
 
