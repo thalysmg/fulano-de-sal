@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import Axios from 'axios';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-admin',
@@ -9,7 +10,7 @@ import Axios from 'axios';
 })
 export class HomeAdminComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,4 +24,8 @@ export class HomeAdminComponent implements OnInit {
     window.location.replace('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/printOrders');
   }
 
+  logout() {
+    this.router.navigate(['']);
+    localStorage.clear();
+  }
 }

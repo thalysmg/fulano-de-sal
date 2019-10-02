@@ -3,6 +3,12 @@ h1 {
   color: white;
 }
 
+.container {
+  background-color: #304f25;
+  width: 100%;
+  margin-bottom: 0;
+}
+
 #logo {
   background-color: #304f25;
   border: 0.1px solid #304f25; /*sem essas bordas, o componente fica com margem*/
@@ -14,6 +20,11 @@ h5 {
   text-align: center;
   color: white;
   margin-top: 30px;
+}
+
+.row {
+  margin-bottom: 0;
+  text-align: center;
 }
 
 @media (min-width: 728px) {
@@ -28,6 +39,9 @@ h5 {
   #mobile {
     display: none;
   }
+  #web {
+    display: grid;
+  }
 }
 
 @media (max-width: 728px) {
@@ -40,6 +54,13 @@ h5 {
   #logo {
     height: 40%;
   }
+  .row {
+    background-color: #304f25;
+    width: 100%;
+  }
+  .btn {
+    margin-bottom: 20px;
+  }
 }
 
 a {
@@ -50,16 +71,6 @@ a {
 #main {
   height: 100%;
   background-color: #304f25;
-}
-
-.col {
-  display: grid;
-}
-
-#form {
-  border: 0.1px solid #304f25;
-  background-color: #304f25;
-  margin: unset;
 }
 
 ::ng-deep .mat-form-field-label {
@@ -92,8 +103,8 @@ input[type=text]:not(.browser-default) {
 }
 
 mat-error {
-  font-size: 14px;
-  margin-top: -1px;
+  font-size: 12px;
+  margin-top: -0.05rem;
 }
 
 #username {

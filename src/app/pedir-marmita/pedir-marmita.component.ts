@@ -1,9 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { OrderService } from '../firebase-services/orderService.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { log } from 'util';
+import { ToastrService } from 'ngx-toastr';
 import { MessagingService } from '../firebase-services/messaging.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -51,11 +52,12 @@ export class PedirMarmitaComponent implements OnInit {
   localSelecionado = false;
   showModal = false;
 
-  constructor(private messagingService: MessagingService, private ngZone: NgZone, private orderService: OrderService, private db: AngularFirestore, private location: Location) { }
+  constructor(private messagingService: MessagingService, private ngZone: NgZone,
+              private orderService: OrderService, private db: AngularFirestore,
+              private location: Location, private router: Router, private toastr: ToastrService) { }
 
 
   ngOnInit() {
-    //Notificacoes
     this.messagingService.requestPermission(localStorage.getItem('uid'));
 
     this.db.collection('menu').ref.orderBy('timestamp', 'desc').limit(1).get()
@@ -104,6 +106,11 @@ export class PedirMarmitaComponent implements OnInit {
       this.addCostToOrder('sobremesa');
     }
     this.orderService.createOrder(this.order);
+    this.displayModal();
+    this.toastr.success('Pedido realizado com sucesso!', 'Olá, ' + this.order.authorName, {
+      timeOut: 4000,
+      positionClass: 'toast-top-center'
+    });
   }
 
   /**
@@ -179,6 +186,10 @@ export class PedirMarmitaComponent implements OnInit {
     localStorage.clear();
   }
 
+  logout() {
+    this.router.navigate(['']);
+    localStorage.clear();
+  }
 }
 
 

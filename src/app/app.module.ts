@@ -39,6 +39,8 @@ import { MessagingService } from './firebase-services/messaging.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
@@ -80,7 +83,10 @@ import { environment } from '../environments/environment';
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [MessagingService, AuthGuardService],
+  providers: [MessagingService, AuthGuardService, {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

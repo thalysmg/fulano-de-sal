@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { CreateMenuService } from '../firebase-services/create-menu.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { parse } from 'url';
+import { Router } from '@angular/router';
 
 
 export class App {
@@ -35,7 +36,7 @@ export class EstoqueDeItensComponent implements OnInit {
   ];
 
 
-  constructor(private db: AngularFirestore, private createMenuService: CreateMenuService, private location: Location) { }
+  constructor(private db: AngularFirestore, private createMenuService: CreateMenuService, private location: Location, private router: Router) { }
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
@@ -113,4 +114,8 @@ export class EstoqueDeItensComponent implements OnInit {
     this.location.back();
   }
 
+  logout() {
+    this.router.navigate(['']);
+    localStorage.clear();
+  }
 }

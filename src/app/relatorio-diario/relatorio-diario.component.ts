@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../firebase-services/report.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-relatorio-diario',
@@ -11,7 +12,7 @@ export class RelatorioDiarioComponent implements OnInit {
 
   relatorio = [];
 
-  constructor(private reportService: ReportService, private location: Location) { }
+  constructor(private reportService: ReportService, private location: Location, private router: Router) { }
 
   ngOnInit() {
     this.reportService.getReportFromDb().then(res => {
@@ -33,5 +34,10 @@ export class RelatorioDiarioComponent implements OnInit {
   }
   goToPreviousPage() {
     this.location.back();
+  }
+
+  logout() {
+    this.router.navigate(['']);
+    localStorage.clear();
   }
 }
