@@ -3,6 +3,7 @@ import {CreateMenuService} from '../../firebase-services/create-menu.service';
 import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import Axios from 'axios';
+import { Router } from '@angular/router';
 //import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 //import { log } from 'util';
 
@@ -78,7 +79,8 @@ export class CreateMenuComponent implements OnInit {
 
   showModal = false;
 
-  constructor(private location: Location, private ngZone: NgZone, private db: AngularFirestore) {}
+  constructor(private location: Location, private ngZone: NgZone,
+              private db: AngularFirestore, private router: Router) {}
 
   ngOnInit() {
     this.categorias = this.getSections();
@@ -144,9 +146,6 @@ export class CreateMenuComponent implements OnInit {
     });
     console.log(this.menu);
   }
-  goToPreviousPage() {
-    this.location.back();
-  }
 
   sendCloseMenuNotification() {
     Axios.post('https://us-central1-pwa-fulano-de-sal-51556.cloudfunctions.net/sendMessage', {
@@ -174,7 +173,8 @@ export class CreateMenuComponent implements OnInit {
         alert('Não foi possível enviar a notificação');
         console.log(err);
       });
-      if (window.location.pathname === '/montar-cardapio') {
+
+      if (window.location.hash === '#/montar-cardapio') {
         this.location.back();
       }
     }).catch((err) => {
@@ -182,5 +182,13 @@ export class CreateMenuComponent implements OnInit {
       alert('Não foi possível fechar o cardápio');
     });
   }
-}
 
+  goToPreviousPage() {
+    this.location.back();
+  }
+
+  logout() {
+    this.router.navigate(['']);
+    localStorage.clear();
+  }
+}

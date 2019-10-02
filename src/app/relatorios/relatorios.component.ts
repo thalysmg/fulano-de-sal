@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-relatorios',
@@ -8,12 +9,17 @@ import { Location } from '@angular/common';
 })
 export class RelatoriosComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private router: Router) { }
 
   ngOnInit() {
   }
 
   goToPreviousPage() {
     this.location.back();
+  }
+
+  logout() {
+    this.router.navigate(['']);
+    localStorage.clear();
   }
 }
