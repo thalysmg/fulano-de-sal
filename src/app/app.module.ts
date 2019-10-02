@@ -37,6 +37,8 @@ import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.co
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
 import { MessagingService } from './firebase-services/messaging.service';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { AuthGuardService } from './guards/auth-guard.service';
     AngularFireAuthModule,
     AngularFireMessagingModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [MessagingService, AuthGuardService],
   bootstrap: [AppComponent]

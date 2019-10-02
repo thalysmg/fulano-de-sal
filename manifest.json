@@ -1,7 +1,7 @@
 {
   "name": "Fulano de Sal",
   "short_name": "Fulano de Sal",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#673ab6",
   "background_color": "#111111",

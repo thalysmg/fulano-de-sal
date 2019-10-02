@@ -1,3 +1,18 @@
 {
+    "name": "Fulano de Sal",
+    "short_name": "Fulano de Sal",
+    "display": "standalone",
+    "start_url": "/",
+    "theme_color": "#673ab6",
+    "background_color": "#FFFFFF",
+    "prefer_related_applications": false,
+    "icons": [
+      {
+        "src": "/src/assets/icone.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
     "gcm_sender_id": "103953800507"
-}
+  }
+  
