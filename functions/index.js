@@ -85,9 +85,12 @@ exports.createItem = functions.firestore.document('sections/{sectionId}').onUpda
     }
 })
 
+
+
 exports.createOrder = functions.firestore.document('orders/{orderId}').onCreate((snap, context) => {
     const orderValue = snap.data();
     orderValue.timestamp = Date.now();
+    orderValue.printed = false;
     firestore.collection('orders').doc(context.params.orderId).set(orderValue)
     .then(res => {
         console.log('Pedido atualizado com sucesso');
@@ -153,7 +156,30 @@ exports.sendMessage = functions.https.onRequest(async (req, res) => {
             console.log('Error getting fcmTokens documents', err);  
         })
         res.set('Access-Control-Allow-Origin', '*')
+        res.set('Access-Control-Allow-Headers', 'Content-Type');
         res.send('Mensagens enviadas com sucesso')
+})
+
+
+exports.closeMenu = functions.https.onRequest(async (req, res) => {
+    await firestore.collection('menu').orderBy('timestamp', 'desc').limit(1).get()
+    .then(res => {
+        res.docs.forEach(doc => {
+            firestore.collection('menu').doc(doc.id).update({available: false})
+            .then(res => {
+                console.log('Cardápio fechado com sucesso!');
+                return true;
+            }).catch(err => {
+                console.log('Erro ao fechar o cardápio' , err);
+                return false;
+            });
+        })
+    return;    
+    }).catch(err => {
+        console.log('Erro ao recuperar o cardapio para atualizar', err);
+    })
+    res.set('Access-Control-Allow-Origin', '*')
+    res.send('Requisição para fechar o cardápio efetuada com sucesso.')
 })
 
 
@@ -162,8 +188,18 @@ exports.printOrders = functions.https.onRequest(async (req, res) => {
 
     const querySnapshot = await firestore.collection('orders').where('printed', '==', false).get()
     var orders = []
-    querySnapshot.forEach(doc => {
+    querySnapshot.forEach(async doc => {
         orders.push(doc.data())
+        await firestore.collection('orders').doc(doc.id).update({printed: true})
+        .then(res => {
+            console.log('Pedido atualizado com sucesso');
+            console.log(res);
+            return res;
+        }).catch(err => {
+            console.log('Erro ao atualizar pedido');
+            console.log(err);
+            return err;
+        });
     });
     res.set('Content-type', 'application/pdf')
     res.set('Content-disposition', 'inline; filename="Example.pdf"')
