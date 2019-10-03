@@ -52,9 +52,11 @@ export class AuthService {
         .then(doc => {
           console.log(doc.data());
           if ((typeof doc.get('username')) === 'undefined' && (typeof doc.get('phoneNumber')) === 'undefined') {
-            this.ngZone.run(() => {
-              this.route.navigate(['atualiza-dados']);
-            });
+            // this.ngZone.run(() => {
+            //   this.route.navigate(['atualiza-dados']);
+            // });
+            this.location.go('/atualiza-dados');
+            window.location.reload();
           } else {
           /*TODO: Mudar para uma tela de menu ou algo similar */
           // this.ngZone.run(() => {
@@ -92,7 +94,8 @@ export class AuthService {
     .then(res => {
       console.log(res);
       localStorage.setItem('uid', res.user.uid);
-      this.route.navigate(['/home-admin']);
+      this.location.go('/home-admin');
+      window.location.reload();
     }).catch(err => {
       alert('Ocorreu um erro ao tentar realizar o login');
       console.log(err);
