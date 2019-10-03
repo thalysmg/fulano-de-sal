@@ -10,12 +10,6 @@
     <span>Preço base da marmita: R$ {{order.basePrice}}</span>
   </div>
 
-  <div id="modal" *ngIf="showModal">
-    <span style="font-size: 16px">Confirmar Pedido?</span>
-    <button class="btn orange modalBtn" (click)="displayModal()">Cancelar</button>
-    <button class="btn modalBtn" (click)="onMakeOrder()">Confirmar Pedido</button>
-  </div>
-
   <!-- Essa div é o menu
   que só aparece caso o adm tenha disponibilizado -->
   <div *ngIf="menu.available" id="menu" class="row">
@@ -42,7 +36,14 @@
       <mat-form-field>
         <textarea matInput id="obs" [(ngModel)]="order.comment" placeholder="Digite uma observação:"></textarea>
       </mat-form-field>
-      </mat-accordion>
+    </mat-accordion>
+
+    <div id="modal" *ngIf="showModal">
+      <span style="font-size: 16px">Confirmar Pedido?</span>
+      <button class="btn orange modalBtn" (click)="displayModal()">Cancelar</button>
+      <button class="btn modalBtn" (click)="onMakeOrder()">Confirmar Pedido</button>
+    </div>
+
     <button (click)="displayModal()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
   </div>
 

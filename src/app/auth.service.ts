@@ -3,6 +3,7 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     public db: AngularFirestore,
     private route: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private location: Location
   ) { }
 
   /*
@@ -55,9 +57,11 @@ export class AuthService {
             });
           } else {
           /*TODO: Mudar para uma tela de menu ou algo similar */
-          this.ngZone.run(() => {
-            this.route.navigate(['pedir-marmita']);
-          });
+          // this.ngZone.run(() => {
+          //   this.route.navigate(['pedir-marmita']);
+          // });
+          this.location.go('/pedir-marmita');
+          window.location.reload();
             /*TODO: Mudar para uma tela de menu ou algo similar */
           }
         })

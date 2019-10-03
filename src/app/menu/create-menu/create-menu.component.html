@@ -7,12 +7,6 @@
     <img src="../../../assets/images/logo_boa2.png" alt="">
   </div>
 
-  <div id="modal" *ngIf="showModal">
-    <span style="font-size: 16px">Confirmar Cardápio?</span>
-    <button class="btn orange modalBtn" (click)="displayModal()">Cancelar</button>
-    <button class="btn modalBtn" (click)="onCreateMenu()">Confirmar Cardápio</button>
-  </div>
-
   <div id="menu" class="row">
     <h5 style="color: white" *ngIf="menu1.available">Feche o cardápio para montar um novo</h5>
     <mat-accordion *ngIf="!menu1.available">
@@ -34,6 +28,13 @@
         <!-- <p *ngIf="menu[i].opcoes[i]">{{itensSelecionados[i].opcoes[0].name}}</p> -->
       </mat-expansion-panel>
     </mat-accordion>
+
+    <div id="modal" *ngIf="showModal">
+      <span style="font-size: 16px">Confirmar Cardápio?</span>
+      <button class="btn orange modalBtn" (click)="displayModal()">Cancelar</button>
+      <button class="btn modalBtn" (click)="onCreateMenu()">Confirmar Cardápio</button>
+    </div>
+
     <button *ngIf="!menu1.available" type="button" (click)="displayModal()" class="btn bt">Montar Cardápio</button>
     <button *ngIf="menu1.available" class="btn red bt" (click)="closeMenu()">Fechar Cardápio</button>
     <button *ngIf="menu1.available" class="btn blue bt" (click)="sendCloseMenuNotification()">Notificar Fechamento e Fechar Cardápio</button>
