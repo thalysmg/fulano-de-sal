@@ -44,7 +44,7 @@
       <button class="btn modalBtn" (click)="onMakeOrder()">Confirmar Pedido</button>
     </div>
 
-    <button (click)="displayModal()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
+    <button *ngIf="!showModal" (click)="displayModal()" [disabled]="!pedidoValido" class="btn">Finalizar pedido</button>
   </div>
 
   <div *ngIf="!menu.available">
