@@ -126,12 +126,13 @@ mat-form-field {
 
 ::ng-deep.mat-form-field-underline {
   /*change color of underline when focused*/
-  background-color: white !important;;
+  /* background-color: white !important; */
+  border-bottom: 1px solid white;
  }
 
 ::ng-deep.mat-form-field-ripple {
  /*change color of underline when focused*/
- background-color: white !important;;
+ background-color: white !important;
 }
 
 #notAvailable {

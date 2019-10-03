@@ -37,7 +37,7 @@
           </mat-form-field>
         </mat-expansion-panel>
       </span>
-      <span style="color: red" *ngIf="!localSelecionado">Selecione um local para entrega</span>
+      <span style="color: red; font-size: 18px;" *ngIf="!localSelecionado">Selecione um local para entrega</span>
       <br>
       <mat-form-field>
         <textarea matInput id="obs" [(ngModel)]="order.comment" placeholder="Digite uma observação:"></textarea>

@@ -32,7 +32,9 @@ export class AtualizaDadosComponent implements OnInit {
     } else {
       localStorage.setItem('username', username);
       localStorage.setItem('phoneNumber', phonenumber);
-      this.router.navigate(['pedir-marmita']);
+      // this.router.navigate(['pedir-marmita']);
+      this.location.go('/pedir-marmita');
+      window.location.reload();
     }
 
   }
