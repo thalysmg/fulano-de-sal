@@ -33,10 +33,10 @@
           required minlength="11"
           type="text"
           #phone="ngModel"
-          placeholder="(XX)9XXXX-XXXX"
+          placeholder="Telefone com DDD"
           (change)="validateNameAndPhone(form)"
         >
-        <mat-error *ngIf="phone.invalid">Digite um telefone válido</mat-error>
+        <mat-error *ngIf="phone.invalid">(XX) 9XXXX-XXXX</mat-error>
       </mat-form-field>
       <p>
         <button [disabled]="!formValido" class="btn" type="submit">Confirmar</button>
@@ -66,10 +66,10 @@
           #phone="ngModel"
           required minlength="11"
           type="text"
-          placeholder="(XX)9XXXX-XXXX"
+          placeholder="Telefone com DDD"
           (change)="validateNameAndPhone1(form1)"
         >
-        <mat-error *ngIf="phone.invalid">Digite um telefone válido</mat-error>
+        <mat-error>(XX) 9XXXX-XXXX</mat-error>
       </mat-form-field>
       <p>
         <button [disabled]="!formValido1" class="btn" type="submit">Confirmar</button>
