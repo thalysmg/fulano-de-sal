@@ -25,7 +25,7 @@ export class AtualizaDadosComponent implements OnInit {
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const phonenumber = (document.getElementById('phone-number') as HTMLInputElement).value;
     const uid = localStorage.getItem('uid');
-    console.log(uid);
+    // console.log(uid);
 
     if (uid !== null) {
       this.updateUserData(uid, username, phonenumber);
@@ -43,8 +43,9 @@ export class AtualizaDadosComponent implements OnInit {
   updateUserData(uid, name, number) {
     this.db.collection('users').doc(uid).update({username: name, phoneNumber: number})
     .then(() => {
-      console.log('Usuario atualizado com sucesso');
-      this.router.navigate(['pedir-marmita']);
+      // console.log('Usuario atualizado com sucesso');
+      this.location.go('/pedir-marmita');
+      window.location.reload();
     })
     .catch(err => {
       console.log('Erro ao atualizar os dados do usuario');
@@ -63,8 +64,7 @@ export class AtualizaDadosComponent implements OnInit {
     } else {
       this.formValido = false;
     }
-    console.log(this.formValido);
-
+    // console.log(this.formValido);
   }
 
   validateNameAndPhone1(form1: NgForm) {
