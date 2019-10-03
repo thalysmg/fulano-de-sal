@@ -7,13 +7,13 @@ h1 {
   background-color: #304f25;
   width: 100%;
   margin-bottom: 0;
+  text-align: center;
 }
 
 #logo {
   background-color: #304f25;
   border: 0.1px solid #304f25; /*sem essas bordas, o componente fica com margem*/
   margin: unset;
-  text-align: center;
 }
 
 h5 {
@@ -24,7 +24,7 @@ h5 {
 
 .row {
   margin-bottom: 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 @media (min-width: 728px) {
@@ -102,6 +102,10 @@ input[type=text]:not(.browser-default) {
   color: white;
 }
 
+.mat-input {
+  float: left;
+}
+
 mat-error {
   font-size: 12px;
   margin-top: -0.05rem;
@@ -113,6 +117,7 @@ mat-error {
 
 #phone-number {
   margin-bottom: 10px;
+  float: left;
 }
 
 .btn {
