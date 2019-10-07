@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root'
   })
 export class OrderService {
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private toastr: ToastrService) {
 
   }
 
@@ -41,10 +42,14 @@ export class OrderService {
   createOrder(order) {
     this.db.collection('orders').add(order)
     .then(res => {
-      console.log('Pedido salvo com sucesso');
+      this.toastr.success('Pedido realizado com sucesso!', 'Olá, ' + order.authorName, {
+        timeOut: 4000,
+        positionClass: 'toast-top-center'
+      });
     })
     .catch(err => {
       console.log('Erro ao salvar pedido');
+      console.log(err);
     });
   }
 }

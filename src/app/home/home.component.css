@@ -3,10 +3,17 @@
   text-align: center;
 }
 
+#fb {
+  margin-top: 70px;
+}
+
 @media (min-width: 728px) {
   img {
     width: 60%;
     margin-top: 20px;
+  }
+  #image {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), #1B2A2E ), url("/../assets/images/capaWeb.png");
   }
 }
 
@@ -15,6 +22,12 @@
     width: 90%;
     margin: 20px;
     border-bottom: 1px solid #1B2A3B;
+  }
+  #image {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), #1B2A2E ), url("/../assets/images/capaMob.png");
+  }
+  #fb {
+    margin-top: 100px;
   }
 }
 
@@ -59,20 +72,11 @@ h1 {
 }
 
 #image {
-  height: 64%;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.2), #1B2A3B ), url("/../assets/images/login_img.jpeg");
+  height: 100%;
   margin: unset;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-}
-
-#footer  {
-  height: 36%;
-  background-color: #1B2A3B;
-  background: linear-gradient(to top, #1B2A3B, #1B2A3F);
-  margin: unset;
-  position: relative;
 }
 
 #main {
