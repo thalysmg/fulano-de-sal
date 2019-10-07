@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import Axios from 'axios';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 //import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 //import { log } from 'util';
 
@@ -79,7 +80,7 @@ export class CreateMenuComponent implements OnInit {
 
   showModal = false;
 
-  constructor(private location: Location, private ngZone: NgZone,
+  constructor(private afAuth: AngularFireAuth, private location: Location, private ngZone: NgZone,
               private db: AngularFirestore, private router: Router) {}
 
   ngOnInit() {
@@ -190,5 +191,6 @@ export class CreateMenuComponent implements OnInit {
   logout() {
     this.router.navigate(['']);
     localStorage.clear();
+    this.afAuth.auth.signOut();
   }
 }

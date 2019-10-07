@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MessagingService } from '../firebase-services/messaging.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -52,7 +53,7 @@ export class PedirMarmitaComponent implements OnInit {
   localSelecionado = false;
   showModal = false;
 
-  constructor(private messagingService: MessagingService, private ngZone: NgZone,
+  constructor(private afAuth: AngularFireAuth, private messagingService: MessagingService, private ngZone: NgZone,
               private orderService: OrderService, private db: AngularFirestore,
               private location: Location, private router: Router, private toastr: ToastrService) { }
 
@@ -189,6 +190,7 @@ export class PedirMarmitaComponent implements OnInit {
   logout() {
     this.router.navigate(['']);
     localStorage.clear();
+    this.afAuth.auth.signOut();
   }
 }
 

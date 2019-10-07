@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../firebase-services/report.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-relatorio-diario',
@@ -12,7 +13,7 @@ export class RelatorioDiarioComponent implements OnInit {
 
   relatorio = [];
 
-  constructor(private reportService: ReportService, private location: Location, private router: Router) { }
+  constructor(private afAuth: AngularFireAuth, private reportService: ReportService, private location: Location, private router: Router) { }
 
   ngOnInit() {
     this.reportService.getReportFromDb().then(res => {
@@ -39,5 +40,6 @@ export class RelatorioDiarioComponent implements OnInit {
   logout() {
     this.router.navigate(['']);
     localStorage.clear();
+    this.afAuth.auth.signOut();
   }
 }
