@@ -107,10 +107,6 @@ export class PedirMarmitaComponent implements OnInit {
     }
     this.orderService.createOrder(this.order);
     this.displayModal();
-    this.toastr.success('Pedido realizado com sucesso!', 'Olá, ' + this.order.authorName, {
-      timeOut: 4000,
-      positionClass: 'toast-top-center'
-    });
   }
 
   /**

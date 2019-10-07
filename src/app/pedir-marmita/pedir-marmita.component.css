@@ -60,6 +60,7 @@ header {
   }
   .btn {
     width: 100%;
+    color: white !important;
   }
 }
 .mat-list-icon {
