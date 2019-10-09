@@ -11,7 +11,7 @@ export class MessagingService{
 
     currentMessage = new BehaviorSubject(null);
 
-    constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, 
+    constructor(private db: AngularFirestore, private afAuth: AngularFireAuth,
         private afMessaging: AngularFireMessaging){
 
     }
@@ -20,7 +20,7 @@ export class MessagingService{
         this.afAuth.authState.pipe(take(1)).subscribe(
             () => {
                 const data = {userId, token}
-            
+
                 this.db.collection('fcmTokens').doc(userId).set(data)
                 .then((res) => {
                     console.log('Token adicionado com sucesso');
@@ -36,7 +36,7 @@ export class MessagingService{
     requestPermission(userId){
         this.afMessaging.requestToken.subscribe(token => {
                 console.log(token);
-                this.updateToken(userId, token);                
+                this.updateToken(userId, token);
             },
             (err) => {
                 console.log('Unable to get permission to notify.', err);
@@ -52,5 +52,5 @@ export class MessagingService{
         })
     }
 
-    
+
 }

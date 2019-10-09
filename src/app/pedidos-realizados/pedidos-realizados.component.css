@@ -16,7 +16,6 @@ header {
 .btn {
   margin-top: 20px;
   margin-bottom: 20px;
-  color: white !important;
 }
 
 @media (min-width: 728px) {
@@ -60,7 +59,9 @@ header {
     padding-left: 10px;
   }
   .btn {
-    width: 100%;
+    width: 60%;
+    font-weight: bold;
+    color: white !important;
   }
 }
 .mat-list-icon {
@@ -111,55 +112,6 @@ header {
 	color: black;
 }
 
-.ng-star-inserted {
-	font-weight: bold;
-	color: black;
-}
-
-mat-form-field {
-  margin-top: 5px;
-}
-.mat-input-element {
-  color: white;
-}
-
-::ng-deep .mat-form-field-label {
-  color: white !important;
-}
-
-::ng-deep .mat-focused {
-  color: white !important;
-}
-
-::ng-deep.mat-form-field-underline {
-  /*change color of underline when focused*/
-  /* background-color: white !important; */
-  border-bottom: 1px solid white;
- }
-
-::ng-deep.mat-form-field-ripple {
- /*change color of underline when focused*/
- background-color: white !important;
-}
-
 #notAvailable {
   color: white;
-}
-
-textarea {
-  height: 1.5rem;
-}
-
-#modal {
-  background-color: bisque;
-  z-index: 1;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 3px;
-}
-
-.modalBtn {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }

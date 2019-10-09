@@ -12,6 +12,7 @@ export class ItemService {
   sectionNames = {
     Carne: 'Carne',
     Macarrao: 'Macarrão',
+    Faforas: 'Farofas',
     Feijao: 'Feijão',
     Arroz: 'Arroz',
     Acompanhamentos: 'Acompanhamentos',

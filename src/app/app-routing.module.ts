@@ -8,6 +8,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EstoqueDeItensComponent } from './estoque-de-itens/estoque-de-itens.component';
 import { PedirMarmitaComponent } from './pedir-marmita/pedir-marmita.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
+import { PedidosRealizadosComponent } from './pedidos-realizados/pedidos-realizados.component';
 import { RelatorioDiarioComponent } from './relatorio-diario/relatorio-diario.component';
 import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
 import { AuthGuardService } from './guards/auth-guard.service';
@@ -58,6 +59,10 @@ const routes: Routes = [
     path: 'relatorio-mensal',
     component: RelatorioMensalComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'pedidos-realizados',
+    component: PedidosRealizadosComponent
   }
 ];
 

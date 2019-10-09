@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MessagingService } from '../firebase-services/messaging.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-pedir-marmita',
@@ -34,6 +35,7 @@ export class PedirMarmitaComponent implements OnInit {
     basePrice: 5.0,
     orderItens: [
       {secao: 'Feijão', itens: []},
+      {secao: 'Farofa', itens: []},
       {secao: 'Arroz', itens: []},
       {secao: 'Macarrão', itens: []},
       {secao: 'Carne', itens: []},
@@ -52,7 +54,7 @@ export class PedirMarmitaComponent implements OnInit {
   localSelecionado = false;
   showModal = false;
 
-  constructor(private messagingService: MessagingService, private ngZone: NgZone,
+  constructor(private afAuth: AngularFireAuth, private messagingService: MessagingService, private ngZone: NgZone,
               private orderService: OrderService, private db: AngularFirestore,
               private location: Location, private router: Router, private toastr: ToastrService) { }
 
@@ -99,10 +101,10 @@ export class PedirMarmitaComponent implements OnInit {
     }
     console.log(this.order);
     // console.log(this.secoesValidas);
-    if (this.order.orderItens[6].itens !== undefined && this.order.orderItens[6].itens.length) {
+    if (this.order.orderItens[7].itens !== undefined && this.order.orderItens[7].itens.length) {
       this.addCostToOrder('bebida');
     }
-    if (this.order.orderItens[7].itens !== undefined && this.order.orderItens[7].itens.length) {
+    if (this.order.orderItens[8].itens !== undefined && this.order.orderItens[8].itens.length) {
       this.addCostToOrder('sobremesa');
     }
     this.orderService.createOrder(this.order);
@@ -124,8 +126,8 @@ export class PedirMarmitaComponent implements OnInit {
     }
 
     //Esse código verifica se há um local selecionado. Caso não haja, não é possível fazer o pedido
-    if (!this.order.orderItens[8].itens.length) {
-      this.secoesValidas[8] = 0;
+    if (!this.order.orderItens[9].itens.length) {
+      this.secoesValidas[9] = 0;
       this.localSelecionado = false;
     } else {
       this.localSelecionado = true;
@@ -140,14 +142,14 @@ export class PedirMarmitaComponent implements OnInit {
    */
   addCostToOrder(opcao: string) {
     let valorExtra = 0;
-    if (opcao === 'bebida' && this.order.orderItens[6].itens.length) {
-      this.order.orderItens[6].itens.forEach(bebida => {
+    if (opcao === 'bebida' && this.order.orderItens[7].itens.length) {
+      this.order.orderItens[7].itens.forEach(bebida => {
         valorExtra += bebida.unitPrice;
       });
       this.order.basePrice += valorExtra;
 
-    } else if (opcao === 'sobremesa' && this.order.orderItens[7].itens.length) {
-      this.order.orderItens[7].itens.forEach(sobremesa => {
+    } else if (opcao === 'sobremesa' && this.order.orderItens[8].itens.length) {
+      this.order.orderItens[8].itens.forEach(sobremesa => {
         valorExtra += sobremesa.unitPrice;
       });
       this.order.basePrice += valorExtra;
@@ -185,6 +187,7 @@ export class PedirMarmitaComponent implements OnInit {
   logout() {
     this.router.navigate(['']);
     localStorage.clear();
+    this.afAuth.auth.signOut();
   }
 }
 

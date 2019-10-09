@@ -41,6 +41,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { PedidosRealizadosComponent } from './pedidos-realizados/pedidos-realizados.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ToastrModule } from 'ngx-toastr';
     PedirMarmitaComponent,
     RelatoriosComponent,
     RelatorioDiarioComponent,
-    RelatorioMensalComponent
+    RelatorioMensalComponent,
+    PedidosRealizadosComponent
   ],
   imports: [
     BrowserModule,

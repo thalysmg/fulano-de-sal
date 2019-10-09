@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import Axios from 'axios';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 //import * as cloneDeep from 'lodash.clonedeep'; //essa lib faz um clone de arrays de objetos
 //import { log } from 'util';
 
@@ -30,47 +31,53 @@ export class CreateMenuComponent implements OnInit {
     {
       id: 1,
       maxChoices: 0,
-      nome: 'Arroz',
+      nome: 'Farofa',
       opcoes: []
     },
     {
       id: 2,
       maxChoices: 0,
-      nome: 'Macarrão',
+      nome: 'Arroz',
       opcoes: []
     },
     {
       id: 3,
       maxChoices: 0,
-      nome: 'Carne',
+      nome: 'Macarrão',
       opcoes: []
     },
     {
       id: 4,
       maxChoices: 0,
-      nome: 'Salada',
+      nome: 'Carne',
       opcoes: []
     },
     {
       id: 5,
       maxChoices: 0,
-      nome: 'Acompanhamentos',
+      nome: 'Salada',
       opcoes: []
     },
     {
       id: 6,
       maxChoices: 0,
-      nome: 'Bebidas',
+      nome: 'Acompanhamentos',
       opcoes: []
     },
     {
       id: 7,
       maxChoices: 0,
-      nome: 'Sobremesa',
+      nome: 'Bebidas',
       opcoes: []
     },
     {
       id: 8,
+      maxChoices: 0,
+      nome: 'Sobremesa',
+      opcoes: []
+    },
+    {
+      id: 9,
       maxChoices: 0,
       nome: 'Local',
       opcoes: []
@@ -79,7 +86,7 @@ export class CreateMenuComponent implements OnInit {
 
   showModal = false;
 
-  constructor(private location: Location, private ngZone: NgZone,
+  constructor(private afAuth: AngularFireAuth, private location: Location, private ngZone: NgZone,
               private db: AngularFirestore, private router: Router) {}
 
   ngOnInit() {
@@ -190,5 +197,6 @@ export class CreateMenuComponent implements OnInit {
   logout() {
     this.router.navigate(['']);
     localStorage.clear();
+    this.afAuth.auth.signOut();
   }
 }
