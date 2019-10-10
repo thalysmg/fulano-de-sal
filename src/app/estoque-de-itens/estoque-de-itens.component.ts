@@ -39,8 +39,10 @@ export class EstoqueDeItensComponent implements OnInit {
   ];
 
 
+
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore,
               private createMenuService: CreateMenuService, private location: Location, private router: Router) { }
+
 
   ngOnInit() {
     this.categorias = this.createMenuService.getSections();
